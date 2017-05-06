@@ -22,7 +22,6 @@ Run the demo
 gulp
 ```
 
-
 # Design
 To show the capabilities of every graphic framework, we will implement a basic website with the following requirements:
 - Two different shapes (with customizable text and color)
