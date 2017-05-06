@@ -1,0 +1,32 @@
+{
+  "name": "GraphLibComp",
+  "homepage": "https://github.com/axfrank/GraphLibComp",
+  "authors": [
+    "Alex Frank <alex_frank@email.com>"
+  ],
+  "description": "Website to compare different Graphic Libraries",
+  "main": "src/index.html",
+  "keywords": [
+    "graphic",
+    "graphics",
+    "js",
+    "javascript",
+    "jsplumb",
+    "raphael",
+    "d2draw",
+    "fabricjs",
+    "paperjs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "raphael": "^2.2.7"
+  }
+}
