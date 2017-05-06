@@ -1,6 +1,28 @@
 # GraphLibComp
 This project implements a basic website using seven different graphic frameworks for comparison.
 
+# Getting started
+## Prerequisites
+You need [NodeJS](https://nodejs.org/en/) installed.
+Follow this [Documentation](https://docs.npmjs.com/getting-started/installing-node), if you never have used NodeJS or NPM.
+
+After installation
+```bash
+sudo npm install -g bower
+sudo npm install -g gulp
+```
+
+## Installing
+Install the dependencies
+```bash
+bower install
+```
+Run the demo
+```
+gulp
+```
+
+
 # Design
 To show the capabilities of every graphic framework, we will implement a basic website with the following requirements:
 - Two different shapes (with customizable text and color)
