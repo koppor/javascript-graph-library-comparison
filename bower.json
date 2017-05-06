@@ -1,5 +1,5 @@
 {
-  "name": "GraphLibComp",
+  "name": "graphlibcomp",
   "homepage": "https://github.com/axfrank/GraphLibComp",
   "authors": [
     "Alex Frank <alex_frank@email.com>"
@@ -27,7 +27,6 @@
     "tests"
   ],
   "dependencies": {
-    "raphael": "^2.2.7",
-    "material-design-lite": "^1.3.0"
+    "raphael": "^2.2.7"
   }
 }
