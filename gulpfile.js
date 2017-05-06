@@ -2,10 +2,20 @@ var gulp = require('gulp');
 var inject = require('gulp-inject');
 var mainBowerFiles = require('main-bower-files');
 var beautify = require('gulp-beautify');
+var htmlbeautify = require('gulp-html-beautify');
 
-gulp.task('beautify', function() {
+gulp.task('htmlbeautify', function() {
+  gulp.src('./src/**/*.html')
+    .pipe(htmlbeautify({indent_size: 2}))
+    .pipe(gulp.dest('./src/'))
+});
+
+/**
+ * Beautifies javascript files, because we dont need them minified
+ */
+gulp.task('jsbeautify', function() {
   gulp.src('./src/**/*.js')
-    .pipe(beautify({indent_size: 4}))
+    .pipe(beautify({indent_size: 2}))
     .pipe(gulp.dest('./src/'))
 });
 
@@ -18,4 +28,4 @@ gulp.task('index', function () {
         .pipe(gulp.dest('./src'));
 });
 
-gulp.task('default', ['index', 'beautify']);
+gulp.task('default', ['index', 'jsbeautify', 'htmlbeautify']);
