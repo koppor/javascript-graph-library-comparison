@@ -23,6 +23,7 @@ gulp.task('jsbeautify', function() {
  * Task that injects all the bower components we need
  */
 gulp.task('index', function () {
+  console.log(mainBowerFiles());
     return gulp.src('./src/index.html')
         .pipe(inject(gulp.src(mainBowerFiles(), { read: false }), { name: 'bower', relative: true }))
         .pipe(gulp.dest('./src'));

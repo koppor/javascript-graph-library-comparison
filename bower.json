@@ -27,6 +27,7 @@
     "tests"
   ],
   "dependencies": {
-    "raphael": "^2.2.7"
+    "raphael": "^2.2.7",
+    "material-design-lite": "^1.3.0"
   }
 }
