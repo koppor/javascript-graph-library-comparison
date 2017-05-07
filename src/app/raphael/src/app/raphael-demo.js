@@ -31,6 +31,19 @@
         circle1.attr("stroke", "#fff");
         arrow.attr("stroke", "#f00");
         arrow.attr("stroke-dasharray", "-");
+
+        text.click(function() {
+            var newText = prompt("Enter new text:");
+            text.attr("text",newText);
+        });
+
+        circle1.click(function () {
+            alert("On Circle 1 Clicked:\n" + JSON.stringify(circle1.attr()));
+        });
+
+        circle2.click(function () {
+            alert("On Circle 2 Clicked:\n" + JSON.stringify(circle2.attr()));
+        });
     }
 
     function initRects() {
@@ -43,6 +56,14 @@
         rect1.attr("fill", "#00f");
         rect1.attr("stroke", "#0FF");
         rect2.attr("stroke-dasharray", ".")
+
+        rect1.click(function () {
+            alert("On Rect 1 Clicked:\n" + JSON.stringify(rect1.attr()));
+        });
+
+        rect2.click(function () {
+            alert("On Rect 2 Clicked:\n" + JSON.stringify(rect2.attr()));
+        });
     }
 
 })();
