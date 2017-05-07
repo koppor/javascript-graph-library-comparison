@@ -27,7 +27,6 @@
     "tests"
   ],
   "dependencies": {
-    "raphael": "^2.2.7",
     "bootstrap": "^3.3.7"
   },
   "overrides": {
