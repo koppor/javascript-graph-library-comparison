@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var mainBowerFiles = require('main-bower-files');
 var inject = require('gulp-inject');
-var es = require('event-stream');
 /**
  * Use BrowserSync for livereload
  */
