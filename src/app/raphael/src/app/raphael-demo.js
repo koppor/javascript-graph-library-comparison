@@ -1,6 +1,7 @@
-
 (function () {
     "use strict";
+    const paper = Raphael("canvas");
+
     Raphael.fn.arrow = function (x1, y1, x2, y2, size) {
         var angle = Raphael.angle(x1, y1, x2, y2);
         var a45 = Raphael.rad(angle - 45);
@@ -16,54 +17,125 @@
         );
     };
 
-    var paper = Raphael("canvas");
+
+    /**
+     * Shape Constructor
+     * @param x - X Position
+     * @param y - Y Position
+     * @param paper The paper to draw on
+     * @constructor
+     */
+    function Shape(x, y, paper) {
+        this.paper = paper;
+        this.x = x;
+        this.y = y;
+        this.text = "";
+        this.color = "#000";
+        this.strokeColor = "#000";
+        this.strokeStyle = null;
+        this.connections = [];
+        this.raphaelElement = null; // Object from RaphaelJS
+        this.setColor(this.color);
+        this.setStrokeColor(this.strokeColor);
+        this.setStrokeStyle(this.strokeStyle);
+    }
+
+    /**
+     * Prototype definitions
+     * @type {{setPosition: Shape.setPosition, setColor: Shape.setColor, setStrokeColor: Shape.setStrokeColor, setStrokeStyle: Shape.setStrokeStyle, addAttribute: Shape.addAttribute}}
+     */
+    Shape.prototype = {
+
+        setPosition: function (x, y) {
+            this.x = typeof x === "undefined" ? this.x : x;
+            this.y = typeof y === "undefined" ? this.y : y;
+            var s = "t" + this.x + "," + this.y;
+            this.raphaelElement.transform(s);
+        },
+
+        setColor: function (color) {
+            this.color = color;
+            this.addAttribute("fill", this.color);
+        },
+
+        setStrokeColor: function (strokeColor) {
+            this.strokeColor = strokeColor;
+            this.addAttribute("stroke", this.strokeColor);
+        },
+
+        setStrokeStyle: function (strokeStyle) {
+            this.strokeStyle = strokeStyle;
+            this.addAttribute("stroke-dasharray", this.strokeStyle);
+        },
+
+        addAttribute: function (name, value) {
+            if (this.raphaelElement) {
+                console.log("Attribute: %s = %s", name, value);
+                this.raphaelElement.attr(name, value);
+            }
+        }
+    };
+
+    /**
+     * Cricle Object
+     * @param x Shape#x
+     * @param y Shape#y
+     * @param r The radius
+     * @param paper Shape#paper
+     * @constructor
+     */
+    function Circle(x, y, r, paper) {
+        Shape.call(this, x, y, paper);
+        this.r = r;
+        this.raphaelElement = paper.circle(0, 0, r);
+        this.setPosition(x, y);
+    }
+
+    Circle.prototype = Object.create(Shape.prototype);
+
+    Circle.prototype.constructor = Circle;
+
+    /**
+     * Rectangle Object
+     * @param x Shape#x
+     * @param y Shape#y
+     * @param width The width of the rect
+     * @param height The height of the rect
+     * @param paper Shape#paper
+     * @constructor
+     */
+    function Rectangle(x, y, width, height, paper) {
+        Shape.call(this, x, y, paper);
+        this.width = width;
+        this.height = height;
+        this.raphaelElement = paper.rect(0, 0, width, height);
+        this.setPosition(x, y);
+    }
+
+    Rectangle.prototype = Object.create(Shape.prototype);
+
+    Rectangle.prototype.constructor = Rectangle;
 
     initCircles();
     initRects();
 
     function initCircles() {
-        var circle1 = paper.circle(30, 40, 10);
-        var circle2 = paper.circle(440, 40, 10)
-        var arrow = paper.arrow(30 + 10, 40, 440 - 10, 40, 5);
-        var text = paper.text(195, 35, "Text")
-        var circleText = paper.text(30, 40, "C")
-        circle1.attr("fill", "#0f0");
-        circle1.attr("stroke", "#fff");
-        arrow.attr("stroke", "#f00");
-        arrow.attr("stroke-dasharray", "-");
+        var c1 = new Circle(30, 40, 10, paper);
+        c1.setStrokeColor("#0f0");
 
-        text.click(function() {
-            var newText = prompt("Enter new text:");
-            text.attr("text",newText);
-        });
-
-        circle1.click(function () {
-            alert("On Circle 1 Clicked:\n" + JSON.stringify(circle1.attr()));
-        });
-
-        circle2.click(function () {
-            alert("On Circle 2 Clicked:\n" + JSON.stringify(circle2.attr()));
-        });
+        var c2 = new Circle(400, 40, 10, paper);
+        c2.setStrokeColor("#f00");
+        c2.setStrokeStyle("-");
     }
 
     function initRects() {
-        var rect1 = paper.rect(30, 440, 10, 10)
-        var rect2 = paper.rect(440, 440, 10, 10)
-        var arrow = paper.arrow(30 + 10, 440 + 5, 440, 440 + 5, 5);
+        var r1 = new Rectangle(30, 440, 10, 10, paper);
+        var r2 = new Rectangle(440, 440, 10, 10, paper);
 
-        arrow.attr("stroke", "#00f");
-        arrow.attr("stroke-dasharray", ".");
-        rect1.attr("fill", "#00f");
-        rect1.attr("stroke", "#0FF");
-        rect2.attr("stroke-dasharray", ".")
+        r1.setColor("#00f");
+        r1.setStrokeColor("#0FF");
 
-        rect1.click(function () {
-            alert("On Rect 1 Clicked:\n" + JSON.stringify(rect1.attr()));
-        });
-
-        rect2.click(function () {
-            alert("On Rect 2 Clicked:\n" + JSON.stringify(rect2.attr()));
-        });
+        r2.setStrokeStyle(".");
     }
 
 })();
