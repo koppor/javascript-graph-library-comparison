@@ -1,0 +1,14 @@
+{
+  "name": "jointjs",
+  "description": "JointJs libary demo page",
+  "main": "src/index.html",
+  "keywords": [
+    "jointjs"
+  ],
+  "authors": [
+    "Franziska Hutter"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/axfrank/GraphLibComp"
+
+}
