@@ -1,8 +1,13 @@
 (function () {
     "use strict";
     const paper = Raphael("canvas");
+    const watch = WatchJS.watch;
 
-    Raphael.fn.arrow = function (x1, y1, x2, y2, size) {
+    Raphael.fn.arrow = function (source, destination, size) {
+        var x1 = source.x;
+        var y1 = source.y;
+        var x2 = destination.x;
+        var y2 = destination.y;
         var angle = Raphael.angle(x1, y1, x2, y2);
         var a45 = Raphael.rad(angle - 45);
         var a45m = Raphael.rad(angle + 45);
@@ -10,11 +15,21 @@
         var y2a = y2 + Math.sin(a45) * size;
         var x2b = x2 + Math.cos(a45m) * size;
         var y2b = y2 + Math.sin(a45m) * size;
-        return this.path(
+
+        var object = this.path(
             "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
             "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
             "M" + x2 + " " + y2 + "L" + x2b + " " + y2b
         );
+
+        // setInterval(function () {
+        //     x1 += 50;
+        //     console.log(object.attr("path", "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
+        //         "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
+        //         "M" + x2 + " " + y2 + "L" + x2b + " " + y2b));
+        // }, 3000);
+
+        return object;
     };
 
 
@@ -122,17 +137,17 @@
     function initCircles() {
         var c1 = new Circle(30, 40, 10, paper);
         c1.setStrokeColor("#0f0");
-
         var c2 = new Circle(400, 40, 10, paper);
+        c1.setPosition(33, 44);
+
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
-        paper.arrow(c1.x, c1.y, c2.x, c2.y,10);
+        paper.arrow(c1, c2, 10);
     }
 
     function initRects() {
         var r1 = new Rectangle(30, 440, 10, 10, paper);
         var r2 = new Rectangle(440, 440, 10, 10, paper);
-
         r1.setColor("#00f");
         r1.setStrokeColor("#0FF");
 
