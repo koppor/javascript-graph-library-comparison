@@ -126,6 +126,7 @@
         var c2 = new Circle(400, 40, 10, paper);
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
+        paper.arrow(c1.x, c1.y, c2.x, c2.y,10);
     }
 
     function initRects() {
