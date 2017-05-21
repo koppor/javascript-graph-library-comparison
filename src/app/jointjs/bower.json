@@ -9,6 +9,38 @@
     "Franziska Hutter"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/axfrank/GraphLibComp"
-
+  "homepage": "https://github.com/axfrank/GraphLibComp",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jointjs": "joint#^1.1.0",
+    "backbone": "^1.3.3",
+    "lodash": "^4.17.4"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    },
+    "backbone": {
+      "dependencies": {
+        "lodash": "*",
+        "jquery": "*"
+      },
+      "main": "backbone.js"
+    },
+    "jointjs": {
+      "dependencies": {
+        "lodash": "*",
+        "jquery": "*",
+        "backbone": "*"
+      },
+      "main": [
+        "dist/joint.css",
+        "dist/joint*.min.js"
+      ]
+    }
+  }
 }

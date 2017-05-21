@@ -5,16 +5,10 @@
   <title>GraphLibComp</title>
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/jointjs/dist/joint.css">
   <!-- endinject -->
   <!-- inject:css -->
   <!-- built css files will go here... -->
-  <style type="text/css">
-    #canvas {
-      width: 500px;
-      height: 500px;
-      border: 1px solid #000;
-    }
-  </style>
   <!-- endinject -->
 
 </head>
@@ -37,11 +31,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="#">Raphael<span class="sr-only">(current)</span></a>
-          </li>
           <li>
-            <a href="../../jointjs/src/index.html">JointJS</a>
+            <a href="../../raphael/src/index.html">Raphael</a>
+          </li>
+
+          <li class="active">
+            <a href="#">JointJS<span class="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>
@@ -50,18 +45,26 @@
     <!-- /.container-fluid -->
   </nav>
 
-  <div class="container-fluid" id="canvas">
-
-  </div>
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/eve-raphael/eve.js"></script>
-  <script src="bower_components/Watch.JS/src/watch.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script src="bower_components/raphael/raphael.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.core.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.layout.DirectedGraph.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.nowrap.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.chess.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.devs.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.erd.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.fsa.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.logic.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.org.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.pn.min.js"></script>
+  <script src="bower_components/jointjs/dist/joint.shapes.uml.min.js"></script>
   <!-- endinject -->
   <!-- inject:js -->
-  <script src="app/raphael-demo.js"></script>
+  <script src="app/jointjs-demo.js"></script>
   <!-- endinject -->
 </body>
 
