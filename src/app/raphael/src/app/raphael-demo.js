@@ -15,6 +15,7 @@
         var y2a = y2 + Math.sin(a45) * size;
         var x2b = x2 + Math.cos(a45m) * size;
         var y2b = y2 + Math.sin(a45m) * size;
+        console.log(source);
 
         var object = this.path(
             "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
@@ -22,12 +23,14 @@
             "M" + x2 + " " + y2 + "L" + x2b + " " + y2b
         );
 
-        // setInterval(function () {
-        //     x1 += 50;
-        //     console.log(object.attr("path", "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
-        //         "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
-        //         "M" + x2 + " " + y2 + "L" + x2b + " " + y2b));
-        // }, 3000);
+        watch(source.raphaelElement.attrs, ["cx", "cy"], function () {
+            object.attr("path", "M" + source.raphaelElement.attrs
+                .cx + " " + source.raphaelElement.attrs
+                    .cy + "L" + x2 + " " + y2 +
+                "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
+                "M" + x2 + " " + y2 + "L" + x2b + " " + y2b)
+        });
+
 
         return object;
     };
@@ -45,8 +48,8 @@
         this.x = x;
         this.y = y;
         this.text = "";
-        this.color = "#000";
-        this.strokeColor = "#000";
+        this.color = "#FFF";
+        this.strokeColor = "#FFF";
         this.strokeStyle = null;
         this.connections = [];
         this.raphaelElement = null; // Object from RaphaelJS
@@ -135,22 +138,47 @@
     initRects();
 
     function initCircles() {
-        var c1 = new Circle(30, 40, 10, paper);
+        var c1 = new Circle(30, 40, 25, paper);
         c1.setStrokeColor("#0f0");
-        var c2 = new Circle(400, 40, 10, paper);
+        var c2 = new Circle(400, 40, 25, paper);
         c1.setPosition(33, 44);
 
+        var x, y;
+        c1.setColor("#FFF");
+        c1.raphaelElement.drag(function (dx, dy) {
+            this.attr({
+                cx: Math.min(Math.max(x + dx, 0), 400),
+                cy: Math.min(Math.max(y + dy, 0), 400)
+            });
+        }, function () {
+            x = this.attr("cx");
+            y = this.attr("cy");
+        });
+
+        var i, j;
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
+        c2.setColor("#FFF")
+        c2.raphaelElement.drag(function (dx, dy) {
+            this.attr({
+                cx: Math.min(Math.max(i + dx, 0), 440),
+                cy: Math.min(Math.max(j + dy, 0), 440)
+            });
+        }, function () {
+            i = this.attr("cx");
+            j = this.attr("cy");
+        });
         paper.arrow(c1, c2, 10);
     }
 
     function initRects() {
-        var r1 = new Rectangle(30, 440, 10, 10, paper);
-        var r2 = new Rectangle(440, 440, 10, 10, paper);
-        r1.setColor("#00f");
+        var r1 = new Rectangle(30, 440, 25, 25, paper);
+        var r2 = new Rectangle(440, 440, 25, 25, paper);
         r1.setStrokeColor("#0FF");
+        r1.setColor("#000");
 
+        var x, y;
+        
         r2.setStrokeStyle(".");
     }
 
