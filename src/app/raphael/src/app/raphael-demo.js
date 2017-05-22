@@ -25,7 +25,7 @@
 
         watch(source.raphaelElement.attrs, ["cx", "cy"], function () {
             object.attr("path", "M" + source.raphaelElement.attrs
-                .cx + " " + source.raphaelElement.attrs
+                    .cx + " " + source.raphaelElement.attrs
                     .cy + "L" + x2 + " " + y2 +
                 "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
                 "M" + x2 + " " + y2 + "L" + x2b + " " + y2b)
@@ -88,7 +88,6 @@
 
         addAttribute: function (name, value) {
             if (this.raphaelElement) {
-                console.log("Attribute: %s = %s", name, value);
                 this.raphaelElement.attr(name, value);
             }
         }
@@ -107,6 +106,18 @@
         this.r = r;
         this.raphaelElement = paper.circle(0, 0, r);
         this.setPosition(x, y);
+        (function () {
+            var x, y;
+            this.raphaelElement.drag(function (dx, dy) {
+                this.attr({
+                    cx: Math.min(Math.max(x + dx, 0), 400),
+                    cy: Math.min(Math.max(y + dy, 0), 400)
+                });
+            }, function () {
+                x = this.attr("cx");
+                y = this.attr("cy");
+            });
+        }).bind(this)();
     }
 
     Circle.prototype = Object.create(Shape.prototype);
@@ -127,7 +138,21 @@
         this.width = width;
         this.height = height;
         this.raphaelElement = paper.rect(0, 0, width, height);
-        this.setPosition(x, y);
+        this.addAttribute("x", x);
+        this.addAttribute("y", y);
+        (function () {
+            var x, y;
+            this.raphaelElement.drag(function (dx, dy) {
+                console.log("Drag");
+                this.attr({
+                    x: Math.min(Math.max(x + dx, 0), 440),
+                    y: Math.min(Math.max(y + dy, 0), 440)
+                });
+            }, function () {
+                x = this.attr("x");
+                y = this.attr("y");
+            })
+        }).bind(this)();
     }
 
     Rectangle.prototype = Object.create(Shape.prototype);
@@ -142,44 +167,19 @@
         c1.setStrokeColor("#0f0");
         var c2 = new Circle(400, 40, 25, paper);
         c1.setPosition(33, 44);
-
-        var x, y;
         c1.setColor("#FFF");
-        c1.raphaelElement.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(x + dx, 0), 400),
-                cy: Math.min(Math.max(y + dy, 0), 400)
-            });
-        }, function () {
-            x = this.attr("cx");
-            y = this.attr("cy");
-        });
-
-        var i, j;
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
-        c2.setColor("#FFF")
-        c2.raphaelElement.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(i + dx, 0), 440),
-                cy: Math.min(Math.max(j + dy, 0), 440)
-            });
-        }, function () {
-            i = this.attr("cx");
-            j = this.attr("cy");
-        });
+        c2.setColor("#FFF");
         paper.arrow(c1, c2, 10);
     }
 
     function initRects() {
         var r1 = new Rectangle(30, 440, 25, 25, paper);
         var r2 = new Rectangle(440, 440, 25, 25, paper);
-        r1.setStrokeColor("#0FF");
-        r1.setColor("#000");
-
-        var x, y;
-        
-        r2.setStrokeStyle(".");
+        r1.setColor("#F0F");
+        r2.setColor("#FF0");
+        r2.setStrokeStyle(".")
     }
 
 })();
