@@ -67,8 +67,8 @@
         setPosition: function (x, y) {
             this.x = typeof x === "undefined" ? this.x : x;
             this.y = typeof y === "undefined" ? this.y : y;
-            var s = "t" + this.x + "," + this.y;
-            this.raphaelElement.transform(s);
+            this.addAttribute("cx", x);
+            this.addAttribute("cy", y);
         },
 
         setColor: function (color) {
