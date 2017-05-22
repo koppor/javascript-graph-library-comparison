@@ -5,9 +5,22 @@
   <title>GraphLibComp</title>
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- inject:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="bower_components/paper/dist/paper-full.js"></script>
+  <script type="text/paperscript" canvas="canvas" src="app/paperjs-demo.js"></script>
+  <!-- endinject -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- built css files will go here... -->
+  <style type="text/css">
+    #canvas {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+    }
+  </style>
   <!-- endinject -->
 
 </head>
@@ -24,26 +37,34 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="#">GraphLibComp</a>
+        <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">TODO <span class="sr-only">(current)</span></a></li>
-          <li><a href="app/paperjs/src/index.html">PaperJs</a></li>
-          <li><a href="app/raphael/src/index.html">Raphael</a></li>
+          <li><a href="../../raphael/src/index.html">Raphael</a></li>
 
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+          <li class="active">
+            <a href="#">PaperJs<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+  <div class="container-fluid">
+  <canvas id="canvas" resize></canvas>
+  </div>
   <!-- bower:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
+
+
   <!-- endinject -->
-  <!-- inject:js -->
-  <!-- app scripts will go here... -->
-  <!-- endinject -->
+
+
 </body>
+
 </html>
