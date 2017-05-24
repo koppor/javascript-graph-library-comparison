@@ -8,27 +8,30 @@
         var y1 = source.y;
         var x2 = destination.x;
         var y2 = destination.y;
-        var angle = Raphael.angle(x1, y1, x2, y2);
-        var a45 = Raphael.rad(angle - 45);
-        var a45m = Raphael.rad(angle + 45);
-        var x2a = x2 + Math.cos(a45) * size;
-        var y2a = y2 + Math.sin(a45) * size;
-        var x2b = x2 + Math.cos(a45m) * size;
-        var y2b = y2 + Math.sin(a45m) * size;
-        console.log(source);
 
-        var object = this.path(
-            "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
-            "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
-            "M" + x2 + " " + y2 + "L" + x2b + " " + y2b
-        );
+        function renderPath() {
+            var sourceElement = source.getCenter();
+            var destElement = destination.getCenter();
+            return "M" + sourceElement.x + " " + sourceElement.y + "L" + destElement.x + " " + destElement.y;
+        }
 
-        watch(source.raphaelElement.attrs, ["cx", "cy"], function () {
-            object.attr("path", "M" + source.raphaelElement.attrs
-                .cx + " " + source.raphaelElement.attrs
-                    .cy + "L" + x2 + " " + y2 +
-                "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
-                "M" + x2 + " " + y2 + "L" + x2b + " " + y2b)
+        renderPath();
+
+        var object = this.path(renderPath());
+
+        var srcAttr = source.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+        var destAttr = destination.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+
+        watch(source.raphaelElement.attrs, srcAttr, function () {
+            object.attr("path", renderPath());
+            object.attr({ 'arrow-end':   'block-wide-long',
+                'arrow-start': 'block-wide-long' });
+        });
+
+        watch(destination.raphaelElement.attrs, destAttr, function () {
+            object.attr("path", renderPath())
+            object.attr({ 'arrow-end':   'block-wide-long',
+                'arrow-start': 'block-wide-long' });
         });
 
 
@@ -51,7 +54,7 @@
         this.color = "#FFF";
         this.strokeColor = "#FFF";
         this.strokeStyle = null;
-        this.connections = [];
+        this.connections = paper.set();
         this.raphaelElement = null; // Object from RaphaelJS
         this.setColor(this.color);
         this.setStrokeColor(this.strokeColor);
@@ -67,8 +70,17 @@
         setPosition: function (x, y) {
             this.x = typeof x === "undefined" ? this.x : x;
             this.y = typeof y === "undefined" ? this.y : y;
-            var s = "t" + this.x + "," + this.y;
-            this.raphaelElement.transform(s);
+            if (this.raphaelElement) {
+                if (this.raphaelElement.type === "circle") {
+                    this.addAttribute("cx", x);
+                    this.addAttribute("cy", y);
+                } else if (this.raphaelElement.type === "rect") {
+                    this.addAttribute("x", x);
+                    this.addAttribute("y", y);
+                } else {
+                    console.log("Warning : Unknown element type");
+                }
+            }
         },
 
         setColor: function (color) {
@@ -88,10 +100,37 @@
 
         addAttribute: function (name, value) {
             if (this.raphaelElement) {
-                console.log("Attribute: %s = %s", name, value);
                 this.raphaelElement.attr(name, value);
             }
+        },
+
+        getCenter: function () {
+            if (this.raphaelElement) {
+                var bbox = this.raphaelElement.getBBox();
+                if (this.raphaelElement.type === "circle") {
+                    return {x: bbox.cx, y: bbox.cy};
+                } else if (this.raphaelElement.type === "rect") {
+                    return {x: (bbox.x2 - (bbox.width / 2)), y: (bbox.y2 - (bbox.height / 2))};
+                }
+
+            }
+        },
+        setText: function (text) {
+            var center = this.getCenter();
+            if (text) {
+                this.text = paper.text(center.x, center.y, text);
+            } else {
+                this.text.attr({text: text});
+            }
+
+            var _ = this;
+            var _text = this.text;
+            watch(this.raphaelElement.attrs, ["cx", "cy", "x", "y"], function () {
+                var center = _.getCenter();
+                _text.attr({x: center.x, y: center.y});
+            })
         }
+
     };
 
     /**
@@ -107,6 +146,18 @@
         this.r = r;
         this.raphaelElement = paper.circle(0, 0, r);
         this.setPosition(x, y);
+        (function () {
+            var x, y;
+            this.raphaelElement.drag(function (dx, dy) {
+                this.attr({
+                    cx: Math.min(Math.max(x + dx, 0), 400),
+                    cy: Math.min(Math.max(y + dy, 0), 400)
+                });
+            }, function () {
+                x = this.attr("cx");
+                y = this.attr("cy");
+            });
+        }).bind(this)();
     }
 
     Circle.prototype = Object.create(Shape.prototype);
@@ -127,60 +178,58 @@
         this.width = width;
         this.height = height;
         this.raphaelElement = paper.rect(0, 0, width, height);
+        //this.addAttribute("x", x);
+        //this.addAttribute("y", y);
         this.setPosition(x, y);
+        (function () {
+            var x, y;
+            this.raphaelElement.drag(function (dx, dy) {
+                this.attr({
+                    x: Math.min(Math.max(x + dx, 0), 440),
+                    y: Math.min(Math.max(y + dy, 0), 440)
+                });
+            }, function () {
+                console.log(this.getBBox());
+
+                x = this.attr("x");
+                y = this.attr("y");
+            })
+        }).bind(this)();
     }
 
     Rectangle.prototype = Object.create(Shape.prototype);
 
     Rectangle.prototype.constructor = Rectangle;
 
-    initCircles();
-    initRects();
+    main();
 
-    function initCircles() {
+    function main() {
         var c1 = new Circle(30, 40, 25, paper);
         c1.setStrokeColor("#0f0");
-        var c2 = new Circle(400, 40, 25, paper);
         c1.setPosition(33, 44);
-
-        var x, y;
-        c1.setColor("#FFF");
-        c1.raphaelElement.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(x + dx, 0), 400),
-                cy: Math.min(Math.max(y + dy, 0), 400)
-            });
-        }, function () {
-            x = this.attr("cx");
-            y = this.attr("cy");
-        });
-
-        var i, j;
+        c1.setColor("#0FF");
+        c1.setText("CIRCLE");
+        c1.raphaelElement.attr({text: "TEST"});
+        var c2 = new Circle(400, 40, 25, paper);
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
-        c2.setColor("#FFF")
-        c2.raphaelElement.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(i + dx, 0), 440),
-                cy: Math.min(Math.max(j + dy, 0), 440)
-            });
-        }, function () {
-            i = this.attr("cx");
-            j = this.attr("cy");
-        });
-        paper.arrow(c1, c2, 10);
-    }
+        c2.setColor("#FFF");
+        c2.setText("CIRCLE")
 
-    function initRects() {
-        var r1 = new Rectangle(30, 440, 25, 25, paper);
-        var r2 = new Rectangle(440, 440, 25, 25, paper);
-        r1.setStrokeColor("#0FF");
-        r1.setColor("#000");
-
-        var x, y;
-        
+        var r1 = new Rectangle(5, 440, 50, 50, paper);
+        r1.setColor("#F0F");
+        r1.setText("RECT")
+        var r2 = new Rectangle(415, 440, 50, 50, paper);
+        r2.setText("RECT")
+        r2.setColor("#FF0");
         r2.setStrokeStyle(".");
+
+        paper.arrow(r1, r2);
+        paper.arrow(c1, c2);
+        paper.arrow(r1, c1);
+        paper.arrow(r2, c2);
     }
+
 
 })();
 
