@@ -23,11 +23,15 @@
         var destAttr = destination.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
 
         watch(source.raphaelElement.attrs, srcAttr, function () {
-            object.attr("path", renderPath())
+            object.attr("path", renderPath());
+            object.attr({ 'arrow-end':   'block-wide-long',
+                'arrow-start': 'block-wide-long' });
         });
 
         watch(destination.raphaelElement.attrs, destAttr, function () {
             object.attr("path", renderPath())
+            object.attr({ 'arrow-end':   'block-wide-long',
+                'arrow-start': 'block-wide-long' });
         });
 
 
@@ -223,8 +227,6 @@
         paper.arrow(r1, r2);
         paper.arrow(c1, c2);
         paper.arrow(r1, c1);
-        paper.arrow(r1, c2);
-        paper.arrow(r2, c1);
         paper.arrow(r2, c2);
     }
 
