@@ -8,36 +8,26 @@
         var y1 = source.y;
         var x2 = destination.x;
         var y2 = destination.y;
-        var angle = Raphael.angle(x1, y1, x2, y2);
-        var a45 = Raphael.rad(angle - 45);
-        var a45m = Raphael.rad(angle + 45);
-        var x2a = x2 + Math.cos(a45) * size;
-        var y2a = y2 + Math.sin(a45) * size;
-        var x2b = x2 + Math.cos(a45m) * size;
-        var y2b = y2 + Math.sin(a45m) * size;
 
         function renderPath() {
-            var sourceElement = source.raphaelElement;
-            var destElement = destination.raphaelElement;
-            var sourceBb = sourceElement.getBBox();
-            var destBb = destElement.getBBox();
-            console.log(destBb);
+            var sourceElement = source.getCenter();
+            var destElement = destination.getCenter();
+            return "M" + sourceElement.x + " " + sourceElement.y + "L" + destElement.x + " " + destElement.y;
         }
 
         renderPath();
 
-        var object = this.path(
-            "M" + x1 + " " + y1 + "L" + x2 + " " + y2 +
-            "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
-            "M" + x2 + " " + y2 + "L" + x2b + " " + y2b
-        );
+        var object = this.path(renderPath());
 
-        watch(source.raphaelElement.attrs, ["cx", "cy"], function () {
-            object.attr("path", "M" + source.raphaelElement.attrs
-                    .cx + " " + source.raphaelElement.attrs
-                    .cy + "L" + x2 + " " + y2 +
-                "M" + x2 + " " + y2 + "L" + x2a + " " + y2a +
-                "M" + x2 + " " + y2 + "L" + x2b + " " + y2b)
+        var srcAttr = source.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+        var destAttr = destination.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+
+        watch(source.raphaelElement.attrs, srcAttr, function () {
+            object.attr("path", renderPath())
+        });
+
+        watch(destination.raphaelElement.attrs, destAttr, function () {
+            object.attr("path", renderPath())
         });
 
 
@@ -115,9 +105,8 @@
                 var bbox = this.raphaelElement.getBBox();
                 if (this.raphaelElement.type === "circle") {
                     return {x: bbox.cx, y: bbox.cy};
-                } else if(this.raphaelElement ==="rect") {
-                    //TODO
-                    return "";
+                } else if (this.raphaelElement.type === "rect") {
+                    return {x: (bbox.x2 - (bbox.width/2)), y: (bbox.y2 - (bbox.height/2))};
                 }
 
             }
@@ -182,6 +171,8 @@
                     y: Math.min(Math.max(y + dy, 0), 440)
                 });
             }, function () {
+                console.log(this.getBBox());
+
                 x = this.attr("x");
                 y = this.attr("y");
             })
@@ -192,10 +183,9 @@
 
     Rectangle.prototype.constructor = Rectangle;
 
-    initCircles();
-    initRects();
+    main();
 
-    function initCircles() {
+    function main() {
         var c1 = new Circle(30, 40, 25, paper);
         c1.setStrokeColor("#0f0");
         var c2 = new Circle(400, 40, 25, paper);
@@ -204,16 +194,21 @@
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
         c2.setColor("#FFF");
-        paper.arrow(c1, c2, 10);
-    }
 
-    function initRects() {
         var r1 = new Rectangle(30, 440, 25, 25, paper);
         var r2 = new Rectangle(440, 440, 25, 25, paper);
         r1.setColor("#F0F");
         r2.setColor("#FF0");
-        r2.setStrokeStyle(".")
+        r2.setStrokeStyle(".");
+
+        paper.arrow(r1, r2);
+        paper.arrow(c1, c2);
+        paper.arrow(r1, c1);
+        paper.arrow(r1, c2);
+        paper.arrow(r2, c1);
+        paper.arrow(r2, c2);
     }
+
 
 })();
 
