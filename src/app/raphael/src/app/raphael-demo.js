@@ -50,7 +50,7 @@
         this.color = "#FFF";
         this.strokeColor = "#FFF";
         this.strokeStyle = null;
-        this.connections = [];
+        this.connections = paper.set();
         this.raphaelElement = null; // Object from RaphaelJS
         this.setColor(this.color);
         this.setStrokeColor(this.strokeColor);
@@ -106,12 +106,26 @@
                 if (this.raphaelElement.type === "circle") {
                     return {x: bbox.cx, y: bbox.cy};
                 } else if (this.raphaelElement.type === "rect") {
-                    return {x: (bbox.x2 - (bbox.width/2)), y: (bbox.y2 - (bbox.height/2))};
+                    return {x: (bbox.x2 - (bbox.width / 2)), y: (bbox.y2 - (bbox.height / 2))};
                 }
 
             }
-        }
+        },
+        setText: function (text) {
+            var center = this.getCenter();
+            if (text) {
+                this.text = paper.text(center.x, center.y, text);
+            } else {
+                this.text.attr({text: text});
+            }
 
+            var _ = this;
+            var _text = this.text;
+            watch(this.raphaelElement.attrs, ["cx", "cy", "x", "y"], function () {
+                var center = _.getCenter();
+                _text.attr({x: center.x, y: center.y});
+            })
+        }
 
     };
 
@@ -188,16 +202,21 @@
     function main() {
         var c1 = new Circle(30, 40, 25, paper);
         c1.setStrokeColor("#0f0");
-        var c2 = new Circle(400, 40, 25, paper);
         c1.setPosition(33, 44);
         c1.setColor("#0FF");
+        c1.setText("CIRCLE");
+        c1.raphaelElement.attr({text: "TEST"});
+        var c2 = new Circle(400, 40, 25, paper);
         c2.setStrokeColor("#f00");
         c2.setStrokeStyle("-");
         c2.setColor("#FFF");
+        c2.setText("CIRCLE")
 
-        var r1 = new Rectangle(30, 440, 25, 25, paper);
-        var r2 = new Rectangle(440, 440, 25, 25, paper);
+        var r1 = new Rectangle(5, 440, 50, 50, paper);
         r1.setColor("#F0F");
+        r1.setText("RECT")
+        var r2 = new Rectangle(415, 440, 50, 50, paper);
+        r2.setText("RECT")
         r2.setColor("#FF0");
         r2.setStrokeStyle(".");
 
