@@ -53,8 +53,33 @@
   </nav>
 
   <div class="container-fluid">
+    <div class="col-md-6">
   <canvas id="canvas" resize>
   </canvas>
+  </div>
+  <div class="col-md-6">
+    <fieldset>
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" name="property" id="dashedLine" value="Dashed Line">
+            Dashed Line
+          </label>
+        </li>
+
+        <li>
+          <label>
+            <input type="checkbox" name="property" id="circle" value="circle">
+Circle          </label>
+        </li>
+      </ul>
+    </fieldset>
+    <label for="text">New Field
+      <input id="text" type="text" value="Test">
+      </label>
+    <button type="button" id="newField" >+</button>
+
+  </div>
   </div>
   <!-- bower:js -->
   <!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
