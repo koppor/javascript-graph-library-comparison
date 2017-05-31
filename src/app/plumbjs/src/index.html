@@ -4,98 +4,332 @@
 <head>
 
 
-  <title>GraphLibComp</title>
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- endinject -->
-  <!-- inject:css -->
-  <!-- built css files will go here... -->
-  <style type="text/css">
-    #canvas {
-      width: 500px;
-      height: 500px;
-      border: 1px solid #000;
-    }
-  </style>
-  <!-- endinject -->
+    <title>GraphLibComp</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- built css files will go here... -->
+    <style type="text/css">
+        #canvas {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
+    <!-- endinject -->
 
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
-      </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="../../raphael/src/index.html">Raphael</a></li>
-          <li><a href="../../paperjs/src/index.html">PaperJs<span class="sr-only">PaperJss</span></a></li>
-          <li class="active">
-            <a href="#">JSPlumb<span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="../../paperjs/src/index.html">PaperJs</a>
+                </li>
+                <li>
+                    <a href="../../raphael/src/index.html">Raphael</a>
+                </li>
+                <li class="active">
+                    <a href="#">JSPlumb <span class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a href="../../jointjs/src/index.html">JointJS</a>
+                </li>
+
+                <li>
+                    <a href="../../fabric/src/index.html">Fabric</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
-  </nav>
+</nav>
 
-  <div class="jtk-container">
+<div class="jtk-container">
 
     <div class="jtk-demo-main">
-      <!-- demo -->
-      <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" id="canvas">
-        <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow1"><strong>1</strong><br><br></div>
-        <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow2"><strong>2</strong><br><br></div>
-        <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow3"><strong>3</strong><br><br></div>
-        <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow4"><strong>4</strong><br><br></div>
-        <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 310px; top: 282px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 310px; top: 362px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 271px; top: 323px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 351px; top: 323px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 446px; top: 120px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 486px; top: 160px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable" style="position: absolute; height: 14px; width: 14px; left: 487px; top: 81px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 527px; top: 121px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 677px; top: 372px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full" style="position: absolute; height: 16px; width: 16px; left: 637px; top: 412px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable" style="position: absolute; height: 14px; width: 14px; left: 598px; top: 373px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 638px; top: 333px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable" style="position: absolute; height: 16px; width: 16px; left: 55px; top: 461px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable" style="position: absolute; height: 16px; width: 16px; left: 135px; top: 461px;"><svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent" stroke="#7AB02C" style="" stroke-width="1"></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 96px; top: 422px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected" style="position: absolute; height: 14px; width: 14px; left: 96px; top: 502px;"><svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml"><circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C" stroke="none" style=""></circle></svg></div><svg style="position:absolute;left:491px;top:168px" width="159.5" height="165" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 0 9.5 L 0 50.5 M 0 50 L 0 71 M0 71 A 5 5 0 0,0 5 76 M 5 76 L 146 76 M146 76 A 5 5 0 0,1 151 81 M 151 80.5 L 151 102.5 M 151 102 L 151 162 " transform="translate(3,0)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 0 9.5 L 0 50.5 M 0 50 L 0 71 M0 71 A 5 5 0 0,0 5 76 M 5 76 L 146 76 M146 76 A 5 5 0 0,1 151 81 M 151 80.5 L 151 102.5 M 151 102 L 151 162 " transform="translate(3,0)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M151,162 L156.5,151 L151,155.147 L145.5,151 L151,162" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(3,0)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_34" style="position: absolute; transform: translate(-50%, -50%); left: 493.5px; top: 207.071px;">2-3</div><svg style="position:absolute;left:205px;top:125px" width="242.5" height="210.5" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 166.5 0 L 125.5 0 M 126 0 L -65 0 M-65 0 A 5 5 0 0,0 -70 5 M -70 5 L -70 197 M-70 197 A 5 5 0 0,0 -65 202 M -65 202 L -10 202 " transform="translate(73,3)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 166.5 0 L 125.5 0 M 126 0 L -65 0 M-65 0 A 5 5 0 0,0 -70 5 M -70 5 L -70 197 M-70 197 A 5 5 0 0,0 -65 202 M -65 202 L -10 202 " transform="translate(73,3)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M-10,202 L-21,207.5 L-16.853,202 L-21,196.5 L-10,202" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(73,3)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_36" style="position: absolute; transform: translate(-50%, -50%); left: 395.029px; top: 127.5px;">2-4</div><svg style="position:absolute;left:315px;top:237px" width="116" height="98.5" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 0 -10 L 0 -45 M0 -45 A 5 5 0 0,1 5 -50 M 5 -50 L 105 -50 M105 -50 A 5 5 0 0,1 110 -45 M 110 -45 L 110 35 M110 35 A 5 5 0 0,1 105 40 M 105 40 L 50 40 " transform="translate(3,53)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 0 -10 L 0 -45 M0 -45 A 5 5 0 0,1 5 -50 M 5 -50 L 105 -50 M105 -50 A 5 5 0 0,1 110 -45 M 110 -45 L 110 35 M110 35 A 5 5 0 0,1 105 40 M 105 40 L 50 40 " transform="translate(3,53)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M50,40 L61,34.5 L56.853,40 L61,45.5 L50,40" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(3,53)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_38" style="position: absolute; transform: translate(-50%, -50%); left: 317.5px; top: 250.144px;">4-4</div><svg style="position:absolute;left:534px;top:122.5px" width="204" height="260.5" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 161 252 L 196 252 M196 252 A 5 5 0 0,0 201 247 M 201 247 L 201 5 M201 5 A 5 5 0 0,0 196 0 M 196.5 0 L 69.5 0 M 70 0 L 10 0 " transform="translate(0,5.5)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 161 252 L 196 252 M196 252 A 5 5 0 0,0 201 247 M 201 247 L 201 5 M201 5 A 5 5 0 0,0 196 0 M 196.5 0 L 69.5 0 M 70 0 L 10 0 " transform="translate(0,5.5)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M10,0 L21,-5.5 L16.853,0 L21,5.5 L10,0" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(0,5.5)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_40" style="position: absolute; transform: translate(-50%, -50%); left: 734.5px; top: 369.383px;">3-2</div><svg style="position:absolute;left:97.5px;top:356px" width="223.5" height="67" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 215 10 L 215 45 M215 45 A 5 5 0 0,1 210 50 M 210 50 L 112.5 50 M112.5 50 A 5 5 0 0,1 107.5 45 M 107.5 45 L 107.5 -6 M107.5 -6 A 5 5 0 0,0 102.5 -11 M 102.5 -11 L 5 -11 M5 -11 A 5 5 0 0,0 0 -6 M 0 -6 L 0 49 " transform="translate(5.499999999999999,14)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 215 10 L 215 45 M215 45 A 5 5 0 0,1 210 50 M 210 50 L 112.5 50 M112.5 50 A 5 5 0 0,1 107.5 45 M 107.5 45 L 107.5 -6 M107.5 -6 A 5 5 0 0,0 102.5 -11 M 102.5 -11 L 5 -11 M5 -11 A 5 5 0 0,0 0 -6 M 0 -6 L 0 49 " transform="translate(5.499999999999999,14)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M0,49 L5.500000000000001,38 L4.1962522572784054e-16,42.147 L-5.499999999999999,38 L0,49" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(5.499999999999999,14)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_42" style="position: absolute; transform: translate(-50%, -50%); left: 317.2px; top: 416.207px;">4-1</div><svg style="position:absolute;left:97.5px;top:420px" width="550.5" height="162" pointer-events="none" position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector"><path d="M 542 9.5 L 542 50.5 M 542 50 L 542 154 M542 154 A 5 5 0 0,1 537 159 M 537 159 L 5 159 M5 159 A 5 5 0 0,1 0 154 M 0 154 L 0 99 " transform="translate(5.499999999999999,0)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6" class="jtk-connector-outline"></path><path d="M 542 9.5 L 542 50.5 M 542 50 L 542 154 M542 154 A 5 5 0 0,1 537 159 M 537 159 L 5 159 M5 159 A 5 5 0 0,1 0 154 M 0 154 L 0 99 " transform="translate(5.499999999999999,0)" pointer-events="visibleStroke" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style="" stroke-width="2"></path><path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml" d="M0,99 L5.500000000000001,110 L4.1962522572784054e-16,105.853 L-5.499999999999999,110 L0,99" class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(5.499999999999999,0)"></path></svg><div class="jtk-overlay aLabel" id="jsPlumb_2_44" style="position: absolute; transform: translate(-50%, -50%); left: 644.5px; top: 503.271px;">3-1</div></div>
-      <!-- /demo --></div>
+        <!-- demo -->
+        <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" id="canvas">
+            <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow1">
+                <strong>1</strong><br><br></div>
+            <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow2">
+                <strong>2</strong><br><br></div>
+            <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow3">
+                <strong>3</strong><br><br></div>
+            <div class="window jtk-node jtk-endpoint-anchor jtk-draggable jtk-connected" id="flowchartWindow4">
+                <strong>4</strong><br><br></div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 310px; top: 282px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 310px; top: 362px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 271px; top: 323px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 351px; top: 323px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 446px; top: 120px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 486px; top: 160px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable"
+                 style="position: absolute; height: 14px; width: 14px; left: 487px; top: 81px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 527px; top: 121px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 677px; top: 372px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected jtk-endpoint-full"
+                 style="position: absolute; height: 16px; width: 16px; left: 637px; top: 412px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable"
+                 style="position: absolute; height: 14px; width: 14px; left: 598px; top: 373px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 638px; top: 333px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable"
+                 style="position: absolute; height: 16px; width: 16px; left: 55px; top: 461px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable"
+                 style="position: absolute; height: 16px; width: 16px; left: 135px; top: 461px;">
+                <svg style="position:absolute;left:0px;top:0px" width="16" height="16" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="8" cy="8" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="transparent"
+                            stroke="#7AB02C" style="" stroke-width="1"></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 96px; top: 422px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <div class="jtk-endpoint jtk-endpoint-anchor jtk-draggable jtk-droppable jtk-endpoint-connected"
+                 style="position: absolute; height: 14px; width: 14px; left: 96px; top: 502px;">
+                <svg style="position:absolute;left:0px;top:0px" width="14" height="14" pointer-events="all"
+                     position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml">
+                    <circle cx="7" cy="7" r="7" version="1.1" xmlns="http://www.w3.org/1999/xhtml" fill="#7AB02C"
+                            stroke="none" style=""></circle>
+                </svg>
+            </div>
+            <svg style="position:absolute;left:491px;top:168px" width="159.5" height="165" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 0 9.5 L 0 50.5 M 0 50 L 0 71 M0 71 A 5 5 0 0,0 5 76 M 5 76 L 146 76 M146 76 A 5 5 0 0,1 151 81 M 151 80.5 L 151 102.5 M 151 102 L 151 162 "
+                      transform="translate(3,0)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 0 9.5 L 0 50.5 M 0 50 L 0 71 M0 71 A 5 5 0 0,0 5 76 M 5 76 L 146 76 M146 76 A 5 5 0 0,1 151 81 M 151 80.5 L 151 102.5 M 151 102 L 151 162 "
+                      transform="translate(3,0)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M151,162 L156.5,151 L151,155.147 L145.5,151 L151,162" class="" stroke="#61B7CF" fill="#61B7CF"
+                      transform="translate(3,0)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_34"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 493.5px; top: 207.071px;">2-3
+            </div>
+            <svg style="position:absolute;left:205px;top:125px" width="242.5" height="210.5" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 166.5 0 L 125.5 0 M 126 0 L -65 0 M-65 0 A 5 5 0 0,0 -70 5 M -70 5 L -70 197 M-70 197 A 5 5 0 0,0 -65 202 M -65 202 L -10 202 "
+                      transform="translate(73,3)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 166.5 0 L 125.5 0 M 126 0 L -65 0 M-65 0 A 5 5 0 0,0 -70 5 M -70 5 L -70 197 M-70 197 A 5 5 0 0,0 -65 202 M -65 202 L -10 202 "
+                      transform="translate(73,3)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M-10,202 L-21,207.5 L-16.853,202 L-21,196.5 L-10,202" class="" stroke="#61B7CF" fill="#61B7CF"
+                      transform="translate(73,3)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_36"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 395.029px; top: 127.5px;">2-4
+            </div>
+            <svg style="position:absolute;left:315px;top:237px" width="116" height="98.5" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 0 -10 L 0 -45 M0 -45 A 5 5 0 0,1 5 -50 M 5 -50 L 105 -50 M105 -50 A 5 5 0 0,1 110 -45 M 110 -45 L 110 35 M110 35 A 5 5 0 0,1 105 40 M 105 40 L 50 40 "
+                      transform="translate(3,53)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 0 -10 L 0 -45 M0 -45 A 5 5 0 0,1 5 -50 M 5 -50 L 105 -50 M105 -50 A 5 5 0 0,1 110 -45 M 110 -45 L 110 35 M110 35 A 5 5 0 0,1 105 40 M 105 40 L 50 40 "
+                      transform="translate(3,53)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M50,40 L61,34.5 L56.853,40 L61,45.5 L50,40" class="" stroke="#61B7CF" fill="#61B7CF"
+                      transform="translate(3,53)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_38"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 317.5px; top: 250.144px;">4-4
+            </div>
+            <svg style="position:absolute;left:534px;top:122.5px" width="204" height="260.5" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 161 252 L 196 252 M196 252 A 5 5 0 0,0 201 247 M 201 247 L 201 5 M201 5 A 5 5 0 0,0 196 0 M 196.5 0 L 69.5 0 M 70 0 L 10 0 "
+                      transform="translate(0,5.5)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 161 252 L 196 252 M196 252 A 5 5 0 0,0 201 247 M 201 247 L 201 5 M201 5 A 5 5 0 0,0 196 0 M 196.5 0 L 69.5 0 M 70 0 L 10 0 "
+                      transform="translate(0,5.5)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M10,0 L21,-5.5 L16.853,0 L21,5.5 L10,0" class="" stroke="#61B7CF" fill="#61B7CF"
+                      transform="translate(0,5.5)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_40"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 734.5px; top: 369.383px;">3-2
+            </div>
+            <svg style="position:absolute;left:97.5px;top:356px" width="223.5" height="67" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 215 10 L 215 45 M215 45 A 5 5 0 0,1 210 50 M 210 50 L 112.5 50 M112.5 50 A 5 5 0 0,1 107.5 45 M 107.5 45 L 107.5 -6 M107.5 -6 A 5 5 0 0,0 102.5 -11 M 102.5 -11 L 5 -11 M5 -11 A 5 5 0 0,0 0 -6 M 0 -6 L 0 49 "
+                      transform="translate(5.499999999999999,14)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 215 10 L 215 45 M215 45 A 5 5 0 0,1 210 50 M 210 50 L 112.5 50 M112.5 50 A 5 5 0 0,1 107.5 45 M 107.5 45 L 107.5 -6 M107.5 -6 A 5 5 0 0,0 102.5 -11 M 102.5 -11 L 5 -11 M5 -11 A 5 5 0 0,0 0 -6 M 0 -6 L 0 49 "
+                      transform="translate(5.499999999999999,14)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M0,49 L5.500000000000001,38 L4.1962522572784054e-16,42.147 L-5.499999999999999,38 L0,49"
+                      class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(5.499999999999999,14)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_42"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 317.2px; top: 416.207px;">4-1
+            </div>
+            <svg style="position:absolute;left:97.5px;top:420px" width="550.5" height="162" pointer-events="none"
+                 position="absolute" version="1.1" xmlns="http://www.w3.org/1999/xhtml" class="jtk-connector">
+                <path d="M 542 9.5 L 542 50.5 M 542 50 L 542 154 M542 154 A 5 5 0 0,1 537 159 M 537 159 L 5 159 M5 159 A 5 5 0 0,1 0 154 M 0 154 L 0 99 "
+                      transform="translate(5.499999999999999,0)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="white" style="" stroke-width="6"
+                      class="jtk-connector-outline"></path>
+                <path d="M 542 9.5 L 542 50.5 M 542 50 L 542 154 M542 154 A 5 5 0 0,1 537 159 M 537 159 L 5 159 M5 159 A 5 5 0 0,1 0 154 M 0 154 L 0 99 "
+                      transform="translate(5.499999999999999,0)" pointer-events="visibleStroke" version="1.1"
+                      xmlns="http://www.w3.org/1999/xhtml" fill="none" stroke="#61B7CF" style=""
+                      stroke-width="2"></path>
+                <path pointer-events="all" version="1.1" xmlns="http://www.w3.org/1999/xhtml"
+                      d="M0,99 L5.500000000000001,110 L4.1962522572784054e-16,105.853 L-5.499999999999999,110 L0,99"
+                      class="" stroke="#61B7CF" fill="#61B7CF" transform="translate(5.499999999999999,0)"></path>
+            </svg>
+            <div class="jtk-overlay aLabel" id="jsPlumb_2_44"
+                 style="position: absolute; transform: translate(-50%, -50%); left: 644.5px; top: 503.271px;">3-1
+            </div>
+        </div>
+        <!-- /demo --></div>
     <div class="full-width-container">
-      <div class="container">
-      </div>
+        <div class="container">
+        </div>
     </div>
 
 
-  </div>
-  <!-- bower:js -->
-  <link href="main.css" rel="stylesheet">
+</div>
+<!-- bower:js -->
+<link href="main.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="jsplumbtoolkit-defaults.css">
-  <link rel="stylesheet" href="jsplumbtoolkit-demo.css">
-  <link href="app.css" rel="stylesheet">
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script type="text/javascript" src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
-  <script async type="text/paperscript" canvas="canvas" src="app/plumbjs-demo.js"></script>
-  <script async type="text/paperscript" canvas="canvas" src="app/jquery.validate.js"></script>
-  <script async type="text/paperscript" canvas="canvas" src="app/additional-methods.js"></script>
-  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
-
-
-  <!-- endinject -->
+<link rel="stylesheet" href="jsplumbtoolkit-defaults.css">
+<link rel="stylesheet" href="jsplumbtoolkit-demo.css">
+<link href="app.css" rel="stylesheet">
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
+<script async type="text/paperscript" canvas="canvas" src="app/plumbjs-demo.js"></script>
+<script async type="text/paperscript" canvas="canvas" src="app/jquery.validate.js"></script>
+<script async type="text/paperscript" canvas="canvas" src="app/additional-methods.js"></script>
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
 
-  <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-49979015-1', 'auto');
-      ga('send', 'pageview');
-
-  </script>
+<!-- endinject -->
 </body>
 </html>
