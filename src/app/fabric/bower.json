@@ -1,0 +1,36 @@
+{
+  "name": "fabric",
+  "homepage": "https://github.com/axfrank/GraphLibComp",
+  "authors": [
+    "Senait Berhe <inf80688@stud.uni-stuttgart.de>"
+  ],
+  "description": "Fabric library demo page",
+  "main": "src/index.html",
+  "keywords": [
+    "fabric",
+    "graphic"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.min.css",
+        "less/bootstrap.less"
+      ]
+    }
+  },
+  "dependencies": {
+    "fabric.js": "fabric#^1.7.11",
+    "bootstrap": "^3.3.7"
+  }
+}

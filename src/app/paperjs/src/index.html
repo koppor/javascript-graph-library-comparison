@@ -4,92 +4,106 @@
 <head>
 
 
-  <title>GraphLibComp</title>
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- endinject -->
-  <!-- inject:css -->
-  <!-- built css files will go here... -->
-  <style type="text/css">
-    #canvas {
-      width: 500px;
-      height: 500px;
-      border: 1px solid #000;
-    }
-  </style>
-  <!-- endinject -->
+    <title>GraphLibComp</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- built css files will go here... -->
+    <style type="text/css">
+        #canvas {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
+    <!-- endinject -->
 
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-          aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
-      </div>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="../../raphael/src/index.html">Raphael</a></li>
-          <li class="active">
-            <a href="#">PaperJs<span class="sr-only">(current)</span></a>
-          </li>
-          <li><a href="../../plumbjs/src/index.html">JSPlumb</a></li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">PaperJs <span class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a href="../../raphael/src/index.html">Raphael</a>
+                </li>
+                <li>
+                    <a href="../../plumbjs/src/index.html">JSPlumb</a>
+                </li>
+                <li>
+                    <a href="../../jointjs/src/index.html">JointJS</a>
+                </li>
 
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+                <li>
+                    <a href="../../fabric/src/index.html">Fabric</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/paperjs" target="_blank">Source-Code</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
-  </nav>
+</nav>
 
-  <div class="container-fluid">
+<div class="container-fluid">
     <div class="col-md-6">
-  <canvas id="canvas" resize>
-  </canvas>
-  </div>
-  <div class="col-md-6">
-    <fieldset>
-      <ul>
-        <li>
-          <label>
-            <input type="checkbox" name="property" id="dashedLine" value="Dashed Line">
-            Dashed Line
-          </label>
-        </li>
+        <canvas id="canvas">
+        </canvas>
+    </div>
+    <div class="col-md-6">
+        <fieldset>
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" name="property" id="dashedLine" value="Dashed Line">
+                        Dashed Line
+                    </label>
+                </li>
 
-        <li>
-          <label>
-            <input type="checkbox" name="property" id="circle" value="circle">
-Circle          </label>
-        </li>
-      </ul>
-    </fieldset>
-    <label for="text">New Field
-      <input id="text" type="text" value="Test">
-      </label>
-    <button type="button" id="newField" >+</button>
+                <li>
+                    <label>
+                        <input type="checkbox" name="property" id="circle" value="circle">
+                        Circle </label>
+                </li>
+            </ul>
+        </fieldset>
+        <label for="text">New Field
+            <input id="text" type="text" value="Test">
+        </label>
+        <button type="button" id="newField">+</button>
 
-  </div>
-  </div>
-  <!-- bower:js -->
-  <!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
-  <!-- inject:js -->
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  <script type="text/javascript" src="bower_components/paper/dist/paper-full.js"></script>
-  <script async type="text/paperscript" canvas="canvas" src="app/paperjs-demo.js"></script>
-  <!-- endinject -->
-  <!-- endinject -->
+    </div>
+</div>
+<!-- bower:js -->
+<!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
+<!-- inject:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="bower_components/paper/dist/paper-full.js"></script>
+<script async type="text/paperscript" canvas="canvas" src="app/paperjs-demo.js"></script>
+<!-- endinject -->
+<!-- endinject -->
 
 
 </body>
