@@ -67,32 +67,32 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="col-md-6">
-        <canvas id="canvas">
-        </canvas>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <canvas id="canvas">
+            </canvas>
+        </div>
+        <div class="col-md-3">
+        </div>
     </div>
-    <div class="col-md-6">
-        <fieldset>
-            <ul>
-                <li>
-                    <label>
-                        <input type="checkbox" name="property" id="dashedLine" value="Dashed Line">
-                        Dashed Line
-                    </label>
-                </li>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="newField">New rectangle</button>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row">
 
-                <li>
-                    <label>
-                        <input type="checkbox" name="property" id="circle" value="circle">
-                        Circle </label>
-                </li>
-            </ul>
-        </fieldset>
-        <label for="text">New Field
-            <input id="text" type="text" value="Test">
-        </label>
-        <button type="button" id="newField">+</button>
-
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+            <button type="button" id="newField2">New circle</button>
+        </div>
     </div>
 </div>
 <!-- bower:js -->
@@ -101,7 +101,7 @@
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="bower_components/paper/dist/paper-full.js"></script>
-<script async type="text/paperscript" canvas="canvas" src="app/paperjs-demo.js"></script>
+<script async type="text/paperscript" canvas="canvas" src="app/paper-js-demo.js"></script>
 <!-- endinject -->
 <!-- endinject -->
 

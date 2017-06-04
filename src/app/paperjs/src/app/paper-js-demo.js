@@ -17,6 +17,29 @@ var rectangle2 = new Rectangle(new Point(300, 50), new Point(400, 100));
 var cornerSize2 = new Size(20, 20);
 var path2 = new Path.RoundRectangle(rectangle2, cornerSize2);
 path2.fillColor = 'black';
+path2.style = {
+    strokeColor: 'black',
+    dashArray: [4, 10],
+    strokeWidth: 4,
+    strokeCap: 'round'
+};
+
+
+var to = new Point(300, 75);
+var from = new Point(150, 75);
+var path = new Path.Line(from, to);
+path.strokeColor = 'black';
+path.simplify(300);
+var vector  = path.getPointAt(path.length) - path.getPointAt(path.length-25);
+var arrowVector = vector.normalize(18);
+var path2 = new Path({
+    segments: [path.getPointAt(path.length) + arrowVector.rotate(145),
+        path.getPointAt(path.length),
+        path.getPointAt(path.length) + arrowVector.rotate(-145)],
+    fillColor: 'black',
+    strokeWidth: 6,
+});
+path2.scale(1.3);
 
 var pointTextLocation = new paper.Point(25, 25);
 var myText2 = new paper.PointText(pointTextLocation);
@@ -29,24 +52,43 @@ rectangle2.selected = true;
 rectangle.selected = true;
 
 // The Path.Circle constructor takes a Point(x, y), and a radius
-var myBall = new Path.Circle(new Point(50, 370), 25);
-myBall.fillColor = 'tomato';
+var myBall = new Path.Circle(new Point(100, 370), 25);
+myBall.fillColor = 'white';
+myBall.strokeColor = 'black'
 
 var myText2 = new paper.PointText(pointTextLocation);
-myText2.fillColor = 'white';
+myText2.fillColor = 'black';
 myText2.content = 'circle1';
 myText2.position.y = 370;
-myText2.position.x = 50;
+myText2.position.x = 100;
 
 // The Path.Circle constructor takes a Point(x, y), and a radius
-var myBall = new Path.Circle(new Point(300, 370), 25);
-myBall.fillColor = 'blue';
+var myBall = new Path.Circle(new Point(350, 370), 25);
+myBall.fillColor = 'white';
+myBall.strokeColor = 'black'
 
 var myText2 = new paper.PointText(pointTextLocation);
-myText2.fillColor = 'white';
+myText2.fillColor = 'black';
 myText2.content = 'circle2';
 myText2.position.y = 370;
-myText2.position.x = 300;
+myText2.position.x = 350;
+
+var from = new Point(325, 370);
+var to = new Point(125, 370);
+var path = new Path.Line(from, to);
+path.strokeColor = 'black';
+path.dashArray = [10, 12];
+path.simplify(300);
+var vector  = path.getPointAt(path.length) - path.getPointAt(path.length-25);
+var arrowVector = vector.normalize(18);
+var path2 = new Path({
+    segments: [path.getPointAt(path.length) + arrowVector.rotate(145),
+        path.getPointAt(path.length),
+        path.getPointAt(path.length) + arrowVector.rotate(-145)],
+    fillColor: 'black',
+    strokeWidth: 6,
+});
+path2.scale(1.3);
 
 /////////////////////////////////////////////////////////////////////
 // Values
@@ -78,7 +120,7 @@ function checkValues() {
     handle = values.radius * Numerical.KAPPA;
 }
 
-function onMouseUp(event) {
+/*function onMouseUp(event) {
     path.simplify(300);
     var vector  = path.getPointAt(path.length) - path.getPointAt(path.length-25);
     var arrowVector = vector.normalize(18);
@@ -107,36 +149,31 @@ function onMouseDown(event) {
     if(document.getElementById("dashedLine").checked) {
         path.dashArray = [10, 12];
     }
-}
+}*/
 
 function addRect() {
 
-    if (document.getElementById("circle").checked) {
         // The Path.Circle constructor takes a Point(x, y), and a radius
-        var myBall = new Path.Circle(new Point(50, 370), 25);
-        myBall.fillColor = 'tomato';
+        var myBall = new Path.Rectangle(new Point(25, 25), new Point(125, 75));
+        myBall.fillColor = 'purple';
         var myText2 = new paper.PointText(pointTextLocation);
         myText2.fillColor = 'white';
-        myText2.content = document.getElementById("text").value;
-        myText2.position.y = 370;
-        myText2.position.x = 50;
-    } else {
-        var rectangle2 = new Rectangle(new Point(300, 50), new Point(400, 100));
-        var cornerSize2 = new Size(20, 20);
-        var path2 = new Path.RoundRectangle(rectangle2, cornerSize2);
-        path2.fillColor = 'black';
-
-        var pointTextLocation = new paper.Point(25, 25);
-        var myText2 = new paper.PointText(pointTextLocation);
-        myText2.fillColor = 'white';
-        myText2.content =  document.getElementById("text").value;
-        myText2.position.y = 75;
-        myText2.position.x = 350;
-
-    }
+        myText2.content = "rectangle";
+        myText2.position.y = 50;
+        myText2.position.x = 75;
 }
 
+function addCircle() {
 
+    // The Path.Circle constructor takes a Point(x, y), and a radius
+    var myBall = new Path.Circle(new Point(25, 25), 25);
+    myBall.fillColor = 'tomato';
+    var myText2 = new paper.PointText(pointTextLocation);
+    myText2.fillColor = 'white';
+    myText2.content = "circle";
+    myText2.position.y = 25;
+    myText2.position.x = 25;
+}
 function onMouseDrag(event) {
 
     var point = event.point;
@@ -171,3 +208,6 @@ function onMouseDrag(event) {
 
 checkValues();
 document.getElementById("newField").addEventListener("click", addRect);
+
+checkValues();
+document.getElementById("newField2").addEventListener("click", addCircle);
