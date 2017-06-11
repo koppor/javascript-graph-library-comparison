@@ -113,6 +113,10 @@ On Click on one of those elements a popover should open up with 2 options
 - Dashed : Connect to another element with a dashed arrow
 - Solid  : Connect to another element with a solid arrow
 
+##### Git
+All development will take in the *develop* branch of the project. The project will be merge into the *master* branch on a weekly base 
+by the administrator.
+
 
 ##### Notes
 For the general Javascript guidestyle please follow the [Google Javascript Style Guide](https://google.github.io/styleguide/jsguide.html)
