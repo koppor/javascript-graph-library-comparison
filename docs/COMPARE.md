@@ -1,5 +1,5 @@
 # Comparison
-This file is the basic comparison of the frameworks
+This file is the basic comparison of the frameworks.
 
 |Criteria|PaperJS|Raphael|JSPlumb|JointJS|Fabric|D3|
 |--|--|--|--|--|--|--|
