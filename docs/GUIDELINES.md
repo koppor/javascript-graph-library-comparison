@@ -28,7 +28,7 @@ Example:
 ##### Function declaration and naming
 Functions should be declared right after the declaration of the variables.
 The naming should be meaningful and in camelCase. There should be init-Functions for the demo 
-which are called in a **main** function.    
+which are called in a **main** function. Execute the *main* Function in the last line of your script.
 Example:
 ```javascript
 (function() {
@@ -50,6 +50,8 @@ Example:
         initRect();
         initCircle();
     }
+    
+    main(); //Do the actual call here
 })()
 ```
 ##### Usage of 3rd Party library
