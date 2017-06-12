@@ -107,7 +107,20 @@
             x = this.attr("x");
             y = this.attr("y");
         })
+    }
 
+    /**
+     * Adds a Rectangle
+     */
+    function addRectangle() {
+        var color = '#' + Math.random().toString(16).substr(-6);
+
+        var rect = paper.rect(10, 10, 80, 80);
+        rect.attr({
+            "fill": color
+        });
+        addDragRectangle(rect);
+        setText(rect, "Rect");
     }
 
     /**
@@ -133,7 +146,10 @@
         setText(rectRight, "Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
-        setText(arrow, "Label")
+        setText(arrow, "Label");
+        $("#addRectBtn").click(function () {
+            addRectangle()
+        });
     }
 
     /**
@@ -152,6 +168,21 @@
             y = this.attr("cy");
         });
     }
+
+    /**
+     * Adds a circle
+     */
+    function addCircle() {
+        var color = '#' + Math.random().toString(16).substr(-6);
+
+        var circle = paper.circle(50, 50, 40);
+        circle.attr({
+            "fill": color
+        });
+        addDragCircle(circle);
+        setText(circle, "Circle");
+    }
+
 
     /**
      * Inits the circles
@@ -177,7 +208,10 @@
         setText(circleRight, "Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
-        arrow.attr("stroke-dasharray", "-")
+        arrow.attr("stroke-dasharray", "-");
+        $("#addCircleBtn").click(function () {
+            addCircle()
+        });
     }
 
     function main() {
