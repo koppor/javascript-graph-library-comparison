@@ -5,40 +5,45 @@
     var watch = WatchJS.watch;
 
 
-    Raphael.fn.arrow = function (source, destination, size) {
-        var x1 = source.x;
-        var y1 = source.y;
-        var x2 = destination.x;
-        var y2 = destination.y;
+    /**
+     * Creates an arrow
+     * @param source The target element
+     * @param destination The source element
+     */
+    Raphael.fn.arrow = function (source, destination) {
+        var x1 = source.attr("x") || source.attr("cx");
+        var y1 = source.attr("y") || source.attr("cy");
+        var x2 = destination.attr("y") || destination.attr("cy");
+        var y2 = destination.attr("y") || destination.attr("cy");
 
         function renderPath() {
-            var sourceElement = source.getCenter();
-            var destElement = destination.getCenter();
-            return "M" + sourceElement.x + " " + sourceElement.y + "L" + destElement.x + " " + destElement.y;
+            var width = (source.attr("width") / 2) || source.attr("r");
+            var sourceElement = getCenter(source);
+            var destElement = getCenter(destination);
+            return "M" + (sourceElement.x + width) + " " + sourceElement.y + "L" + (destElement.x - width) + " " + destElement.y;
         }
 
         renderPath();
 
         var object = this.path(renderPath());
-        var srcAttr = source.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
-        var destAttr = destination.raphaelElement.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+        var srcAttr = source.type === "circle" ? ["cx", "cy"] : ["x", "y"];
+        var destAttr = destination.type === "circle" ? ["cx", "cy"] : ["x", "y"];
 
-        watch(source.raphaelElement.attrs, srcAttr, function () {
+        watch(source.attrs, srcAttr, function () {
             object.attr("path", renderPath());
             object.attr({
-                'arrow-end': 'block-wide-long',
-                'arrow-start': 'block-wide-long'
+                "arrow-end": "block-wide-long",
+                "arrow-start": "block-wide-long"
             });
         });
 
-        watch(destination.raphaelElement.attrs, destAttr, function () {
+        watch(destination.attrs, destAttr, function () {
             object.attr("path", renderPath());
             object.attr({
-                'arrow-end': 'block-wide-long',
-                'arrow-start': 'block-wide-long'
+                "arrow-end": "block-wide-long",
+                "arrow-start": "block-wide-long"
             });
         });
-
 
         return object;
     };
@@ -51,10 +56,24 @@
     function getCenter(element) {
         if (element) {
             var bbox = element.getBBox();
+
             if (element.type === "circle") {
-                return {x: bbox.cx, y: bbox.cy};
+                return {
+                    x: bbox.cx,
+                    y: bbox.cy
+                };
             } else if (element.type === "rect") {
-                return {x: (bbox.x2 - (bbox.width / 2)), y: (bbox.y2 - (bbox.height / 2))};
+
+                return {
+                    x: (bbox.x2 - (bbox.width / 2)),
+                    y: (bbox.y2 - (bbox.height / 2))
+                };
+            } else if (element.type === "path") {
+                console.log(bbox);
+                return {
+                    x: (bbox.x + bbox.x2) / 2,
+                    y: (bbox.y + bbox.y2) / 2
+                };
             }
         }
     }
@@ -68,10 +87,11 @@
         var center = getCenter(element);
         var textElement = paper.text(center.x, center.y, text);
 
-        watch(element.attrs, ["cx", "cy", "x", "y"], function () {
+        watch(element.attrs, ["cx", "cy", "x", "y", "path"], function () {
             var center = getCenter(element);
             textElement.attr({x: center.x, y: center.y});
         })
+
     }
 
     /**
@@ -113,6 +133,9 @@
         addDragRectangle(rectRight);
         setText(rectLeft, "Rect");
         setText(rectRight, "Rect");
+        var arrow = paper.arrow(rectLeft, rectRight);
+
+        setText(arrow, "Label")
     }
 
     /**
@@ -154,6 +177,9 @@
 
         setText(circleLeft, "Circle");
         setText(circleRight, "Circle");
+
+        var arrow = paper.arrow(circleLeft, circleRight);
+        arrow.attr("stroke-dasharray", "-")
     }
 
     function main() {
@@ -162,16 +188,6 @@
     }
 
     main();
-    //main();
-
-    function main2() {
-
-        paper.arrow(r1, r2);
-        paper.arrow(c1, c2);
-        paper.arrow(r1, c1);
-        paper.arrow(r2, c2);
-    }
-
 
 })();
 
