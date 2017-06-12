@@ -1,16 +1,9 @@
 (function () {
     "use strict";
-
     //Libraries
     var paper = Raphael("canvas");
     var watch = WatchJS.watch;
 
-    //Demo Objects
-    var rectLeft = paper.rect(0, 0, 80, 80);
-    var rectRight = paper.rect(420, 0, 80, 80);
-
-    var circleLeft = paper.circle(0,420,40);
-    var circleRight = paper.circle(420, 420, 40);
 
     Raphael.fn.arrow = function (source, destination, size) {
         var x1 = source.x;
@@ -32,14 +25,18 @@
 
         watch(source.raphaelElement.attrs, srcAttr, function () {
             object.attr("path", renderPath());
-            object.attr({ 'arrow-end':   'block-wide-long',
-                'arrow-start': 'block-wide-long' });
+            object.attr({
+                'arrow-end': 'block-wide-long',
+                'arrow-start': 'block-wide-long'
+            });
         });
 
         watch(destination.raphaelElement.attrs, destAttr, function () {
-            object.attr("path", renderPath())
-            object.attr({ 'arrow-end':   'block-wide-long',
-                'arrow-start': 'block-wide-long' });
+            object.attr("path", renderPath());
+            object.attr({
+                'arrow-end': 'block-wide-long',
+                'arrow-start': 'block-wide-long'
+            });
         });
 
 
@@ -47,169 +44,120 @@
     };
 
 
-    /**
-     * Shape Constructor
-     * @param x - X Position
-     * @param y - Y Position
-     * @param paper The paper to draw on
-     * @constructor
-     */
-    function Shape(x, y, paper) {
-        this.paper = paper;
-        this.x = x;
-        this.y = y;
-        this.text = "";
-        this.color = "#FFF";
-        this.strokeColor = "#FFF";
-        this.strokeStyle = null;
-        this.connections = paper.set();
-        this.raphaelElement = null; // Object from RaphaelJS
-        this.setColor(this.color);
-        this.setStrokeColor(this.strokeColor);
-        this.setStrokeStyle(this.strokeStyle);
-    }
+    //
+    //     getCenter: function () {
+    //         if (this.raphaelElement) {
+    //             var bbox = this.raphaelElement.getBBox();
+    //             if (this.raphaelElement.type === "circle") {
+    //                 return {x: bbox.cx, y: bbox.cy};
+    //             } else if (this.raphaelElement.type === "rect") {
+    //                 return {x: (bbox.x2 - (bbox.width / 2)), y: (bbox.y2 - (bbox.height / 2))};
+    //             }
+    //
+    //         }
+    //     },
+    //     setText: function (text) {
+    //         var center = this.getCenter();
+    //         if (text) {
+    //             this.text = paper.text(center.x, center.y, text);
+    //         } else {
+    //             this.text.attr({text: text});
+    //         }
+    //
+    //         var _ = this;
+    //         var _text = this.text;
+    //         watch(this.raphaelElement.attrs, ["cx", "cy", "x", "y"], function () {
+    //             var center = _.getCenter();
+    //             _text.attr({x: center.x, y: center.y});
+    //         })
+    //     }
+    //
+    // };
 
     /**
-     * Prototype definitions
-     * @type {{setPosition: Shape.setPosition, setColor: Shape.setColor, setStrokeColor: Shape.setStrokeColor, setStrokeStyle: Shape.setStrokeStyle, addAttribute: Shape.addAttribute}}
+     * Adds drag to a rectangle
+     * @param rect The Raphael rectangle
      */
-    Shape.prototype = {
-
-        setPosition: function (x, y) {
-            this.x = typeof x === "undefined" ? this.x : x;
-            this.y = typeof y === "undefined" ? this.y : y;
-            if (this.raphaelElement) {
-                if (this.raphaelElement.type === "circle") {
-                    this.addAttribute("cx", x);
-                    this.addAttribute("cy", y);
-                } else if (this.raphaelElement.type === "rect") {
-                    this.addAttribute("x", x);
-                    this.addAttribute("y", y);
-                } else {
-                    console.log("Warning : Unknown element type");
-                }
-            }
-        },
-
-        setColor: function (color) {
-            this.color = color;
-            this.addAttribute("fill", this.color);
-        },
-
-        setStrokeColor: function (strokeColor) {
-            this.strokeColor = strokeColor;
-            this.addAttribute("stroke", this.strokeColor);
-        },
-
-        setStrokeStyle: function (strokeStyle) {
-            this.strokeStyle = strokeStyle;
-            this.addAttribute("stroke-dasharray", this.strokeStyle);
-        },
-
-        addAttribute: function (name, value) {
-            if (this.raphaelElement) {
-                this.raphaelElement.attr(name, value);
-            }
-        },
-
-        getCenter: function () {
-            if (this.raphaelElement) {
-                var bbox = this.raphaelElement.getBBox();
-                if (this.raphaelElement.type === "circle") {
-                    return {x: bbox.cx, y: bbox.cy};
-                } else if (this.raphaelElement.type === "rect") {
-                    return {x: (bbox.x2 - (bbox.width / 2)), y: (bbox.y2 - (bbox.height / 2))};
-                }
-
-            }
-        },
-        setText: function (text) {
-            var center = this.getCenter();
-            if (text) {
-                this.text = paper.text(center.x, center.y, text);
-            } else {
-                this.text.attr({text: text});
-            }
-
-            var _ = this;
-            var _text = this.text;
-            watch(this.raphaelElement.attrs, ["cx", "cy", "x", "y"], function () {
-                var center = _.getCenter();
-                _text.attr({x: center.x, y: center.y});
-            })
-        }
-
-    };
-
-    /**
-     * Cricle Object
-     * @param x Shape#x
-     * @param y Shape#y
-     * @param r The radius
-     * @param paper Shape#paper
-     * @constructor
-     */
-    function Circle(x, y, r, paper) {
-        Shape.call(this, x, y, paper);
-        this.r = r;
-        this.raphaelElement = paper.circle(0, 0, r);
-        this.setPosition(x, y);
-        (function () {
-            var x, y;
-            this.raphaelElement.drag(function (dx, dy) {
-                this.attr({
-                    cx: Math.min(Math.max(x + dx, 0), 400),
-                    cy: Math.min(Math.max(y + dy, 0), 400)
-                });
-            }, function () {
-                x = this.attr("cx");
-                y = this.attr("cy");
+    function addDragRectangle(rect) {
+        var x, y;
+        rect.drag(function (dx, dy) {
+            this.attr({
+                x: Math.min(Math.max(x + dx, 0), 380),
+                y: Math.min(Math.max(y + dy, 10), 380)
             });
-        }).bind(this)();
+        }, function () {
+            x = this.attr("x");
+            y = this.attr("y");
+        })
+
     }
-
-    Circle.prototype = Object.create(Shape.prototype);
-
-    Circle.prototype.constructor = Circle;
 
     /**
-     * Rectangle Object
-     * @param x Shape#x
-     * @param y Shape#y
-     * @param width The width of the rect
-     * @param height The height of the rect
-     * @param paper Shape#paper
-     * @constructor
+     * Inits the rectangles
      */
-    function Rectangle(x, y, width, height, paper) {
-        Shape.call(this, x, y, paper);
-        this.width = width;
-        this.height = height;
-        this.raphaelElement = paper.rect(0, 0, width, height);
-        //this.addAttribute("x", x);
-        //this.addAttribute("y", y);
-        this.setPosition(x, y);
-        (function () {
-            var x, y;
-            this.raphaelElement.drag(function (dx, dy) {
-                this.attr({
-                    x: Math.min(Math.max(x + dx, 0), 440),
-                    y: Math.min(Math.max(y + dy, 0), 440)
-                });
-            }, function () {
-                console.log(this.getBBox());
+    function initRectangles() {
+        var rectLeft = paper.rect(10, 10, 80, 80);
+        var rectRight = paper.rect(380, 10, 80, 80);
+        rectLeft.attr({
+            "fill": "#999999",
+            "stroke": "#000"
+        });
 
-                x = this.attr("x");
-                y = this.attr("y");
-            })
-        }).bind(this)();
+        rectRight.attr({
+            "fill": "#999999",
+            "stroke": "#000",
+            "stroke-dasharray": "-"
+        });
+
+        addDragRectangle(rectLeft);
+        addDragRectangle(rectRight)
     }
 
-    Rectangle.prototype = Object.create(Shape.prototype);
+    /**
+     * Adds drag functionality to circles
+     * @param circle The circle
+     */
+    function addDragCircle(circle) {
+        var x, y;
+        circle.drag(function (dx, dy) {
+            this.attr({
+                cx: Math.min(Math.max(x + dx, 50), 420),
+                cy: Math.min(Math.max(y + dy, 50), 420)
+            });
+        }, function () {
+            x = this.attr("cx");
+            y = this.attr("cy");
+        });
+    }
 
-    Rectangle.prototype.constructor = Rectangle;
+    /**
+     * Inits the circles
+     */
+    function initCircles() {
+        var circleLeft = paper.circle(50, 420, 40);
+        var circleRight = paper.circle(410, 420, 40);
 
-    main();
+        circleLeft.attr({
+            "fill": "#FFF",
+            "stroke": "#000"
+        });
+
+        circleRight.attr({
+            "fill": "#FFF",
+            "stroke": "#000"
+        });
+
+        addDragCircle(circleLeft);
+        addDragCircle(circleRight);
+    }
+
+    function main2() {
+        initRectangles();
+        initCircles();
+    }
+
+    main2();
+    //main();
 
     function main() {
         var c1 = new Circle(30, 40, 25, paper);

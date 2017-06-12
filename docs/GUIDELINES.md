@@ -12,8 +12,7 @@ Example:
 })()
 ```
 
-##### Variable declaration and naming
-All variables should be declared at the top of the file.     
+##### Variable declaration and naming    
 The name should be in camelCase and start with a letter. For the name we should choose either **rect** or **circle** 
 followed by another letter or number.    
 Example:
@@ -35,17 +34,14 @@ Example:
 ```javascript
 (function() {
     "use strict";
-    var rectLeft = ...;
-    var rectRight = ...;
-    var circleLeft = ...;
-    var circleRight = ...;
-    
     function initRect() {
-      //Do something with rectLeft and rectRight
+        var rectLeft = ...;
+        var rectRight = ...;
     }
     
     function initCircle() {
-      //Do something with circleLeft and circleRight
+        var circleLeft = ...;
+        var circleRight = ...;
     }
     
     function main() {
@@ -98,7 +94,7 @@ for style of HTML elements.
 - Width: 80px, Height: 80px
 
 **Circle**
-- Color for Circle: #000 
+- Color for Circle: #FFF 
 - Color for Circle Borders: #000
 - Both Circle : Solid Border
 - Dashed Arrow from Right Circle to Left Circle
