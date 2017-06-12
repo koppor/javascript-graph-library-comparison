@@ -3,10 +3,11 @@ This file describes the coding guidelines for programming with Javascript for th
 
 ##### IIFE
 Every library demo code should be put inside an Immediately-invoked Function Expression (IIFE).
-For more information why you should use [IFFE](https://wiki.selfhtml.org/wiki/IIFE).    
+For more information why you should use [IFFE](https://wiki.selfhtml.org/wiki/IIFE). Inside the IIFE use *strict*
 Example:
 ```javascript
 (function() {
+    "use strict";
   //Your code goes here
 })()
 ```
@@ -18,6 +19,7 @@ followed by another letter or number.
 Example:
 ```javascript
 (function() {
+    "use strict";
     var myLibraryDependencyObject = ...;
     var rectLeft = ...;
     var rectRight = ...;
@@ -32,6 +34,7 @@ which are called in a **main** function. Execute the *main* Function in the last
 Example:
 ```javascript
 (function() {
+    "use strict";
     var rectLeft = ...;
     var rectRight = ...;
     var circleLeft = ...;
@@ -60,6 +63,7 @@ the capabilities or the lack of capabilities of the graphic frameworks. Neverthe
 or if the framework needs them, they should be first at the top of the file with the appropiate framework name.
 ```javascript
 (function() {
+    "use strict";
     var raphael = Raphael.paper();
 })()
 ```
