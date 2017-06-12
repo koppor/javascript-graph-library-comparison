@@ -63,13 +63,11 @@
                     y: bbox.cy
                 };
             } else if (element.type === "rect") {
-
                 return {
                     x: (bbox.x2 - (bbox.width / 2)),
                     y: (bbox.y2 - (bbox.height / 2))
                 };
             } else if (element.type === "path") {
-                console.log(bbox);
                 return {
                     x: (bbox.x + bbox.x2) / 2,
                     y: (bbox.y + bbox.y2) / 2
