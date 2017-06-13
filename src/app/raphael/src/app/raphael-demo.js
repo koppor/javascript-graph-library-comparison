@@ -205,8 +205,18 @@
         $(circle.node).click(function () {
             $(this).popover({
                 title: 'Menü',
-                content: 'Tooltip Content',
-                container: 'body'
+                content: function () {
+                    var btnDashedId = "#btn-dashed-" + circle.id;
+                    var btnSolidId = "#btn-solid-" + circle.id;
+
+                    return "<div><button class='btn btn-block' id='" + btnDashedId + "'>Dashed</button>" +
+                        "<button class='btn btn-block' id='" + btnSolidId + "'>Solid</button></div>";
+                },
+                container: 'body',
+                html: true
+            });
+            $("#btn-solid-" + circle.id).on('click', function () {
+                alert();
             })
         });
     }
