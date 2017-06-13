@@ -1,5 +1,6 @@
 (function () {
     "use strict";
+
     //Libraries
     var paper = Raphael("canvas");
     var watch = WatchJS.watch;
@@ -113,7 +114,6 @@
                 x = element.attr("x");
                 y = element.attr("y");
             } else if (element.type === "circle") {
-                console.log("Drag %o", element);
                 x = element.attr("cx");
                 y = element.attr("cy");
             }
@@ -150,7 +150,6 @@
         });
     };
 
-
     /**
      * Adds a Rectangle
      */
@@ -163,12 +162,9 @@
         rect.makeDraggable(0, 10, 380, 380);
         rect.setText("Rect");
 
-        rect.dblclick(function () {
-            var bbox = rect.getBBox();
-            var xOffset = bbox.x2 + 10;
-            var yOffset = bbox.y;
+        rect.dblclick(function (event) {
+            paper.popup(rect);
         });
-
     }
 
     /**
@@ -189,7 +185,7 @@
         rectRight.setText("Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
-        arrow.text("Label");
+        arrow.setText("Label");
         $("#addRectBtn").click(function () {
             addRectangle()
         });
@@ -205,8 +201,15 @@
         circle.setColor(color);
         circle.makeDraggable(50, 50, 420, 420);
         circle.setText("Circle");
+        circle.node.setAttribute("id", circle.id);
+        $(circle.node).click(function () {
+            $(this).popover({
+                title: 'Menü',
+                content: 'Tooltip Content',
+                container: 'body'
+            })
+        });
     }
-
 
     /**
      * Inits the circles
