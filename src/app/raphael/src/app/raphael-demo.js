@@ -203,21 +203,24 @@
         circle.setText("Circle");
         circle.node.setAttribute("id", circle.id);
         $(circle.node).click(function () {
+            var btnDashedId = "btn-dashed-" + circle.id;
+            var btnSolidId = "btn-solid-" + circle.id;
             $(this).popover({
-                title: 'Menü',
+                title: null,
                 content: function () {
-                    var btnDashedId = "#btn-dashed-" + circle.id;
-                    var btnSolidId = "#btn-solid-" + circle.id;
-
                     return "<div><button class='btn btn-block' id='" + btnDashedId + "'>Dashed</button>" +
                         "<button class='btn btn-block' id='" + btnSolidId + "'>Solid</button></div>";
                 },
                 container: 'body',
                 html: true
+            }).on('shown.bs.popover', function (event) {
+                var $popup = $('#' + $(event.target).attr('aria-describedby'));
+                $popup.find("#" + btnDashedId).click(function () {
+                    alert();
+                })
+
             });
-            $("#btn-solid-" + circle.id).on('click', function () {
-                alert();
-            })
+
         });
     }
 
