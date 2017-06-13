@@ -93,19 +93,19 @@
     /**
      * Makes an element draggable
      */
-    Raphael.el.makeDraggable = function (xBorder, yBorder, minX, minY) {
+    Raphael.el.makeDraggable = function (minX, minY, maxX, maxY) {
         var element = this;
         var x, y;
         this.drag(function (dx, dy) {
             if (element.type === "rect") {
                 element.attr({
-                    x: Math.min(Math.max(x + dx, xBorder), minX),
-                    y: Math.min(Math.max(y + dy, yBorder), minY)
+                    x: Math.min(Math.max(x + dx, minX), maxX),
+                    y: Math.min(Math.max(y + dy, minY), maxY)
                 });
             } else if (element.type === "circle") {
                 element.attr({
-                    cx: Math.min(Math.max(x + dx, xBorder), minX),
-                    cy: Math.min(Math.max(y + dy, yBorder), minY)
+                    cx: Math.min(Math.max(x + dx, minX), maxX),
+                    cy: Math.min(Math.max(y + dy, minY), maxY)
                 });
             }
         }, function () {
