@@ -91,21 +91,34 @@
     };
 
     /**
-     * Adds drag to a rectangle
-     * @param rect The Raphael rectangle
+     * Makes an element draggable
      */
-    function addDragRectangle(rect) {
+    Raphael.el.makeDraggable = function (xBorder, yBorder, minX, minY) {
+        var element = this;
         var x, y;
-        rect.drag(function (dx, dy) {
-            this.attr({
-                x: Math.min(Math.max(x + dx, 0), 380),
-                y: Math.min(Math.max(y + dy, 10), 380)
-            });
+        this.drag(function (dx, dy) {
+            if (element.type === "rect") {
+                element.attr({
+                    x: Math.min(Math.max(x + dx, xBorder), minX),
+                    y: Math.min(Math.max(y + dy, yBorder), minY)
+                });
+            } else if (element.type === "circle") {
+                element.attr({
+                    cx: Math.min(Math.max(x + dx, xBorder), minX),
+                    cy: Math.min(Math.max(y + dy, yBorder), minY)
+                });
+            }
         }, function () {
-            x = this.attr("x");
-            y = this.attr("y");
+            if (element.type === "rect") {
+                x = element.attr("x");
+                y = element.attr("y");
+            } else if (element.type === "circle") {
+                console.log("Drag %o", element);
+                x = element.attr("cx");
+                y = element.attr("cy");
+            }
         })
-    }
+    };
 
     /**
      * Adds a Rectangle
@@ -118,15 +131,13 @@
             "fill": color
         });
 
-        addDragRectangle(rect);
+        rect.makeDraggable(0, 10, 380, 380);
         rect.text("Rect");
 
         rect.dblclick(function () {
             var bbox = rect.getBBox();
             var xOffset = bbox.x2 + 10;
             var yOffset = bbox.y;
-
-            var popup = paper.rect(xOffset, yOffset, 80, 80);
         });
 
     }
@@ -148,32 +159,15 @@
             "stroke-dasharray": "-"
         });
 
-        addDragRectangle(rectLeft);
-        addDragRectangle(rectRight);
-        rectLeft.text("Rect");
+        rectRight.makeDraggable(0, 10, 380, 380);
+        rectLeft.makeDraggable(0, 10, 380, 380);
         rectRight.text("Rect");
+        rectLeft.text("Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
         arrow.text("Label");
         $("#addRectBtn").click(function () {
             addRectangle()
-        });
-    }
-
-    /**
-     * Adds drag functionality to circles
-     * @param circle The circle
-     */
-    function addDragCircle(circle) {
-        var x, y;
-        circle.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(x + dx, 50), 420),
-                cy: Math.min(Math.max(y + dy, 50), 420)
-            });
-        }, function () {
-            x = this.attr("cx");
-            y = this.attr("cy");
         });
     }
 
@@ -188,7 +182,7 @@
             "fill": color
         });
 
-        addDragCircle(circle);
+        circle.makeDraggable(50, 50, 420, 420);
         circle.text("Circle");
     }
 
@@ -210,8 +204,8 @@
             "stroke": "#000"
         });
 
-        addDragCircle(circleLeft);
-        addDragCircle(circleRight);
+        circleRight.makeDraggable(50, 50, 420, 420);
+        circleLeft.makeDraggable(50, 50, 420, 420);
 
         circleLeft.text("Circle");
         circleRight.text("Circle");
