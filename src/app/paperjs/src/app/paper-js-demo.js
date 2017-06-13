@@ -1,11 +1,16 @@
-
-var point1 = new Point(50, 50);
+(function () {
+    "use strict";
+var point1 = new Point(70, 20);
 var point2 = new Point(150, 100);
 var rectangle = new Rectangle(point1, point2);
 var cornerSize = new Size(20, 20);
 var path = new Path.RoundRectangle(rectangle, cornerSize);
-path.fillColor = 'black';
-
+path.fillColor = '#99999';
+path.style = {
+    strokeColor: 'black',
+    strokeWidth: 4,
+    strokeCap: 'round'
+};
 var pointTextLocation = new paper.Point(25, 25);
 var myText = new paper.PointText(pointTextLocation);
 myText.fillColor = 'white';
@@ -13,10 +18,10 @@ myText.content = 'BPMN';
 myText.position.y = 50 + 50 / 2;
 myText.position.x = 100;
 
-var rectangle2 = new Rectangle(new Point(300, 50), new Point(400, 100));
+var rectangle2 = new Rectangle(new Point(320, 20), new Point(400, 100));
 var cornerSize2 = new Size(20, 20);
 var path2 = new Path.RoundRectangle(rectangle2, cornerSize2);
-path2.fillColor = 'black';
+path2.fillColor = '#99999';
 path2.style = {
     strokeColor: 'black',
     dashArray: [4, 10],
@@ -25,7 +30,7 @@ path2.style = {
 };
 
 
-var to = new Point(300, 75);
+var to = new Point(320, 75);
 var from = new Point(150, 75);
 var path = new Path.Line(from, to);
 path.strokeColor = 'black';
@@ -52,7 +57,7 @@ rectangle2.selected = true;
 rectangle.selected = true;
 
 // The Path.Circle constructor takes a Point(x, y), and a radius
-var myBall = new Path.Circle(new Point(100, 370), 25);
+var myBall = new Path.Circle(new Point(100, 370), 40);
 myBall.fillColor = 'white';
 myBall.strokeColor = 'black'
 
@@ -63,7 +68,7 @@ myText2.position.y = 370;
 myText2.position.x = 100;
 
 // The Path.Circle constructor takes a Point(x, y), and a radius
-var myBall = new Path.Circle(new Point(350, 370), 25);
+var myBall = new Path.Circle(new Point(350, 370), 40);
 myBall.fillColor = 'white';
 myBall.strokeColor = 'black'
 
@@ -73,8 +78,8 @@ myText2.content = 'circle2';
 myText2.position.y = 370;
 myText2.position.x = 350;
 
-var from = new Point(325, 370);
-var to = new Point(125, 370);
+var from = new Point(310, 370);
+var to = new Point(140, 370);
 var path = new Path.Line(from, to);
 path.strokeColor = 'black';
 path.dashArray = [10, 12];
@@ -166,7 +171,7 @@ function addRect() {
 function addCircle() {
 
     // The Path.Circle constructor takes a Point(x, y), and a radius
-    var myBall = new Path.Circle(new Point(25, 25), 25);
+    var myBall = new Path.Circle(new Point(25, 25), 40);
     myBall.fillColor = 'tomato';
     var myText2 = new paper.PointText(pointTextLocation);
     myText2.fillColor = 'white';
@@ -211,3 +216,6 @@ document.getElementById("newField").addEventListener("click", addRect);
 
 checkValues();
 document.getElementById("newField2").addEventListener("click", addCircle);
+
+})
+()

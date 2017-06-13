@@ -11,10 +11,17 @@
     <!-- inject:css -->
     <!-- built css files will go here... -->
     <style type="text/css">
+        #buttons {
+            width: 500px;
+            height: 500px;
+        }
+
         #canvas {
+            margin-left: 500px;
             width: 500px;
             height: 500px;
             border: 1px solid #000;
+            position: relative;
         }
     </style>
     <!-- endinject -->
@@ -58,7 +65,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/paperjs" target="_blank">Source-Code</a></li>
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/paperjs" target="_blank">Source-Code</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -68,32 +76,18 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
             <canvas id="canvas">
             </canvas>
         </div>
-        <div class="col-md-3">
-        </div>
-    </div>
+</div>
+<br>
+<div class="container-fluid" id="buttons">
     <div class="row">
-        <div class="col-md-3">
+            <button id="newField" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle
+            </button>
+            <button id="newField2" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle
+            </button>
         </div>
-        <div class="col-md-3">
-            <button type="button" id="newField">New rectangle</button>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <button type="button" id="newField2">New circle</button>
-        </div>
-    </div>
 </div>
 <!-- bower:js -->
 <!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
