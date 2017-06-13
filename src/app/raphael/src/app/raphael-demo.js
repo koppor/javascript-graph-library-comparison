@@ -79,7 +79,7 @@
      * Adds text to the element
      * @param text
      */
-    Raphael.el.text = function (text) {
+    Raphael.el.setText = function (text) {
         var element = this;
         var center = element.center();
         var textElement = paper.text(center.x, center.y, text);
@@ -121,18 +121,47 @@
     };
 
     /**
+     * Sets the html color
+     * @param htmlColor The html color
+     */
+    Raphael.el.setColor = function (htmlColor) {
+        this.attr({
+            "fill": htmlColor
+        });
+    };
+
+    /**
+     * Sets the stroke color
+     * @param strokeColor The stroke color
+     */
+    Raphael.el.setStrokeColor = function (strokeColor) {
+        this.attr({
+            "stroke": strokeColor
+        });
+    };
+
+    /**
+     * Sets the stroke style
+     * @param strokeStyle The stroke style
+     */
+    Raphael.el.setStrokeStyle = function (strokeStyle) {
+        this.attr({
+            "stroke-dasharray": strokeStyle
+        });
+    };
+
+
+    /**
      * Adds a Rectangle
      */
     function addRectangle() {
         var color = '#' + Math.random().toString(16).substr(-6);
 
         var rect = paper.rect(10, 10, 80, 80);
-        rect.attr({
-            "fill": color
-        });
+        rect.setColor(color);
 
         rect.makeDraggable(0, 10, 380, 380);
-        rect.text("Rect");
+        rect.setText("Rect");
 
         rect.dblclick(function () {
             var bbox = rect.getBBox();
@@ -148,21 +177,16 @@
     function initRectangles() {
         var rectLeft = paper.rect(10, 10, 80, 80);
         var rectRight = paper.rect(380, 10, 80, 80);
-        rectLeft.attr({
-            "fill": "#999999",
-            "stroke": "#000"
-        });
-
-        rectRight.attr({
-            "fill": "#999999",
-            "stroke": "#000",
-            "stroke-dasharray": "-"
-        });
-
-        rectRight.makeDraggable(0, 10, 380, 380);
+        rectLeft.setColor("#999999");
+        rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 10, 380, 380);
-        rectRight.text("Rect");
-        rectLeft.text("Rect");
+        rectLeft.setText("Rect");
+
+        rectRight.setColor("#999999");
+        rectRight.setStrokeColor("#000");
+        rectRight.makeDraggable(0, 10, 380, 380);
+        rectRight.setStrokeStyle("-");
+        rectRight.setText("Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
         arrow.text("Label");
@@ -178,12 +202,9 @@
         var color = '#' + Math.random().toString(16).substr(-6);
 
         var circle = paper.circle(50, 50, 40);
-        circle.attr({
-            "fill": color
-        });
-
+        circle.setColor(color);
         circle.makeDraggable(50, 50, 420, 420);
-        circle.text("Circle");
+        circle.setText("Circle");
     }
 
 
@@ -193,22 +214,15 @@
     function initCircles() {
         var circleLeft = paper.circle(50, 420, 40);
         var circleRight = paper.circle(410, 420, 40);
-
-        circleLeft.attr({
-            "fill": "#FFF",
-            "stroke": "#000"
-        });
-
-        circleRight.attr({
-            "fill": "#FFF",
-            "stroke": "#000"
-        });
-
-        circleRight.makeDraggable(50, 50, 420, 420);
+        circleLeft.setColor("#FFF");
+        circleLeft.setStrokeColor("#000");
         circleLeft.makeDraggable(50, 50, 420, 420);
+        circleLeft.setText("Circle");
 
-        circleLeft.text("Circle");
-        circleRight.text("Circle");
+        circleRight.setColor("#FFF");
+        circleRight.setStrokeColor("#000");
+        circleRight.makeDraggable(50, 50, 420, 420);
+        circleRight.setText("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.attr("stroke-dasharray", "-");
