@@ -4,11 +4,12 @@
     }
 
     .item {
-        height:40px; width: 80px;
-        border: 1px solid blue;
+        height:80px; width: 80px;
+        border: 1px solid black;
         float: left;
         position: absolute;
-        display: inline-block
+        display: inline-block;
+        background: #99999;
     }
     .box {
         float: left;
@@ -35,8 +36,8 @@
     .type1 {
         width: 80px;
         height: 80px;
-        background: yellow;
-        border: 3px solid red;
+        background: #00000;
+        border: 1px solid black;
     }
 
     .flowchart-demo .window {
@@ -145,6 +146,6 @@
     }
 
     .aRedEndpoint svg circle {
-        fill:red;
-        stroke:yellow;
+        fill:#99999;
+        stroke:#fff;
     }
