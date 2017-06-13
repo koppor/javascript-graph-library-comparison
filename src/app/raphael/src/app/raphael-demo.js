@@ -215,10 +215,14 @@
                 html: true
             }).on('shown.bs.popover', function (event) {
                 var $popup = $('#' + $(event.target).attr('aria-describedby'));
-                $popup.find("#" + btnDashedId).click(function () {
-                    alert();
-                })
 
+                $popup.find("#" + btnDashedId).click(function () {
+                    alert("Dashed clicked");
+                });
+
+                $popup.find("#" + btnSolidId).click(function () {
+                    alert("Solid clicked");
+                });
             });
 
         });
