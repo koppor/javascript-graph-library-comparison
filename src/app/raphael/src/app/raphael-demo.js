@@ -4,7 +4,6 @@
     var paper = Raphael("canvas");
     var watch = WatchJS.watch;
 
-
     /**
      * Creates an arrow
      * @param source The target element
@@ -18,8 +17,8 @@
 
         function renderPath() {
             var width = (source.attr("width") / 2) || source.attr("r");
-            var sourceElement = getCenter(source);
-            var destElement = getCenter(destination);
+            var sourceElement = source.center();
+            var destElement = destination.center();
             return "M" + (sourceElement.x + width) + " " + sourceElement.y + "L" + (destElement.x - width) + " " + destElement.y;
         }
 
@@ -49,11 +48,11 @@
     };
 
     /**
-     * Returns the center of an element
-     * @param element The element is either a circle or a rect
-     * @returns {*} Object of x and y
+     * Center function
+     * @returns {*}
      */
-    function getCenter(element) {
+    Raphael.el.center = function () {
+        var element = this;
         if (element) {
             var bbox = element.getBBox();
 
@@ -74,23 +73,22 @@
                 };
             }
         }
-    }
+    };
 
     /**
-     * Set the text to an element center
-     * @param element The element
-     * @param text The text to set
+     * Adds text to the element
+     * @param text
      */
-    function setText(element, text) {
-        var center = getCenter(element);
+    Raphael.el.text = function (text) {
+        var element = this;
+        var center = element.center();
         var textElement = paper.text(center.x, center.y, text);
 
         watch(element.attrs, ["cx", "cy", "x", "y", "path"], function () {
-            var center = getCenter(element);
+            var center = element.center();
             textElement.attr({x: center.x, y: center.y});
         })
-
-    }
+    };
 
     /**
      * Adds drag to a rectangle
@@ -119,8 +117,18 @@
         rect.attr({
             "fill": color
         });
+
         addDragRectangle(rect);
-        setText(rect, "Rect");
+        rect.text("Rect");
+
+        rect.dblclick(function () {
+            var bbox = rect.getBBox();
+            var xOffset = bbox.x2 + 10;
+            var yOffset = bbox.y;
+
+            var popup = paper.rect(xOffset, yOffset, 80, 80);
+        });
+
     }
 
     /**
@@ -142,11 +150,11 @@
 
         addDragRectangle(rectLeft);
         addDragRectangle(rectRight);
-        setText(rectLeft, "Rect");
-        setText(rectRight, "Rect");
+        rectLeft.text("Rect");
+        rectRight.text("Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
-        setText(arrow, "Label");
+        arrow.text("Label");
         $("#addRectBtn").click(function () {
             addRectangle()
         });
@@ -179,8 +187,9 @@
         circle.attr({
             "fill": color
         });
+
         addDragCircle(circle);
-        setText(circle, "Circle");
+        circle.text("Circle");
     }
 
 
@@ -204,8 +213,8 @@
         addDragCircle(circleLeft);
         addDragCircle(circleRight);
 
-        setText(circleLeft, "Circle");
-        setText(circleRight, "Circle");
+        circleLeft.text("Circle");
+        circleRight.text("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.attr("stroke-dasharray", "-");
@@ -214,6 +223,9 @@
         });
     }
 
+    /**
+     * Main entry method
+     */
     function main() {
         initRectangles();
         initCircles();
