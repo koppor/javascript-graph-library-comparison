@@ -8,6 +8,13 @@
     <!-- endinject -->
     <!-- inject:css -->
     <!-- built css files will go here... -->
+	    <style type="text/css">
+        #canvas {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+    </style>
     <!-- endinject -->
 
 </head>
@@ -59,7 +66,8 @@
 
 <div class="container-fluid">
 
-	<canvas id="canvas" class="container-fluid" width="500px" height="500px"></canvas>
+	<canvas id="canvas" class="container-fluid" width="500px" height="500px" position="center">
+	</canvas>
     <button id="b" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
     <button id="b1" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
 	
