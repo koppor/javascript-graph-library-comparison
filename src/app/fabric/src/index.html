@@ -8,13 +8,6 @@
     <!-- endinject -->
     <!-- inject:css -->
     <!-- built css files will go here... -->
-    <style type="text/css">
-        #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #000;
-        }
-    </style>
     <!-- endinject -->
 
 </head>
@@ -52,7 +45,7 @@
                 </li>
 
                 <li class="active">
-                    <a >Fabric<span class="sr-only">(current)</span></a>
+                    <a href="#">Fabric<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -64,7 +57,15 @@
     <!-- /.container-fluid -->
 </nav>
 
-<canvas id="canvas" width="1500" height="800"></canvas>
+<div class="container-fluid" id="canvas">
+
+    <button id="b" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
+    <button id="b1" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
+	
+	<button id="b2" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Arrow</button>
+    <button id="b3" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Dotted Arrow</button>
+</div>
+
 <!-- bower:js -->
 <script src="bower_components/fabric.js/dist/fabric.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>
