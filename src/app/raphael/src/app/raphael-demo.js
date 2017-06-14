@@ -150,6 +150,9 @@
         });
     };
 
+    /**
+     * Adds a popover to the element
+     */
     Raphael.el.addPopover = function () {
         var element = this;
         $(element.node).click(function () {
