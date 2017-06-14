@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GraphLibComp</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <!-- built css files will go here... -->
+    <style type="text/css">
+
+        #buttons {
+            width: 500px;
+            height: 500px;
+        }
+
+        #canvas {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            position: relative;
+        }
+    </style>
+    <!-- endinject -->
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="../../raphael/src/index.html">Raphael</a></li>
+                <li><a href="../../paperjs/src/index.html">PaperJs<span class="sr-only">PaperJss</span></a></li>
+                <li class="active">
+                    <a href="#">JSPlumb<span class="sr-only">(current)</span></a>
+                </li>
+                <li>
+                    <a href="../../jointjs/src/index.html">JointJS</a>
+                </li>
+
+                <li>
+                    <a href="../../fabric/src/index.html">Fabric</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid" id="canvas">
+</div>
+<br>
+<div class="container-fluid" id="buttons">
+
+    <button id="addRectBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
+    <button id="addCircleBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
+</div>
+
+<!-- bower:js -->
+<link href="app.css" rel="stylesheet">
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
+<script async type="text/javascript" src="app/jquery.validate.js"></script>
+<script async type="text/javascript" src="app/additional-methods.js"></script>
+<script async type="text/javascript" src="app/plumbjs-demo.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- endinject -->
+</body>
+</html>
