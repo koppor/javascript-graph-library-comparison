@@ -10,6 +10,7 @@
 
     var link2 = new joint.dia.Link({
         el: $('#link'),
+        text: 'Label'
     });
 
     var paper = new joint.dia.Paper({
@@ -18,8 +19,9 @@
         height: canvas.outerHeight(),
         model: graph,
         defaultLink: new joint.dia.Link({
-            attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' }}
-        }),
+            attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' },
+            text: 'label'}
+        })
     });
 
 
@@ -27,8 +29,7 @@
         position: { x: 10, y: 50 },
         size: { width: 100, height: 80 },
         attrs: {
-            '.label': { text: 'Model', 'ref-x': .5, 'ref-y': .2 },
-            rect: { fill: '#2C3E50'  }
+            '.label': { text: 'Model'}
         }
 
     });
@@ -54,7 +55,7 @@
         position: { x: 10, y: 400 },
         size: { width: 100, height: 80 },
         attrs: { circle: { fill: 'white' }, text: { text: 'Circle', fill: 'black' } }
-    });
+});
 
 
     function out(m) {
@@ -63,7 +64,6 @@
 
 
     var rect2 = new joint.shapes.devs.Model({
-        type: 'popup.Element',
         position: { x: 310, y: 50 },
         size: { width: 100, height: 80 },
 
@@ -99,14 +99,10 @@
     });
 
 
-
-
     paper.on('cell:pointerdblclick', function(cellView, evt, x, y) {
-
 
         var portsArray = cellView.model.get('outPorts') || [];
         cellView.model.set('outPorts', portsArray.concat([name]), cellView.opt);
-
 
 
      //   var portsArray = cellView.model.get('outPorts') || [];
@@ -119,8 +115,6 @@
 
 
     document.getElementById('addRectBtn').onclick= function() {
-
-
         var rec=  new joint.shapes.devs.Model({
             position: { x: 10, y: 10 },
             size: { width: 100, height: 80 },
@@ -130,9 +124,7 @@
             }
 
         });
-
         graph.addCells([rec]);
-
     };
 
 
