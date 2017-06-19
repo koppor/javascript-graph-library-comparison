@@ -223,11 +223,11 @@
      */
     function initRectangles() {
         var rectLeft = paper.rect(10, 10, 80, 80);
-        var rectRight = paper.rect(380, 10, 80, 80);
         rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 10, 380, 380);
         rectLeft.setText("Rect");
 
+        var rectRight = paper.rect(380, 10, 80, 80);
         rectRight.makeDraggable(0, 10, 380, 380);
         rectRight.setText("Rect");
         rectRight.node.setAttribute("class", "rectRight");
@@ -260,16 +260,16 @@
      * Inits the circles
      */
     function initCircles() {
-        var circleLeft = paper.circle(50, 420, 40);
-        var circleRight = paper.circle(410, 420, 40);
+        var circleLeft = paper.circle(50, 440, 40);
         circleLeft.setColor("#FFF");
         circleLeft.setStrokeColor("#000");
-        circleLeft.makeDraggable(50, 50, 420, 420);
+        circleLeft.makeDraggable(40, 50, 440, 440);
         circleLeft.setText("Circle");
 
+        var circleRight = paper.circle(430, 440, 40);
         circleRight.setColor("#FFF");
         circleRight.setStrokeColor("#000");
-        circleRight.makeDraggable(50, 50, 420, 420);
+        circleRight.makeDraggable(50, 50, 440, 440);
         circleRight.setText("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
