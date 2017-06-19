@@ -58,7 +58,6 @@
      */
     function initCircles() {
         var circleLeft = new Path.Circle({
-            //[60, 440], 40
             x: 60,
             y: 440,
             radius: 40,
@@ -66,10 +65,12 @@
             strokeColor: "#000"
         });
 
+
         var circleRight = new Path.Circle({
             //[440, 440], 40
             x: 440,
             y: 440,
+            radius: 40,
             fillColor: "#FFF",
             strokeColor: "#000"
         });
