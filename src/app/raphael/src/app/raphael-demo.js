@@ -45,6 +45,7 @@
             });
         });
 
+        object.node.setAttribute("class", "line");
         return object;
     };
 
@@ -194,7 +195,12 @@
             });
 
         });
-    }
+    };
+
+    Raphael.el.setClassName = function (className) {
+        this.node.setAttribute("class", className);
+    };
+
 
     /**
      * Adds a Rectangle
@@ -218,16 +224,14 @@
     function initRectangles() {
         var rectLeft = paper.rect(10, 10, 80, 80);
         var rectRight = paper.rect(380, 10, 80, 80);
-        rectLeft.setColor("#999999");
         rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 10, 380, 380);
         rectLeft.setText("Rect");
 
-        rectRight.setColor("#999999");
-        rectRight.setStrokeColor("#000");
         rectRight.makeDraggable(0, 10, 380, 380);
-        rectRight.setStrokeStyle("-");
         rectRight.setText("Rect");
+        rectRight.node.setAttribute("class", "rectRight");
+
         var arrow = paper.arrow(rectLeft, rectRight);
 
         arrow.setText("Label");
@@ -269,6 +273,7 @@
         circleRight.setText("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
+        arrow.setClassName("circleArrow");
         arrow.attr("stroke-dasharray", "-");
         $("#addCircleBtn").click(function () {
             addCircle()
