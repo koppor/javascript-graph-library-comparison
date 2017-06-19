@@ -26,7 +26,7 @@
 
 
 
-    var items = (25 * 25);
+    var items = (25);
 
     for (var i = 0; i < items; i++) {
 
