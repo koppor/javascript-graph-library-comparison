@@ -42,13 +42,13 @@
             height: 80,
             fillColor: 'lightgray',
             strokeColor: "#000",
-            dashArray:[5]
+            dashArray: [5]
         });
         //----------------------------------------------
         // TEXT SETUP
         //----------------------------------------------
-        var rectLeftText = makeText(rectLeft,"Rect");
-        var rectRightText = makeText(rectRight,"Rect");
+        var rectLeftText = makeText(rectLeft, "Rect");
+        var rectRightText = makeText(rectRight, "Rect");
 
 
     }
@@ -57,18 +57,22 @@
      * Init for circles
      */
     function initCircles() {
-        var circleLeft = new Path.Circle([60, 440], 40);
-        circleLeft.style = {
+        var circleLeft = new Path.Circle({
+            //[60, 440], 40
+            x: 60,
+            y: 440,
+            radius: 40,
             fillColor: "#FFF",
             strokeColor: "#000"
-        };
+        });
 
-
-        var circleRight = new Path.Circle([440, 440], 40);
-        circleRight.style = {
+        var circleRight = new Path.Circle({
+            //[440, 440], 40
+            x: 440,
+            y: 440,
             fillColor: "#FFF",
             strokeColor: "#000"
-        };
+        });
 
         //----------------------------------------------
         // TEXT SETUP
