@@ -180,22 +180,26 @@
         initRectangles();
         initCircles();
 
-        //Register methods
+        //----------------------------------------------
+        // REGISTERING METHODS
+        //----------------------------------------------
+        // Add a new circle
         $("#addCircleBtn").click(function () {
             addCircle();
         });
 
+        //Add a new rectangle
         $("#addRectBtn").click(function () {
             addRectangle();
         });
 
+        //Export canvas as png image in a new window, so the user can download it
         $("#exportBtn").click(function () {
-            alert("Exporting as image");
             var canvas = document.getElementById("paperjsCanvas");
             var dataUrl = canvas.toDataURL("image/png");
             var downloadWindow = window.open("Image", "Image from PaperJS");
             downloadWindow.document.write("<img src='" + dataUrl + "'/>");
-        })
+        });
     }
 
     main();
