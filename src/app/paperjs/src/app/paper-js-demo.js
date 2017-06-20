@@ -17,7 +17,7 @@
         this.textElement = null;
 
         if (this.text) {
-            if(this.textElement) {
+            if (this.textElement) {
                 this.textElement.remove();
             }
             this.textElement = makeText(this.line, vm.text);
@@ -33,7 +33,7 @@
             });
 
             if (this.text) {
-                if(this.textElement) {
+                if (this.textElement) {
                     this.textElement.remove();
                 }
                 this.textElement = makeText(this.line, vm.text);
@@ -64,6 +64,7 @@
      * Convenience Method that makes a group with a element and text element draggable
      * @param element The rectangle or circle
      * @param textElement The text element
+     * @param lineRenderer LineRenderer which renders the line
      * @returns {Group} The Group
      */
     function makeDraggableAsGroup(element, textElement, lineRenderer) {
@@ -78,7 +79,9 @@
             var newY = Math.min(Math.max(y + dy, 40), 460);
             group.position.x = newX;
             group.position.y = newY;
-            lineRenderer.firePositionChangeEvent();
+            if (lineRenderer) {
+                lineRenderer.firePositionChangeEvent();
+            }
         };
         return group;
     }
@@ -177,7 +180,7 @@
             strokeColor: "#000"
         });
 
-        var lineRenderer = new LineRenderer(circleLeft,circleRight,[5]);
+        var lineRenderer = new LineRenderer(circleLeft, circleRight, [5]);
 
         //----------------------------------------------
         // TEXT SETUP
@@ -190,10 +193,6 @@
         //----------------------------------------------
         var circleLeftGroup = makeDraggableAsGroup(circleLeft, circleLeftText, lineRenderer);
         var circleRightGroup = makeDraggableAsGroup(circleRight, circleRightText, lineRenderer);
-
-        //----------------------------------------------
-        // ADD LINES
-        //----------------------------------------------
     }
 
     /**
