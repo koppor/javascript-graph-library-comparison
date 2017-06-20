@@ -85,6 +85,7 @@
         var element = this;
         var center = element.center();
         var textElement = paper.text(center.x, center.y, text);
+        textElement.attr("font-size", 20);
 
         watch(element.attrs, ["cx", "cy", "x", "y", "path"], function () {
             var center = element.center();
@@ -146,9 +147,7 @@
      * @param strokeStyle The stroke style
      */
     Raphael.el.setStrokeStyle = function (strokeStyle) {
-        this.attr({
-            "stroke-dasharray": strokeStyle
-        });
+        this.attr("stroke-dasharray", strokeStyle);
     };
 
     /**
@@ -219,17 +218,20 @@
     }
 
     /**
-     * Inits the rectangles
+     * <canvas id="canvas" width="800px" height="600px"></canvas>nts the rectangles
      */
     function initRectangles() {
         var rectLeft = paper.rect(10, 10, 80, 80);
         rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 10, 380, 380);
+        rectLeft.setColor("#d3d3d3");
         rectLeft.setText("Rect");
 
         var rectRight = paper.rect(380, 10, 80, 80);
         rectRight.makeDraggable(0, 10, 380, 380);
+        rectRight.setColor("#d3d3d3");
         rectRight.setText("Rect");
+        rectRight.setStrokeStyle("- ");
         rectRight.node.setAttribute("class", "rectRight");
 
         var arrow = paper.arrow(rectLeft, rectRight);
@@ -274,7 +276,7 @@
 
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.setClassName("circleArrow");
-        arrow.attr("stroke-dasharray", "-");
+        arrow.attr("stroke-dasharray", "- ");
         $("#addCircleBtn").click(function () {
             addCircle(500 / 2, 500 / 2);
         });

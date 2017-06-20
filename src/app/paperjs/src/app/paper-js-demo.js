@@ -198,7 +198,7 @@
             var canvas = document.getElementById("paperjsCanvas");
             var dataUrl = canvas.toDataURL("image/png");
             var downloadWindow = window.open("Image", "Image from PaperJS");
-            downloadWindow.document.write("<img src='" + dataUrl + "'/>");
+            downloadWindow.location = dataUrl;
         });
     }
 
