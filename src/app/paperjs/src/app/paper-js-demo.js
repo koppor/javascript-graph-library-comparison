@@ -1,6 +1,46 @@
 (function () {
     paper.install(window);
 
+    function LineRenderer(source, target, dashArray, text) {
+        var vm = this;
+        this.source = source;
+        this.target = target;
+        this.line = new Path.Line({
+            from: source.getBounds().rightCenter,
+            to: target.getBounds().leftCenter,
+            strokeColor: "#000",
+            dashArray: dashArray
+        });
+
+        this.text = text;
+        this.dashArray = dashArray || [];
+        this.textElement = null;
+
+        if (this.text) {
+            if(this.textElement) {
+                this.textElement.remove();
+            }
+            this.textElement = makeText(this.line, vm.text);
+        }
+
+        this.firePositionChangeEvent = function () {
+            this.line.remove();
+            this.line = new Path.Line({
+                from: vm.source.getBounds().rightCenter,
+                to: vm.target.getBounds().leftCenter,
+                strokeColor: "#000",
+                dashArray: vm.dashArray
+            });
+
+            if (this.text) {
+                if(this.textElement) {
+                    this.textElement.remove();
+                }
+                this.textElement = makeText(this.line, vm.text);
+            }
+        }
+    }
+
     /**
      * Convenience Method  that makes a text for an element
      * @param element The element to set the text
@@ -26,7 +66,7 @@
      * @param textElement The text element
      * @returns {Group} The Group
      */
-    function makeDraggableAsGroup(element, textElement) {
+    function makeDraggableAsGroup(element, textElement, lineRenderer) {
         var group = new Group([element, textElement]);
 
         group.onMouseDrag = function (event) {
@@ -38,29 +78,13 @@
             var newY = Math.min(Math.max(y + dy, 40), 460);
             group.position.x = newX;
             group.position.y = newY;
+            lineRenderer.firePositionChangeEvent();
         };
         return group;
     }
 
     /**
-     * Creates a new Line to connect a group
-     * @param groupLeft The left group
-     * @param groupRight The right group
-     * @param dashArray Optional Dash Array Style
-     */
-    function makeLine(groupLeft, groupRight, dashArray) {
-        var line = new Path.Line({
-            from: groupLeft.getBounds().rightCenter,
-            to: groupRight.getBounds().leftCenter,
-            strokeColor: "#000",
-            dashArray: dashArray || []
-        });
-
-        return line;
-    }
-
-    /**
-     * Functions adds a new circle
+     * Adds a new circle
      */
     function addCircle() {
         var circle = new Path.Circle({
@@ -75,6 +99,9 @@
         var group = makeDraggableAsGroup(circle, text)
     }
 
+    /**
+     * Adds a new rectangle
+     */
     function addRectangle() {
         var rectangle = new Path.Rectangle({
             x: 250 - 40, // Center X
@@ -113,6 +140,8 @@
             dashArray: [5]
         });
 
+        var lineRenderer = new LineRenderer(rectLeft, rectRight, null, "Label");
+
         //----------------------------------------------
         // TEXT SETUP
         //----------------------------------------------
@@ -122,14 +151,8 @@
         //----------------------------------------------
         // ADD TO GROUP
         //----------------------------------------------
-        var rectLeftGroup = makeDraggableAsGroup(rectLeft, rectLeftText);
-        var rectRightGroup = makeDraggableAsGroup(rectRight, rectRightText);
-
-        //----------------------------------------------
-        // ADD LINES
-        //----------------------------------------------
-        var line = makeLine(rectLeftGroup, rectRightGroup);
-        makeText(line, "Label");
+        var rectLeftGroup = makeDraggableAsGroup(rectLeft, rectLeftText, lineRenderer);
+        var rectRightGroup = makeDraggableAsGroup(rectRight, rectRightText, lineRenderer);
     }
 
     /**
@@ -154,6 +177,8 @@
             strokeColor: "#000"
         });
 
+        var lineRenderer = new LineRenderer(circleLeft,circleRight,[5]);
+
         //----------------------------------------------
         // TEXT SETUP
         //----------------------------------------------
@@ -163,13 +188,12 @@
         //----------------------------------------------
         // ADD TO GROUP
         //----------------------------------------------
-        var circleLeftGroup = makeDraggableAsGroup(circleLeft, circleLeftText);
-        var circleRightGroup = makeDraggableAsGroup(circleRight, circleRightText);
+        var circleLeftGroup = makeDraggableAsGroup(circleLeft, circleLeftText, lineRenderer);
+        var circleRightGroup = makeDraggableAsGroup(circleRight, circleRightText, lineRenderer);
 
         //----------------------------------------------
         // ADD LINES
         //----------------------------------------------
-        makeLine(circleLeftGroup, circleRightGroup, [5]);
     }
 
     /**
