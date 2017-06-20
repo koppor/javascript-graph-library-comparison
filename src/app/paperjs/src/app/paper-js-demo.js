@@ -42,6 +42,18 @@
         return group;
     }
 
+    function makeLine(groupLeft, groupRight, dashArray) {
+        var line = new Path.Line({
+            from: groupLeft.getBounds().rightCenter,
+            to: groupRight.getBounds().leftCenter,
+            strokeColor: "#000",
+            dashArray: dashArray || []
+        });
+
+
+    }
+
+
     /**
      * Init for rectangles
      */
@@ -77,6 +89,11 @@
         //----------------------------------------------
         var rectLeftGroup = makeDraggableAsGroup(rectLeft, rectLeftText);
         var rectRightGroup = makeDraggableAsGroup(rectRight, rectRightText);
+
+        //----------------------------------------------
+        // ADD LINES
+        //----------------------------------------------
+        makeLine(rectLeftGroup, rectRightGroup);
     }
 
     /**
@@ -112,6 +129,11 @@
         //----------------------------------------------
         var circleLeftGroup = makeDraggableAsGroup(circleLeft, circleLeftText);
         var circleRightGroup = makeDraggableAsGroup(circleRight, circleRightText);
+
+        //----------------------------------------------
+        // ADD LINES
+        //----------------------------------------------
+        makeLine(circleLeftGroup, circleRightGroup, [5]);
     }
 
     /**
