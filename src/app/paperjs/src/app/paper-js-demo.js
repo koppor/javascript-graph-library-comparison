@@ -42,6 +42,12 @@
         return group;
     }
 
+    /**
+     * Creates a new Line to connect a group
+     * @param groupLeft The left group
+     * @param groupRight The right group
+     * @param dashArray Optional Dash Array Style
+     */
     function makeLine(groupLeft, groupRight, dashArray) {
         var line = new Path.Line({
             from: groupLeft.getBounds().rightCenter,
@@ -51,7 +57,35 @@
         });
 
         return line;
+    }
 
+    /**
+     * Functions adds a new circle
+     */
+    function addCircle() {
+        var circle = new Path.Circle({
+            x: 250,
+            y: 250,
+            radius: 40,
+            fillColor: "#FFF",
+            strokeColor: "#000"
+        });
+
+        var text = makeText(circle, "Circle");
+        var group = makeDraggableAsGroup(circle, text)
+    }
+
+    function addRectangle() {
+        var rectangle = new Path.Rectangle({
+            x: 250 - 40, // Center X
+            y: 250 - 40, // Center Y
+            width: 80,
+            height: 80,
+            fillColor: 'lightgray',
+            strokeColor: "#000"
+        });
+        var text = makeText(rectangle, "Rect");
+        var group = makeDraggableAsGroup(rectangle, text);
     }
 
 
@@ -95,7 +129,7 @@
         // ADD LINES
         //----------------------------------------------
         var line = makeLine(rectLeftGroup, rectRightGroup);
-        makeText(line,"Label");
+        makeText(line, "Label");
     }
 
     /**
@@ -145,6 +179,23 @@
         paper.setup("paperjsCanvas");
         initRectangles();
         initCircles();
+
+        //Register methods
+        $("#addCircleBtn").click(function () {
+            addCircle();
+        });
+
+        $("#addRectBtn").click(function () {
+            addRectangle();
+        });
+
+        $("#exportBtn").click(function () {
+            alert("Exporting as image");
+            var canvas = document.getElementById("paperjsCanvas");
+            var dataUrl = canvas.toDataURL("image/png");
+            var downloadWindow = window.open("Image", "Image from PaperJS");
+            downloadWindow.document.write("<img src='" + dataUrl + "'/>");
+        })
     }
 
     main();
