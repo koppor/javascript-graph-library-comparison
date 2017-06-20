@@ -50,6 +50,7 @@
             dashArray: dashArray || []
         });
 
+        return line;
 
     }
 
@@ -93,7 +94,8 @@
         //----------------------------------------------
         // ADD LINES
         //----------------------------------------------
-        makeLine(rectLeftGroup, rectRightGroup);
+        var line = makeLine(rectLeftGroup, rectRightGroup);
+        makeText(line,"Label");
     }
 
     /**
