@@ -17,11 +17,11 @@
         })
     });
 
-
-    paper.on('cell:pointerdblclick', function (cellView, evt, x, y) {
-        var portsArray = cellView.model.get('outPorts') || [];
-        cellView.model.set('outPorts', portsArray.concat([name]), cellView.opt);
-    });
+    //
+    // paper.on('cell:pointerdblclick', function (cellView, evt, x, y) {
+    //     var portsArray = cellView.model.get('outPorts') || [];
+    //     cellView.model.set('outPorts', portsArray.concat([name]), cellView.opt);
+    // });
 
 
     function initRectangles() {
