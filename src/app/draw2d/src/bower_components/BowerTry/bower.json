@@ -1,0 +1,20 @@
+{
+  "name": "BowerTry",
+  "authors": [
+    "Komal Parmar <komal.parmar@tatvasoft.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2"
+  }
+}

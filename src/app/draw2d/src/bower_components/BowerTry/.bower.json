@@ -1,0 +1,31 @@
+{
+  "name": "BowerTry",
+  "authors": [
+    "Komal Parmar <komal.parmar@tatvasoft.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/9095/JustTry",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2"
+  },
+  "version": "0.0.2",
+  "_release": "0.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.2",
+    "commit": "2cae4c5d43486d0965768dde2ff1fc8821e1b0f9"
+  },
+  "_source": "https://github.com/9095/JustTry.git",
+  "_target": "^0.0.2",
+  "_originalSource": "bower_components",
+  "_direct": true
+}
