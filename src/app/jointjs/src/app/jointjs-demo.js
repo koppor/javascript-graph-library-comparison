@@ -7,8 +7,8 @@
     var graph = new joint.dia.Graph();
     var paper = new joint.dia.Paper({
         el: $('#canvas'),
-        width: 480,
-        height: 480,
+        width: $('#canvas').outerWidth(),
+        height: $('#canvas').outerHeight(),
         model: graph,
         defaultLink: new joint.dia.Link({
             attrs: {
