@@ -7,8 +7,8 @@
     var graph = new joint.dia.Graph();
     var paper = new joint.dia.Paper({
         el: $('#canvas'),
-        width: $('#canvas').outerWidth(),
-        height: $('#canvas').outerHeight(),
+        width: 480,
+        height: 480,
         model: graph,
         defaultLink: new joint.dia.Link({
             attrs: {
@@ -105,13 +105,13 @@
     }
 
     function exportAsImage() {
-        var downloadWindow = window.open("Image", "Image from JointJS");
-        downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
-        var svg = document.getElementById("canvas").innerHTML;
-        canvg(downloadWindow.document.getElementById("canvas"), svg);
-        var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
-        downloadWindow.location = dataURL;
-
+        // var downloadWindow = window.open("Image", "Image from JointJS");
+        // downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
+        // var svg = document.getElementById("canvas").innerHTML;
+        // canvg(downloadWindow.document.getElementById("canvas"), svg);
+        // var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
+        // downloadWindow.location = dataURL;
+        console.log(paper.svg);
     }
 
     function main() {
