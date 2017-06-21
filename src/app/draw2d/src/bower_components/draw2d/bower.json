@@ -1,0 +1,25 @@
+{
+  "name": "draw2d",
+  "version": "6.1.66",
+  "main": [
+    "dist/jquery.autoresize.js",
+    "dist/jquery-touch_punch.js",
+    "dist/jquery.contextmenu.js",
+    "dist/patched_raphael.js",
+    "dist/rgbcolor.js",
+    "dist/patched_canvg.js",
+    "dist/patched_Class.js",
+    "dist/json2.js",
+    "dist/pathfinding-browser.min.js",
+    "dist/StackBlur.js",
+    "dist/shifty.js",
+    "dist/draw2d.js",
+    "dist/draw2d_core.js"
+  ],
+  "author" : "Andreas Herz",
+  "ignore": [],
+  "dependencies": {
+    "jquery": "~1.10.2",
+    "shifty": "~1.4.2"
+  }
+}

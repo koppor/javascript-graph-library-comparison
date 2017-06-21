@@ -19,5 +19,9 @@
     "src/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "raphael": "^2.2.7",
+    "draw2d": "^6.1.66"
+  }
 }
