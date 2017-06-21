@@ -2140,7 +2140,7 @@ V = Vectorizer = (function() {
         return ret;
     };
 
-    // Inspired by d3.js https://github.com/mbostock/d3/blob/master/src/svg/arc.js
+    // Inspired by d3-demo.js https://github.com/mbostock/d3/blob/master/src/svg/arc.js
     V.createSlicePathData = function(innerRadius, outerRadius, startAngle, endAngle) {
 
         var svgArcMax = 2 * Math.PI - 1e-6;

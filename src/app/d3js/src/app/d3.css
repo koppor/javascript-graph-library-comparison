@@ -1,0 +1,50 @@
+#canvas {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+}
+
+/**
+Style for all elements
+ */
+rect {
+    width: 80px;
+    height: 80px;
+    fill: lightgrey !important;
+    stroke: black !important;
+    position: relative;
+}
+
+circle {
+    fill: white !important;
+    stroke: black !important;
+    position: relative;
+}
+
+text {
+    font-size: 20px !important;
+    fill: black;
+}
+
+/**
+Custom style for preview elements
+*/
+.rectRight {
+    stroke-dasharray: 5;
+}
+
+.circleArrow {
+    stroke-dasharray: 5;
+}
+
+path {
+    fill: none;
+    stroke: #000;
+    stroke-width: 3px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+line {
+    stroke: black;
+}
