@@ -4,7 +4,6 @@
 (function () {
     "use strict";
 
-    var canvas = $('#canvas');
     var graph = new joint.dia.Graph();
 
 
@@ -14,9 +13,9 @@
     });
 
     var paper = new joint.dia.Paper({
-        el: canvas,
-        width: canvas.outerWidth(),
-        height: canvas.outerHeight(),
+        el: $('#canvas'),
+        width: $('#canvas').outerWidth(),
+        height: $('#canvas').outerHeight(),
         model: graph,
         defaultLink: new joint.dia.Link({
             attrs: { '.marker-target': { d: 'M 10 0 L 0 5 L 10 10 z' },
@@ -140,6 +139,15 @@
         graph.addCells([circle2]);
 
     };
+
+    document.getElementById('exportBtn').onclick= function() {
+        var downloadWindow = window.open("Image", "Image from JointJS");
+        downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
+        var svg = document.getElementById("canvas").innerHTML;
+         canvg(downloadWindow.document.getElementById("canvas"), svg);
+         var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
+        downloadWindow.location = dataURL;
+};
 
 
 }());
