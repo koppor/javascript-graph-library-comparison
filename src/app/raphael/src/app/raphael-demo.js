@@ -277,7 +277,7 @@
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.setClassName("circleArrow");
         arrow.attr("stroke-dasharray", "- ");
-        $("#addCircleBtn").click(func   tion () {
+        $("#addCircleBtn").click(function () {
             addCircle(500 / 2, 500 / 2);
         });
     }
