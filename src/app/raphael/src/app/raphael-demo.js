@@ -221,13 +221,13 @@
      * <canvas id="canvas" width="800px" height="600px"></canvas>nts the rectangles
      */
     function initRectangles() {
-        var rectLeft = paper.rect(10, 10, 80, 80);
+        var rectLeft = paper.rect(20, 10, 80, 80);
         rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 10, 380, 380);
         rectLeft.setColor("#d3d3d3");
         rectLeft.setText("Rect");
 
-        var rectRight = paper.rect(380, 10, 80, 80);
+        var rectRight = paper.rect(400, 10, 80, 80);
         rectRight.makeDraggable(0, 10, 380, 380);
         rectRight.setColor("#d3d3d3");
         rectRight.setText("Rect");
@@ -262,13 +262,13 @@
      * Inits the circles
      */
     function initCircles() {
-        var circleLeft = paper.circle(50, 440, 40);
+        var circleLeft = paper.circle(60, 440, 40);
         circleLeft.setColor("#FFF");
         circleLeft.setStrokeColor("#000");
         circleLeft.makeDraggable(40, 50, 440, 440);
         circleLeft.setText("Circle");
 
-        var circleRight = paper.circle(430, 440, 40);
+        var circleRight = paper.circle(440, 440, 40);
         circleRight.setColor("#FFF");
         circleRight.setStrokeColor("#000");
         circleRight.makeDraggable(50, 50, 440, 440);
@@ -277,7 +277,7 @@
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.setClassName("circleArrow");
         arrow.attr("stroke-dasharray", "- ");
-        $("#addCircleBtn").click(function () {
+        $("#addCircleBtn").click(func   tion () {
             addCircle(500 / 2, 500 / 2);
         });
     }
