@@ -26,19 +26,43 @@
     var pos = 50;
     var pos2 = 10;
     var rect;
+    var l;
+    var rectId =0;
+
     for (var i = 0; i < items; i++) {
         for (var j = 0; j < items; j++) {
-            rect = new joint.shapes.devs.Model({
+
+            rectId++;
+
+            rect = new joint.shapes.basic.Rect({
+
+                id: 'rect'+rectId,
                 position: {x: pos2, y: pos},
                 size: {width: 100, height: 80},
                 attrs: {
                     '.label': {text: 'Model'}
+
                 }
             });
-            pos2 = pos2 + 100;
 
             graph.addCell([rect]);
+            console.log(rect.id);
+
+            if(j >=1 && j <= (items-1)) {
+                 l = new joint.dia.Link({
+                    source: {id: 'rect'+(rectId-1)},
+                    target: {id: 'rect'+rectId},
+                    attrs: {
+                        '.connection': {stroke: 'black'}
+                    },
+
+                });
+                graph.addCell(l);
+            }
+            pos2 =  pos2 + 150;
         }
-        pos = 100 * i;
+        graph.addCell([rect]);
+        pos2 = 10;
+        pos = pos +150;
     }
 }());
