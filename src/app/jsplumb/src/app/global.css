@@ -1,4 +1,4 @@
-#canvas {
+#container {
     width: 500px;
     height: 500px;
     border: 1px solid #000;
@@ -7,4 +7,48 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+    /*Needed for positoning in js plumb*/
+    position: relative;
 }
+
+.common {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+}
+
+.rectCommon {
+    background-color: lightgray;
+}
+
+.rectLeft {
+    border: 1px solid #000;
+    left: 10px;
+    top: 10px;
+}
+
+.rectRight {
+    border: 1px dashed #000;
+    right: 10px;
+    top: 10px;
+}
+
+.circleCommon {
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 100%;
+}
+
+.circleLeft {
+    bottom: 10px;
+    left: 10px;
+}
+
+.circleRight {
+    bottom: 10px;
+    right: 10px;
+}
+
