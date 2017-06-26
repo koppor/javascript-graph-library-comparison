@@ -8,16 +8,21 @@
             ConnectionsDetachable: false
         });
 
-        function exportAsImage() {
-            alert("export");
-        }
-
         function addRectangle() {
-            alert("add rect");
+            var $newRect = $("<div class='common rectCommon newPosition'>Rect</div>");
+            $("#container").append($newRect);
+            jsPlumb.draggable($newRect, {containment: true});
+
         }
 
         function addCircle() {
-            alert("add circle");
+            var $newCircle = $("<div class='common circleCommon newPosition'>Circle</div>");
+            $("#container").append($newCircle);
+            jsPlumb.draggable($newCircle, {containment: true});
+        }
+
+        function exportAsImage() {
+            alert("export");
         }
 
         function initRectangles() {
@@ -29,9 +34,7 @@
 
             };
 
-            jsPlumb.draggable([rectLeftId, rectRightId], {
-                containment: true
-            });
+            jsPlumb.draggable([rectLeftId, rectRightId], {containment: true});
 
             jsPlumb.connect({
                 source: rectLeftId,
@@ -40,10 +43,11 @@
                 connector: ["Straight"],
                 endpointStyle: {fill: "black"},
                 endpoints: ["Blank", "Blank"],
-                paintStyle: {stroke: "black", strokeWidth: 1}
-
+                paintStyle: {stroke: "black", strokeWidth: 1},
+                overlays: [["Label", {
+                    label: "Label"
+                }]]
             }, commonConnectStyle);
-
         }
 
         function initCircles() {

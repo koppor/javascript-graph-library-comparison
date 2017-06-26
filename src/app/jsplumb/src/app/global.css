@@ -36,6 +36,12 @@
     top: 10px;
 }
 
+.newPosition {
+    right: 210px;
+    top: 210px;
+    border: 1px solid #000;
+}
+
 .circleCommon {
     background-color: white;
     border: 1px solid #000;
