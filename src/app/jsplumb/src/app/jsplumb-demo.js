@@ -12,7 +12,6 @@
             var $newRect = $("<div class='common rectCommon newPosition'>Rect</div>");
             $("#container").append($newRect);
             jsPlumb.draggable($newRect, {containment: true});
-
         }
 
         function addCircle() {
@@ -45,7 +44,8 @@
                 endpoints: ["Blank", "Blank"],
                 paintStyle: {stroke: "black", strokeWidth: 1},
                 overlays: [["Label", {
-                    label: "Label"
+                    label: "Label",
+                    cssClass:"connectionLabel"
                 }]]
             }, commonConnectStyle);
         }
