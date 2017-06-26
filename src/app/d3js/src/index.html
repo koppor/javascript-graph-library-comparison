@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GraphLibComp</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+        <link rel="stylesheet" href="app/global.css">
+    <!-- endinject -->
+
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="../../paperjs/src/index.html">PaperJs</a>
+                </li>
+                <li>
+                <a href="../../raphael/src/index.html">JSPlumb</a>
+                 </li>
+                <li>
+                    <a href="../../jsplumb/src/index.html">JointJS</a>
+                </li>
+
+                <li>
+                    <a href="../../jointjs/src/index.html">Fabric</a>
+                </li>
+                <li>
+                    <a href="../../fabric/src/index.html">JointJs</a>
+                </li>
+                <li class="active">
+                    <a href="#">D3<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid" id="canvas">
+</div>
+<div class="container-fluid" style="width: 500px ;height: 500">
+    <button id="addRect" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
+    <button id="addCircle" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle
+    </button>
+    <button id="saveButton" class="btn btn-block"> Safe D3 Vis to PNG</button>
+    <canvas></canvas>
+</div>
+
+
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/d3/d3.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+
+<script src="app/d3-demo.js"></script>
+
+<!-- endinject -->
+
+</body>
+</html>

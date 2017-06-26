@@ -8,7 +8,7 @@
     <!-- endinject -->
     <!-- inject:css -->
     <!-- built css files will go here... -->
-    <style type="text/css">
+	    <style type="text/css">
         #canvas {
             width: 500px;
             height: 500px;
@@ -45,14 +45,17 @@
                     <a href="../../raphael/src/index.html">Raphael</a>
                 </li>
                 <li>
-                    <a href="../../plumbjs/src/index.html">JSPlumb</a>
+                    <a href="../../draw2d/src/index.html">Draw2d</a>
+                </li>
+                <li>
+                    <a href="../../jsplumb/src/index.html">JSPlumb</a>
                 </li>
                 <li>
                     <a href="../../jointjs/src/index.html">JointJS</a>
                 </li>
 
                 <li class="active">
-                    <a >Fabric<span class="sr-only">(current)</span></a>
+                    <a href="#">Fabric<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -64,7 +67,17 @@
     <!-- /.container-fluid -->
 </nav>
 
-<canvas id="canvas" width="1500" height="800"></canvas>
+<div class="container-fluid">
+
+	<canvas id="canvas" class="container-fluid" width="500px" height="500px" position="center">
+	</canvas>
+    <button id="b" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
+    <button id="b1" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
+	
+	<button id="b2" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Arrow</button>
+    <button id="b3" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Dotted Arrow</button>
+</div>
+
 <!-- bower:js -->
 <script src="bower_components/fabric.js/dist/fabric.min.js"></script>
 <script src="bower_components/jquery/dist/jquery.js"></script>

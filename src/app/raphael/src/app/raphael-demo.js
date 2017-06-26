@@ -1,9 +1,9 @@
 (function () {
     "use strict";
+
     //Libraries
     var paper = Raphael("canvas");
     var watch = WatchJS.watch;
-
 
     /**
      * Creates an arrow
@@ -18,8 +18,8 @@
 
         function renderPath() {
             var width = (source.attr("width") / 2) || source.attr("r");
-            var sourceElement = getCenter(source);
-            var destElement = getCenter(destination);
+            var sourceElement = source.center();
+            var destElement = destination.center();
             return "M" + (sourceElement.x + width) + " " + sourceElement.y + "L" + (destElement.x - width) + " " + destElement.y;
         }
 
@@ -45,15 +45,16 @@
             });
         });
 
+        object.node.setAttribute("class", "line");
         return object;
     };
 
     /**
-     * Returns the center of an element
-     * @param element The element is either a circle or a rect
-     * @returns {*} Object of x and y
+     * Center function
+     * @returns {*}
      */
-    function getCenter(element) {
+    Raphael.el.center = function () {
+        var element = this;
         if (element) {
             var bbox = element.getBBox();
 
@@ -74,149 +75,228 @@
                 };
             }
         }
-    }
+    };
 
     /**
-     * Set the text to an element center
-     * @param element The element
-     * @param text The text to set
+     * Adds text to the element
+     * @param text
      */
-    function setText(element, text) {
-        var center = getCenter(element);
+    Raphael.el.setText = function (text) {
+        var element = this;
+        var center = element.center();
         var textElement = paper.text(center.x, center.y, text);
+        textElement.attr("font-size", 20);
 
         watch(element.attrs, ["cx", "cy", "x", "y", "path"], function () {
-            var center = getCenter(element);
+            var center = element.center();
             textElement.attr({x: center.x, y: center.y});
         })
-
-    }
+    };
 
     /**
-     * Adds drag to a rectangle
-     * @param rect The Raphael rectangle
+     * Makes an element draggable
      */
-    function addDragRectangle(rect) {
+    Raphael.el.makeDraggable = function (minX, minY, maxX, maxY) {
+        var element = this;
         var x, y;
-        rect.drag(function (dx, dy) {
-            this.attr({
-                x: Math.min(Math.max(x + dx, 0), 380),
-                y: Math.min(Math.max(y + dy, 10), 380)
-            });
+        this.drag(function (dx, dy) {
+            if (element.type === "rect") {
+                element.attr({
+                    x: Math.min(Math.max(x + dx, minX), maxX),
+                    y: Math.min(Math.max(y + dy, minY), maxY)
+                });
+            } else if (element.type === "circle") {
+                element.attr({
+                    cx: Math.min(Math.max(x + dx, minX), maxX),
+                    cy: Math.min(Math.max(y + dy, minY), maxY)
+                });
+            }
         }, function () {
-            x = this.attr("x");
-            y = this.attr("y");
+            if (element.type === "rect") {
+                x = element.attr("x");
+                y = element.attr("y");
+            } else if (element.type === "circle") {
+                x = element.attr("cx");
+                y = element.attr("cy");
+            }
         })
-    }
+    };
+
+    /**
+     * Sets the html color
+     * @param htmlColor The html color
+     */
+    Raphael.el.setColor = function (htmlColor) {
+        this.attr({
+            "fill": htmlColor
+        });
+    };
+
+    /**
+     * Sets the stroke color
+     * @param strokeColor The stroke color
+     */
+    Raphael.el.setStrokeColor = function (strokeColor) {
+        this.attr({
+            "stroke": strokeColor
+        });
+    };
+
+    /**
+     * Sets the stroke style
+     * @param strokeStyle The stroke style
+     */
+    Raphael.el.setStrokeStyle = function (strokeStyle) {
+        this.attr("stroke-dasharray", strokeStyle);
+    };
+
+    /**
+     * Adds a popover to the element
+     */
+    Raphael.el.addPopover = function () {
+        var element = this;
+        $(element.node).click(function () {
+            var btnDashedId = "btn-dashed-" + this.id;
+            var btnSolidId = "btn-solid-" + this.id;
+            $(this).popover({
+                title: null,
+                content: function () {
+                    return "<div><button class='btn btn-block' id='" + btnDashedId + "'>Dashed</button>" +
+                        "<button class='btn btn-block' id='" + btnSolidId + "'>Solid</button></div>";
+                },
+                container: 'body',
+                html: true
+            }).on('shown.bs.popover', function (event) {
+                var $popup = $('#' + $(event.target).attr('aria-describedby'));
+                var createNeighbour = function (strokeStyle) {
+                    var otherElement = null;
+                    var bbox = element.getBBox();
+                    if (element.type === "rect") {
+                        otherElement = addRectangle(bbox.x2 + 100, bbox.y);
+                    } else if (element.type === "circle") {
+                        otherElement = addCircle(bbox.x2 + 100, bbox.y);
+                    }
+
+                    var arrow = paper.arrow(element, otherElement);
+                    if (strokeStyle) {
+                        arrow.setStrokeStyle(strokeStyle);
+                    }
+                };
+
+
+                $popup.find("#" + btnDashedId).click(function () {
+                    createNeighbour("-");
+                });
+
+                $popup.find("#" + btnSolidId).click(function () {
+                    createNeighbour();
+                });
+            });
+
+        });
+    };
+
+    Raphael.el.setClassName = function (className) {
+        this.node.setAttribute("class", className);
+    };
+
 
     /**
      * Adds a Rectangle
      */
-    function addRectangle() {
+    function addRectangle(x, y) {
         var color = '#' + Math.random().toString(16).substr(-6);
 
-        var rect = paper.rect(10, 10, 80, 80);
-        rect.attr({
-            "fill": color
-        });
-        addDragRectangle(rect);
-        setText(rect, "Rect");
+        var rect = paper.rect(x || 10, y || 10, 80, 80);
+        rect.setColor(color);
+
+        rect.makeDraggable(0, 10, 380, 380);
+        rect.setText("Rect");
+        rect.addPopover();
+
+        return rect;
     }
 
     /**
-     * Inits the rectangles
+     * <canvas id="canvas" width="800px" height="600px"></canvas>nts the rectangles
      */
     function initRectangles() {
-        var rectLeft = paper.rect(10, 10, 80, 80);
-        var rectRight = paper.rect(380, 10, 80, 80);
-        rectLeft.attr({
-            "fill": "#999999",
-            "stroke": "#000"
-        });
+        var rectLeft = paper.rect(20, 10, 80, 80);
+        rectLeft.setStrokeColor("#000");
+        rectLeft.makeDraggable(0, 10, 380, 380);
+        rectLeft.setColor("#d3d3d3");
+        rectLeft.setText("Rect");
 
-        rectRight.attr({
-            "fill": "#999999",
-            "stroke": "#000",
-            "stroke-dasharray": "-"
-        });
+        var rectRight = paper.rect(400, 10, 80, 80);
+        rectRight.makeDraggable(0, 10, 380, 380);
+        rectRight.setColor("#d3d3d3");
+        rectRight.setText("Rect");
+        rectRight.setStrokeStyle("- ");
+        rectRight.node.setAttribute("class", "rectRight");
 
-        addDragRectangle(rectLeft);
-        addDragRectangle(rectRight);
-        setText(rectLeft, "Rect");
-        setText(rectRight, "Rect");
         var arrow = paper.arrow(rectLeft, rectRight);
 
-        setText(arrow, "Label");
+        arrow.setText("Label");
         $("#addRectBtn").click(function () {
-            addRectangle()
-        });
-    }
-
-    /**
-     * Adds drag functionality to circles
-     * @param circle The circle
-     */
-    function addDragCircle(circle) {
-        var x, y;
-        circle.drag(function (dx, dy) {
-            this.attr({
-                cx: Math.min(Math.max(x + dx, 50), 420),
-                cy: Math.min(Math.max(y + dy, 50), 420)
-            });
-        }, function () {
-            x = this.attr("cx");
-            y = this.attr("cy");
+            addRectangle(500 / 2 - 40, 500 / 2 - 40)
         });
     }
 
     /**
      * Adds a circle
      */
-    function addCircle() {
+    function addCircle(x, y) {
         var color = '#' + Math.random().toString(16).substr(-6);
 
-        var circle = paper.circle(50, 50, 40);
-        circle.attr({
-            "fill": color
-        });
-        addDragCircle(circle);
-        setText(circle, "Circle");
-    }
+        var circle = paper.circle(x || 50, y || 50, 40);
+        circle.setColor(color);
+        circle.makeDraggable(50, 50, 420, 420);
+        circle.setText("Circle");
+        circle.node.setAttribute("id", circle.id);
+        circle.addPopover();
 
+        return circle;
+    }
 
     /**
      * Inits the circles
      */
     function initCircles() {
-        var circleLeft = paper.circle(50, 420, 40);
-        var circleRight = paper.circle(410, 420, 40);
+        var circleLeft = paper.circle(60, 440, 40);
+        circleLeft.setColor("#FFF");
+        circleLeft.setStrokeColor("#000");
+        circleLeft.makeDraggable(40, 50, 440, 440);
+        circleLeft.setText("Circle");
 
-        circleLeft.attr({
-            "fill": "#FFF",
-            "stroke": "#000"
-        });
-
-        circleRight.attr({
-            "fill": "#FFF",
-            "stroke": "#000"
-        });
-
-        addDragCircle(circleLeft);
-        addDragCircle(circleRight);
-
-        setText(circleLeft, "Circle");
-        setText(circleRight, "Circle");
+        var circleRight = paper.circle(440, 440, 40);
+        circleRight.setColor("#FFF");
+        circleRight.setStrokeColor("#000");
+        circleRight.makeDraggable(50, 50, 440, 440);
+        circleRight.setText("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
-        arrow.attr("stroke-dasharray", "-");
+        arrow.setClassName("circleArrow");
+        arrow.attr("stroke-dasharray", "- ");
         $("#addCircleBtn").click(function () {
-            addCircle()
+            addCircle(500 / 2, 500 / 2);
         });
     }
 
+    /**
+     * Main entry method
+     */
     function main() {
         initRectangles();
         initCircles();
+
+        $('#exportBtn').click(function () {
+            var downloadWindow = window.open("Image", "Image from Raphael");
+            downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
+            var svg = document.getElementById("canvas").innerHTML;
+            canvg(downloadWindow.document.getElementById("canvas"), svg);
+            var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
+            downloadWindow.location = dataURL;
+        });
     }
 
     main();

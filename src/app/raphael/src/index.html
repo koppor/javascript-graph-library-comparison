@@ -7,16 +7,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-    <!-- built css files will go here... -->
-    <style type="text/css">
-        #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #000;
-        }
-    </style>
+    <link rel="stylesheet" href="app/global.css">
     <!-- endinject -->
-
 </head>
 
 <body>
@@ -45,7 +37,10 @@
                     <a href="#">Raphael<span class="sr-only">(current)</span></a>
                 </li>
                 <li>
-                    <a href="../../plumbjs/src/index.html">JSPlumb</a>
+                    <a href="../../draw2d/src/index.html">Draw2d</a>
+                </li>
+                <li>
+                    <a href="../../jsplumb/src/index.html">JSPlumb</a>
                 </li>
                 <li>
                     <a href="../../jointjs/src/index.html">JointJS</a>
@@ -54,9 +49,24 @@
                 <li>
                     <a href="../../fabric/src/index.html">Fabric</a>
                 </li>
+                <li>
+                    <a href="../../d3js/src/index.html">D3</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/raphael" target="_blank">Source-Code</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Actions<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
+                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -64,16 +74,13 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-
 <div class="container-fluid" id="canvas">
-    <button id="addRectBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
-    <button id="addCircleBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle
-    </button>
 </div>
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/eve-raphael/eve.js"></script>
 <script src="bower_components/Watch.JS/src/watch.js"></script>
+<script src="bower_components/canvg/dist/canvg.bundle.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/raphael/raphael.min.js"></script>
 <!-- endinject -->

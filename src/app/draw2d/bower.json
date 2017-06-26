@@ -1,0 +1,28 @@
+{
+  "name": "draw2d",
+  "homepage": "https://github.com/axfrank/GraphLibComp",
+  "authors": [
+    "Birasanth Pushpanathan <birasanth.push@hotmail.de>"
+  ],
+  "description": "Draw2d libary demo page",
+  "main": "src/index.html",
+  "keywords": [
+    "draw2d",
+    "graphic"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "raphael": "^2.2.7",
+    "draw2d": "^6.1.66",
+    "bootstrap": "^3.3.7"
+  }
+}

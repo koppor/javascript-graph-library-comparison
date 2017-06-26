@@ -9,14 +9,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-    <!-- built css files will go here... -->
-    <style type="text/css">
-        #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #000;
-        }
-    </style>
+    <link rel="stylesheet" href="app/global.css">
     <!-- endinject -->
 
 </head>
@@ -47,7 +40,10 @@
                     <a href="../../raphael/src/index.html">Raphael</a>
                 </li>
                 <li>
-                    <a href="../../plumbjs/src/index.html">JSPlumb</a>
+                    <a href="../../draw2d/src/index.html">Draw2d</a>
+                </li>
+                <li>
+                    <a href="../../jsplumb/src/index.html">JSPlumb</a>
                 </li>
                 <li>
                     <a href="../../jointjs/src/index.html">JointJS</a>
@@ -58,7 +54,20 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/paperjs" target="_blank">Source-Code</a></li>
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/paperjs" target="_blank">Source-Code</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Actions<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
+                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -66,43 +75,18 @@
     <!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
-            <canvas id="canvas">
-            </canvas>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <button type="button" id="newField">New rectangle</button>
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-            <button type="button" id="newField2">New circle</button>
-        </div>
-    </div>
+<div class="container">
+    <canvas id="paperjsCanvas">
+    </canvas>
 </div>
+
 <!-- bower:js -->
-<!--<script type="text/javascript" src="bower_components/paper/dist/paper-core.js"></script> -->
-<!-- inject:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/paper/dist/paper-full.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script type="text/javascript" src="bower_components/paper/dist/paper-full.js"></script>
-<script async type="text/paperscript" canvas="canvas" src="app/paper-js-demo.js"></script>
 <!-- endinject -->
+<!-- inject:js -->
+<script src="app/paper-js-demo.js"></script>
 <!-- endinject -->
 
 

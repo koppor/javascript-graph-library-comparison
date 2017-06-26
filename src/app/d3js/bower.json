@@ -1,0 +1,23 @@
+{
+  "name": "d3js",
+  "homepage": "https://github.com/axfrank/GraphLibComp",
+  "description": "BPMN Modeler Test",
+  "main": "d3js",
+  "authors": [
+    "Aretina"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "d3": "^4.9.1"
+  }
+}
