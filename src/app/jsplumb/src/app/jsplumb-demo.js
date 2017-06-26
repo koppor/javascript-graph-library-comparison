@@ -39,7 +39,8 @@
                 deleteEndpointsOnDetach: false,
                 connector: ["Straight"],
                 endpointStyle: {fill: "black"},
-                endpoints:["Blank","Blank"]
+                endpoints: ["Blank", "Blank"],
+                paintStyle: {stroke: "black", strokeWidth: 1}
 
             }, commonConnectStyle);
 
@@ -51,6 +52,7 @@
             var commonConnectStyle = {
                 anchors: ["Right", "Left"]
             };
+
             jsPlumb.draggable([circleLeftId, circleRightId], {
                 containment: true
             });
@@ -60,8 +62,8 @@
                 target: circleRightId,
                 deleteEndpointsOnDetach: false,
                 connector: ["Straight"],
-                endpoints:["Blank","Blank"]
-
+                endpoints: ["Blank", "Blank"],
+                paintStyle: {stroke: "black", strokeWidth: 1, dashstyle: "4 2"}
             }, commonConnectStyle);
         }
 
