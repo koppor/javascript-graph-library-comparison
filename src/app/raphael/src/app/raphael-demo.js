@@ -237,7 +237,6 @@
         var arrow = paper.arrow(rectLeft, rectRight);
 
         arrow.setText("Label");
-        ;
     }
 
     /**

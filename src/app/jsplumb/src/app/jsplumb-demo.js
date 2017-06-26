@@ -21,7 +21,21 @@
         }
 
         function exportAsImage() {
-            alert("export");
+            var el = $('#container').get(0);
+            html2canvas(el, {
+                onrendered: function (canvas) {
+                    var ctx = canvas.getContext('2d');
+                    var $flows = $('> svg', el);
+                    $flows.each(function () {
+                        var $svg = $(this);
+                        var offset = $svg.position();
+                        var svgStr = this.innerHTML;
+                        ctx.drawSvg(svgStr, 800, 800,100,100);
+                    });
+                    var downloadWindow = window.open("Image", "Image from JSPlumb");
+                    downloadWindow.location = canvas.toDataURL();
+                }
+            });
         }
 
         function initRectangles() {
@@ -45,7 +59,7 @@
                 paintStyle: {stroke: "black", strokeWidth: 1},
                 overlays: [["Label", {
                     label: "Label",
-                    cssClass:"connectionLabel"
+                    cssClass: "connectionLabel"
                 }]]
             }, commonConnectStyle);
         }
