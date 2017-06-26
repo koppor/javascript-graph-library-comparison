@@ -26,6 +26,7 @@
             var commonConnectStyle = {
                 anchors: ["Right", "Left"],
                 type: "Straight"
+
             };
 
             jsPlumb.draggable([rectLeftId, rectRightId], {
@@ -36,7 +37,10 @@
                 source: rectLeftId,
                 target: rectRightId,
                 deleteEndpointsOnDetach: false,
-                connector: ["Straight"]
+                connector: ["Straight"],
+                endpointStyle: {fill: "black"},
+                endpoints:["Blank","Blank"]
+
             }, commonConnectStyle);
 
         }
@@ -55,7 +59,9 @@
                 source: circleLeftId,
                 target: circleRightId,
                 deleteEndpointsOnDetach: false,
-                connector: ["Straight"]
+                connector: ["Straight"],
+                endpoints:["Blank","Blank"]
+
             }, commonConnectStyle);
         }
 
