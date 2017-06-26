@@ -24,27 +24,39 @@
     // });
 
 
+
     function initRectangles() {
-        var rectLeft = new joint.shapes.devs.Model({
+
+        var rectLeft = new joint.shapes.basic.Rect({
             position: {x: 10, y: 10},
             size: {width: 80, height: 80},
             attrs: {
-                '.label': {text: 'Rect'}
+                fill: 'lightgrey',
+                text: {text: 'Rect','ref-y': 0.5, 'y-alignment': 'middle', 'font-size': 20},
+                rect: { stroke: 'black',fill: 'lightgrey'}
             }
         });
 
-        var rectRight = new joint.shapes.devs.Model({
-            position: {x: 385, y: 10},
+        var rectRight = new joint.shapes.basic.Rect({
+            position: {x: 400, y: 10},
             size: {width: 80, height: 80},
             attrs: {
-                '.label': {text: 'Rect', 'ref-x': .5, 'ref-y': .2},
-                rect: {rx: 5, ry: 5, stroke: 'black', 'stroke-dasharray': '5'}
+                text: {text: 'Rect','ref-y': 0.5, 'y-alignment': 'middle', 'font-size': 20},
+                rect: { stroke: 'black', 'stroke-dasharray': '3',fill: 'lightgrey'}
             }
         });
 
+        var l = new joint.dia.Link({
+            source: { id: rectLeft.id },
+            target: { id: rectRight.id },
+            attrs: {
+                '.connection': { stroke: 'black' } },
+            labels: [
+                { position: 0.5, attrs: { text: { text: 'Label', 'font-size': 20} } }
+            ]
+        });
 
-        graph.addCells([rectLeft, rectRight]);
-
+        graph.addCells([rectLeft, rectRight, l]);
     }
 
     function initCircles() {
@@ -57,7 +69,7 @@
                 type: 'devs.CircleModel',
                 attrs: {
                     '.body': {r: 50, cx: 50},
-                    '.label': {text: 'Circle Model', 'ref-y': 0.5, 'y-alignment': 'middle'},
+                     text: {text: 'Circle' , 'ref-y': 0.5, 'y-alignment': 'middle', 'font-size': 20},
                     '.port-body': {width: 10, height: 10, x: -5, stroke: 'gray', fill: 'lightgray', magnet: 'active'}
                 }
 
@@ -65,41 +77,47 @@
         });
 
         joint.shapes.devs.CircleModelView = joint.shapes.devs.ModelView;
-        var circleLeft = new joint.shapes.devs.CircleModel({
-            position: {x: 10, y: 440},
+        var circleLeft = new joint.shapes.basic.Circle({
+            position: {x: 10, y: 400},
             size: {width: 80, height: 80},
-            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black'}}
+            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
 
-        var circleRight = new joint.shapes.devs.CircleModel({
-            position: {x: 390, y: 440},
+        var circleRight = new joint.shapes.basic.Circle({
+            position: {x: 400, y: 400},
             size: {width: 80, height: 80},
-            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black'}}
+            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
 
-        graph.addCells([circleLeft, circleRight]);
+        var l = new joint.dia.Link({
+            source: { id: circleLeft.id },
+            target: { id: circleRight.id },
+            attrs: {
+                '.label': {text: 'Label'},
+                '.connection': { 'stroke-dasharray': 3, stroke: 'black' } }
+        });
+
+        graph.addCells([circleLeft, circleRight,l]);
 
     }
 
     function addRectangle() {
-        var rect = new joint.shapes.devs.Model({
+        var rect = new joint.shapes.basic.Rect({
             position: {x: 500 / 2, y: 500 / 2},
             size: {width: 80, height: 80},
             attrs: {
-                '.label': {text: 'Rect'},
+                text: {text: 'Circle', fill: 'black', 'font-size': 20}
             }
-
         });
         graph.addCells([rect]);
 
     }
 
     function addCircle() {
-        var circle = new joint.shapes.devs.CircleModel({
+        var circle = new joint.shapes.basic.Circle({
             position: {x: 500 / 2, y: 500 / 2},
             size: {width: 80, height: 80},
-            '.label': {text: 'Circle'},
-            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black'}}
+            attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
         graph.addCells([circle]);
     }
@@ -125,7 +143,7 @@
         });
 
         $("#exportBtn").click(function () {
-            exportAsImage()
+            exportAsImage();
         });
     }
 
