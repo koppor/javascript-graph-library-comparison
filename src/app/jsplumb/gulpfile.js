@@ -20,9 +20,11 @@ gulp.task('browser-sync', function () {
  */
 gulp.task('index', function () {
     gulp.src('src/index.html')
-        .pipe(inject(gulp.src(mainBowerFiles(), { read: false }), { name: 'bower', relative: true }))
+        .pipe(inject(gulp.src(mainBowerFiles(), {read: false}), {name: 'bower', relative: true}))
         .pipe(gulp.dest('./src'))
-        .pipe(inject(gulp.src('./src/app/**/*.js', { read: false }), { relative: true }))
+        .pipe(inject(gulp.src('./src/app/**/*.js', {read: false}), {relative: true}))
+        .pipe(gulp.dest('./src'))
+        .pipe(inject(gulp.src('./src/app/**/*.css', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'));
 });
 

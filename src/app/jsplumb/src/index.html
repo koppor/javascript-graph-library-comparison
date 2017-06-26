@@ -4,26 +4,10 @@
 <head>
     <title>GraphLibComp</title>
     <!-- bower:css -->
-    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
-
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-    <!-- built css files will go here... -->
-    <style type="text/css">
-
-        #buttons {
-            width: 500px;
-            height: 500px;
-        }
-
-        #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #000;
-            position: relative;
-        }
-    </style>
+    <link rel="stylesheet" href="app/global.css">
     <!-- endinject -->
 </head>
 
@@ -66,6 +50,22 @@
                     <a href="../../fabric/src/index.html">Fabric</a>
                 </li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/jsplumb" target="_blank">Source-Code</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Actions<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
+                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -76,21 +76,14 @@
 <div class="container-fluid" id="canvas">
 </div>
 <br>
-<div class="container-fluid" id="buttons">
-
-    <button id="addRectBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
-    <button id="addCircleBtn" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
-</div>
 
 <!-- bower:js -->
-<link href="app.css" rel="stylesheet">
 <script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script type="text/javascript" src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
-<script async type="text/javascript" src="app/jquery.validate.js"></script>
-<script async type="text/javascript" src="app/additional-methods.js"></script>
-<script async type="text/javascript" src="app/plumbjs-demo.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="app/jsplumb-demo.js"></script>
 <!-- endinject -->
 </body>
 </html>

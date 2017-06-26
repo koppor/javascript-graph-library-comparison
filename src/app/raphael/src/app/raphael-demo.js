@@ -237,9 +237,7 @@
         var arrow = paper.arrow(rectLeft, rectRight);
 
         arrow.setText("Label");
-        $("#addRectBtn").click(function () {
-            addRectangle(500 / 2 - 40, 500 / 2 - 40)
-        });
+        ;
     }
 
     /**
@@ -277,9 +275,16 @@
         var arrow = paper.arrow(circleLeft, circleRight);
         arrow.setClassName("circleArrow");
         arrow.attr("stroke-dasharray", "- ");
-        $("#addCircleBtn").click(function () {
-            addCircle(500 / 2, 500 / 2);
-        });
+    }
+
+    function exportAsImage() {
+        var downloadWindow = window.open("Image", "Image from Raphael");
+        downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
+        var svg = document.getElementById("canvas").innerHTML;
+        canvg(downloadWindow.document.getElementById("canvas"), svg);
+        var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
+        downloadWindow.location = dataURL;
+
     }
 
     /**
@@ -289,14 +294,15 @@
         initRectangles();
         initCircles();
 
-        $('#exportBtn').click(function () {
-            var downloadWindow = window.open("Image", "Image from Raphael");
-            downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
-            var svg = document.getElementById("canvas").innerHTML;
-            canvg(downloadWindow.document.getElementById("canvas"), svg);
-            var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
-            downloadWindow.location = dataURL;
+        $("#addRectBtn").click(function () {
+            addRectangle(500 / 2 - 40, 500 / 2 - 40)
         });
+
+        $("#addCircleBtn").click(function () {
+            addCircle(500 / 2, 500 / 2);
+        });
+
+        $('#exportBtn').click(exportAsImage);
     }
 
     main();
