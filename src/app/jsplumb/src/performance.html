@@ -30,24 +30,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="../../paperjs/src/index.html">PaperJs</a>
-                </li>
-                <li>
-                    <a href="../../raphael/src/index.html">Raphael</a>
-                </li>
-                <li>
-                    <a href="../../draw2d/src/index.html">Draw2d</a>
-                </li>
                 <li class="active">
-                    <a href="#">JSPlumb<span class="sr-only">(current)</span></a>
-                </li>
-                <li>
-                    <a href="../../jointjs/src/index.html">JointJS</a>
-                </li>
-
-                <li>
-                    <a href="../../fabric/src/index.html">Fabric</a>
+                    <a href="index.html"><span class="glyphicon glyphicon-chevron-left"></span> Back to JSPlumb</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -61,21 +45,40 @@
 </nav>
 
 <div id="container" class="container-fluid">
-    <div class="row inputForm">
-        <div class="form-group">
-            <label for="xInput">X-Value:</label>
-            <input class="form-control" id="xInput" type="number" min="1" max="100">
-        </div>
-        <div class="form-group">
-            <label for="yInput">Y-Value:</label>
-            <input class="form-control" id="yInput" type="number" min="1" max="100">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="xInput">X-Value:</label>
+                <input class="form-control" id="xInput" type="number" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="yInput">Y-Value:</label>
+                <input class="form-control" id="yInput" type="number" min="1" max="100">
+            </div>
+            <button id="generateBtn" class="btn btn-lg btn-block btn-primary">Generate Grid</button>
+
         </div>
 
-        <button id="generateBtn" class="btn btn-primary">Generate Grid</button>
+        <div class="col-lg-6">
+            <h4 style="text-align: center">Generates a X * Y Grid.</h4>
+            <p class="alert alert-info">Min Value: 1</p>
+            <p class="alert alert-info">Max Value: 100</p>
+            <div id="information" class="hidden">
+                <p id="nodeCount" class="alert alert-info">Nodes</p>
+                <p id="timeTaken" class="alert alert-info">Time Taken</p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: 0%">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <br>
-    <div class="row" id="jsplumb">
-    </div>
+    <div class="row" id="jsplumb"></div>
 </div>
 <!-- bower:js -->
 
