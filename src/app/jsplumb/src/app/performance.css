@@ -3,14 +3,12 @@
     position: relative;
     height: 10000px;
     width: 10000px;
-    padding: 20px;
-    /*border: 1px solid black*/
-}
-
-#container {
-    height: 100%;
-    width: 100%;
-    overflow: visible;
+    border: 1px solid #000;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .inputForm {
@@ -27,4 +25,5 @@
     position: absolute;
     background-color: lightgray;
     border: 1px solid #000;
+    position: absolute;
 }

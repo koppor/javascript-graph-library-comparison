@@ -15,13 +15,11 @@
 
 
         function generateGrid() {
-            var neighbour = null;
-            var line = [];
-            var height = 0;
             var y = parseInt($("#yInput").val(), 10);
             var x = parseInt($("#xInput").val(), 10);
+            var height = 0;
             var connect = function (source, target) {
-                var commonConnectStyle = {anchors: ["Right", "Left"]};
+                var commonConnectStyle = {anchors: ["Right", "Left", "Top", "Bottom"]};
                 jsPlumb.connect({
                     source: source,
                     target: target,
@@ -32,11 +30,14 @@
                     paintStyle: {stroke: "black", strokeWidth: 1}
                 }, commonConnectStyle);
 
+            };
 
-            }
+            //Remove all elements from container
+            jsPlumb.empty("jsplumb");
 
             for (var i = 0; i < y; i++) {
                 height = i * 100;
+                var neighbour = null;
                 for (var j = 0; j < x; j++) {
                     var id = "rect-" + i + "-" + j;
                     var $newRect = addRectangle(j * 100, height, id);
@@ -51,7 +52,6 @@
 
                     neighbour = $newRect;
                 }
-                neighbour = null;
             }
         }
 
