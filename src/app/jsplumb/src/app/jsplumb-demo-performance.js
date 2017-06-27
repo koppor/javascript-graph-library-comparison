@@ -14,7 +14,6 @@
             var $newRect = $('<div id="' + id + '" class="common" style="left:' + x + 'px; top:' + y + 'px ;"></div>');
             $("#jsplumb").append($newRect);
             jsPlumb.draggable($newRect, {containment: true});
-            return $newRect;
         }
 
         function connect(source, target, anchors) {
@@ -50,21 +49,18 @@
             var start = performance.now();
             for (var i = 0; i < y; i++) {
                 height = i * 100;
-                var neighbour = null;
                 for (var j = 0; j < x; j++) {
                     var id = "rect-" + i + "-" + j;
-                    var $newRect = addRectangle(j * 100, height, id);
-                    if (neighbour !== null) {
-                        connect($newRect, neighbour, ["Left", "Right"])
+                    addRectangle(j * 100, height, id);
+                    if (j > 0) {
+                        var neighbour = "rect-" + i + "-" + (j - 1);
+                        connect(id, neighbour, ["Left", "Right"])
                     }
 
                     if (i > 0) {
                         var topNeighbour = "rect-" + (i - 1) + "-" + j;
-                        connect($newRect, topNeighbour, ["Top", "Bottom"]);
+                        connect(id, topNeighbour, ["Top", "Bottom"]);
                     }
-
-                    neighbour = $newRect;
-
                 }
                 console.log("Rendered: " + ((i / y) * 100).toFixed() + "%");
             }
