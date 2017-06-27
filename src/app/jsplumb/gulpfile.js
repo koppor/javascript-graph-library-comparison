@@ -26,7 +26,16 @@ gulp.task('index', function () {
         .pipe(gulp.dest('./src'))
         .pipe(inject(gulp.src('./src/app/**/*.css', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'));
+
+    gulp.src('src/performance.html')
+        .pipe(inject(gulp.src(mainBowerFiles(), {read: false}), {name: 'bower', relative: true}))
+        .pipe(gulp.dest('./src'))
+        .pipe(inject(gulp.src('./src/app/**/*performance*.js', {read: false}), {relative: true}))
+        .pipe(gulp.dest('./src'))
+        .pipe(inject(gulp.src('./src/app/**/*performance*.css', {read: false}), {relative: true}))
+        .pipe(gulp.dest('./src'));
 });
+
 
 
 gulp.task('default', ['index', 'browser-sync']);

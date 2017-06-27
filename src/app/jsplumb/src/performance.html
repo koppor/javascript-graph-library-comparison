@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="app/global.css">
+    <link rel="stylesheet" href="app/performance.css">
     <!-- endinject -->
 </head>
 
@@ -54,51 +54,44 @@
                 <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/jsplumb" target="_blank">Source-Code</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Actions<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
-                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a id="performance"> <span class="glyphicon glyphicon-fire"></span> Performance</a></li>
-                    </ul>
-                </li>
-            </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
+<div id="container" class="container-fluid">
+    <div class="row inputForm">
+        <div class="form-group">
+            <label for="xInput">X-Value:</label>
+            <input class="form-control" id="xInput" type="number" min="1" max="100">
+        </div>
+        <div class="form-group">
+            <label for="yInput">Y-Value:</label>
+            <input class="form-control" id="yInput" type="number" min="1" max="100">
+        </div>
 
-<div class="container-fluid" id="container">
-    <div id="rectLeft" class="common rectCommon rectLeft">
-        Rect
-    </div>
-    <div id="rectRight" class="common rectCommon rectRight">
-        Rect
-    </div>
-    <div id="circleLeft" class="common circleCommon circleLeft">
-        Circle
-    </div>
-    <div id="circleRight" class="common circleCommon circleRight">
-        Circle
+        <button id="generateBtn" class="btn btn-primary">Generate Grid</button>
     </div>
 </div>
+<div id="jsplumb">
+</div>
 <!-- bower:js -->
+
 <script src="bower_components/jquery/dist/jquery.js"></script>
+
 <script src="bower_components/jsplumb/dist/js/jsplumb.js"></script>
+
 <script src="bower_components/canvg/dist/canvg.bundle.js"></script>
+
 <script src="bower_components/canvg/dist/canvg.bundle.min.js"></script>
+
 <script src="bower_components/html2canvas/build/html2canvas.js"></script>
+
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
 <!-- endinject -->
 <!-- inject:js -->
 <script src="app/jsplumb-demo-performance.js"></script>
-<script src="app/jsplumb-demo.js"></script>
 <!-- endinject -->
 </body>
 </html>

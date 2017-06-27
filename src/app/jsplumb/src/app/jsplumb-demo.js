@@ -44,7 +44,6 @@
             var commonConnectStyle = {
                 anchors: ["Right", "Left"],
                 type: "Straight"
-
             };
 
             jsPlumb.draggable([rectLeftId, rectRightId], {containment: true});
