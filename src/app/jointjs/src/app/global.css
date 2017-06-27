@@ -9,29 +9,5 @@
     display: block;
 }
 
-/**
-Style for all elements
- */
-rect {
-    fill: lightgrey !important;
-    stroke-dasharray: black !important;
-}
 
-circle {
-    fill: white !important;
-}
 
-text {
-    font-size: 20px !important;
-}
-
-/**
-Custom style for preview elements
-*/
-.rectRight {
-    stroke-dasharray: 5;
-}
-
-.circleArrow {
-    stroke-dasharray: 5;
-}

@@ -6,15 +6,8 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
-    <!-- inject:css -->
-    <!-- built css files will go here... -->
-	    <style type="text/css">
-        #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid #000;
-        }
-    </style>
+      <!-- inject:css -->
+    <link rel="stylesheet" href="app/global.css">
     <!-- endinject -->
 
 </head>
@@ -57,25 +50,34 @@
                 <li class="active">
                     <a href="#">Fabric<span class="sr-only">(current)</span></a>
                 </li>
+                <li>
+                    <a href="../../d3js/src/index.html">D3</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/fabric" target="_blank">Source-Code</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Actions<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
+                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->
 </nav>
+<div id="canvas">
+<canvas class="container-fluid" id="canvas2" class="container-fluid" width="500px" height="500px" position="center" touch-action="yes">
 
-<div class="container-fluid">
-
-	<canvas id="canvas" class="container-fluid" width="500px" height="500px" position="center">
-	</canvas>
-    <button id="b" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
-    <button id="b1" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle</button>
-	
-	<button id="b2" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Arrow</button>
-    <button id="b3" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Dotted Arrow</button>
+</canvas>
 </div>
 
 <!-- bower:js -->

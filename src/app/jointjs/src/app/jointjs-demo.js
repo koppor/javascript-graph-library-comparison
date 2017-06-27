@@ -3,18 +3,14 @@
  */
 (function () {
     "use strict";
-
+    var canvas = $('#canvas');
     var graph = new joint.dia.Graph();
     var paper = new joint.dia.Paper({
-        el: $('#canvas'),
-        width: $('#canvas').outerWidth(),
-        height: $('#canvas').outerHeight(),
+        el: canvas,
+        width: canvas.width(),
+        height: canvas.height(),
         model: graph,
-        defaultLink: new joint.dia.Link({
-            attrs: {
-                '.marker-target': {d: 'M 10 0 L 0 5 L 10 10 z'}
-            }
-        })
+
     });
 
     //
@@ -25,10 +21,11 @@
 
 
 
+
     function initRectangles() {
 
         var rectLeft = new joint.shapes.basic.Rect({
-            position: {x: 10, y: 10},
+            position: {x: 20, y: 10},
             size: {width: 80, height: 80},
             attrs: {
                 fill: 'lightgrey',
@@ -51,8 +48,9 @@
             target: { id: rectRight.id },
             attrs: {
                 '.connection': { stroke: 'black' } },
-            labels: [
-                { position: 0.5, attrs: { text: { text: 'Label', 'font-size': 20} } }
+                labels: [
+                {  attrs: { text: { text: 'Label', 'font-size': 20 } } ,
+                    position: 0.5}
             ]
         });
 
@@ -60,25 +58,9 @@
     }
 
     function initCircles() {
-        joint.shapes.devs.CircleModel = joint.shapes.devs.Model.extend({
 
-            markup: '<g class="rotatable"><g class="scalable"><circle class="body"/></g><text class="label"/><g class="inPorts"/><g class="outPorts"/></g>',
-            portMarkup: '<g class="port port<%= id %>"><rect class="port-body"/><text class="port-label"/></g>',
-
-            defaults: joint.util.deepSupplement({
-                type: 'devs.CircleModel',
-                attrs: {
-                    '.body': {r: 50, cx: 50},
-                     text: {text: 'Circle' , 'ref-y': 0.5, 'y-alignment': 'middle', 'font-size': 20},
-                    '.port-body': {width: 10, height: 10, x: -5, stroke: 'gray', fill: 'lightgray', magnet: 'active'}
-                }
-
-            }, joint.shapes.devs.Model.prototype.defaults)
-        });
-
-        joint.shapes.devs.CircleModelView = joint.shapes.devs.ModelView;
         var circleLeft = new joint.shapes.basic.Circle({
-            position: {x: 10, y: 400},
+            position: {x: 20, y: 400},
             size: {width: 80, height: 80},
             attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
@@ -103,10 +85,10 @@
 
     function addRectangle() {
         var rect = new joint.shapes.basic.Rect({
-            position: {x: 500 / 2, y: 500 / 2},
+            position: {x: (500 / 2) -50, y: (500 / 2)-50},
             size: {width: 80, height: 80},
             attrs: {
-                text: {text: 'Circle', fill: 'black', 'font-size': 20}
+                text: {text: 'Rect', fill: 'black', 'font-size': 20}
             }
         });
         graph.addCells([rect]);
@@ -115,7 +97,7 @@
 
     function addCircle() {
         var circle = new joint.shapes.basic.Circle({
-            position: {x: 500 / 2, y: 500 / 2},
+            position: {x: (500 / 2) -50, y: (500 / 2)-50},
             size: {width: 80, height: 80},
             attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
