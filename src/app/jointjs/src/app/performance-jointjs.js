@@ -10,8 +10,8 @@
 
     var paper = new joint.dia.Paper({
         el: canvas2,
-        width: 1800,
-        height: 1800,
+        width: 50000,
+        height: 50000,
         model: graph,
         defaultLink: new joint.dia.Link({
             attrs: {

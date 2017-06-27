@@ -1,292 +1,210 @@
 (function(){
+    "use strict";
 
-	var canvas = new fabric.Canvas('canvas');	
+	var canvas = new fabric.Canvas('canvas2');
 	//1.Rectangle
 	var rect = new fabric.Rect({
-	  top: 130,
-	  left: 10,
-	  width: 100,
-	  height: 100,
-	  fill: 'gray',
-	  stroke: '#99999',
-	});
+	  top: 10,
+	  left: 5,
+	  width: 80,
+	  height: 80,
+	  fill: 'lightgrey',
+        stroke: 'black'
+
+});
 
 	var text = new fabric.Text('Rect', {
-	  fontSize: 30,
-	  top: 130,
-	  left: 10,
+	  fontSize: 20,
+        top: 40,
+        left: 25
+
 	});
 
 	var group0 = new fabric.Group([ rect, text ], {
-	  left: 10,
-	  top: 130,
-	  angle: 0
+        fontFamily: 'sans-serif'
 	});
-
-	canvas.add(group0);
 
 
 	//2.Rectangle
-	var rect = new fabric.Rect({
-	  top: 130,
-	  left: 338,
-	  width: 100,
-	  height: 100,
-	  fill: 'gray',
-	  stroke: '#99999',
+	var rect2 = new fabric.Rect({
+        top: 10,
+        left: 400,
+        width: 80,
+        height: 80,
+        fill: 'lightgrey',
 	  strokeWidth: 2,
-	  strokeDashArray: [7,5]
+        stroke: 'black',
+	  strokeDashArray: [5,5]
+
 	});
 
-	var text = new fabric.Text('Rect', {
-	  fontSize: 30,
-	  top: 130,
-	  left: 338
+	var text8 = new fabric.Text('Rect', {
+	  fontSize: 20,
+	  top: 40,
+	  left: 420
+
 	});
 
-	var group1 = new fabric.Group([ rect, text ], {
-	  left: 338,
-	  top: 130,
-	  angle: 0
+	var group1 = new fabric.Group([ rect2, text8 ], {
+        fontFamily: 'sans-serif'
 	});
 
-	canvas.add(group1);
+
+    //1.Line
+    var line = new fabric.Line([200, 180, 515, 180], {
+        left: rect.width+5,
+        top: rect.height/2 +10,
+        stroke: 'black'
+    });
+/*
+    //1.Triangle
+    var triangle = new fabric.Triangle({
+        width: 20, height: 30, angle: 90, fill: 'black', left: 400, top: 40
+    });
+*/
+    //1.Text
+    var text2 = new fabric.Text('Label', {
+        fontSize: 20,
+        left: 210,
+        top: 40
+    });
+
+    var group4 = new fabric.Group([ line, text2 ], {
+        fontFamily: 'sans-serif'
+    });
+
+
+    var group17 = new fabric.Group([group0,group1,group4],{
+        fontFamily: 'sans-serif'
+    });
+    canvas.add(group17);
 
 	//1.Circle
 	var circle = new fabric.Circle({ 
-		radius: 50,
-		fill: '#FFF',
-		originX: 'center',
-		originY: 'center',
-		stroke: '#000'
+		radius: 40,
+        top: 400,
+        left: 10,
+        fill: '#FFF',
+        stroke: '#000'
 	});
 
-	var text = new fabric.Text('Circle', {
-	  fontSize: 30,
-	  originX: 'center',
-	  originY: 'center'
+	var textCircle1 = new fabric.Text('Circle', {
+	  fontSize: 20,
+        top: 430,
+        left: 25
+
 	});
 
-	var group2 = new fabric.Group([ circle, text ], {
-	  left: 10,
-	  top: 300,
-	  angle: 0
+	var group2 = new fabric.Group([ circle,textCircle1 ], {
+        fontFamily: 'sans-serif'
 	});
-
-	canvas.add(group2);
 
 	//2.Circle
-	var circle = new fabric.Circle({ 
-		radius: 50,
-		fill: '#FFF',
-		originX: 'center',
-		originY: 'center',
-		stroke: '#000'
+    var circle2 = new fabric.Circle({
+        radius: 40,
+        fill: '#FFF',
+        stroke: '#000',
+        top: 400,
+        left: 400
+    });
+
+    var text4 = new fabric.Text('Circle', {
+        top: 430,
+        left: 415,
+	  fontSize: 20
+
 	});
 
-	var text = new fabric.Text('Circle', {
-	  fontSize: 30,
-	  originX: 'center',
-	  originY: 'center'
+	var group3 = new fabric.Group([ circle2,text4 ], {
+        fontFamily: 'sans-serif'
 	});
 
-	var group3 = new fabric.Group([ circle, text ], {
-	  left: 338,
-	  top: 300,
-	  angle: 0
-	});
+    var linieCircle = new fabric.Line([400, 180, 740, 180], {
+        left: circle.width+10,
+        top: 440,
+        length: 800,
+        stroke: 'black',
+        strokeDashArray: [5,5]
+    });
 
-	canvas.add(group3);
-
-	//1.Line
-	function makeLine(coords) {
-		return new fabric.Line(coords, {
-		  fill: 'black',
-		  stroke: 'black',
-		  strokeWidth: 3,
-		  selectable: true
-		});
-	  }
-
-	  var line = makeLine([ 200, 180, 400, 180]);
-	  
-	  //1.Triangle
-	  var triangle = new fabric.Triangle({
-	  width: 20, height: 30, angle: 90, fill: 'black', left: 430, top: 170
-		});
-	  
-	  //1.Text
-	  var text = new fabric.Text('Label', {
-		fontSize: 30,
-		left: 250,
-		top: 150
-	  });
-	  
-	  var group4 = new fabric.Group([ line, triangle, text ], {
-		left: 110,
-		top: 150,
-		angle: 0
-	 });
-
-	 canvas.add(group4);
-		
-	 //2. Dotted Line
-	function makeLineTwo(coords) {
-		return new fabric.Line(coords, {
-			stroke: 'black',
-			strokeWidth: 3,
-			strokeDashArray: [5,5],
-			selectable: true	  
-		});
-	}
-	  
-	var line = makeLineTwo([ 200, 345, 400, 345]);
-	  
+/*
 	//2.Triangle
 	var triangle = new fabric.Triangle({
 		width: 20, height: 30, angle: 270, fill: 'black', left: 165, top: 358
 	});
 
-	//2.Text
-	var text = new fabric.Text('Label', {
-		fontSize: 30,
-		left: 250,
-		top: 310
-	});
-
-	var group5 = new fabric.Group([ line, triangle, text], {
-		left: 110,
-		top: 310,
-		angle: 0
-	});
+*/
+	var group5 = new fabric.Group([ linieCircle,group3,group2], {});
 
 	canvas.add(group5);
 		
 		//Add rectangle
-		$("#b").click(function(){
-		
-		var rect = new fabric.Rect({
-		  top: 10,
-		  left: 10,
-		  width: 100,
-		  height: 100,
-		  fill: 'gray',
-		  stroke: '#99999'
-		  
-		});
+		$("#addRectBtn").click(function(){
 
-		var text = new fabric.Text('Rect', {
-		  fontSize: 30,
-		  top: 10,
-		  left: 10,
-		});
+            var rect = new fabric.Rect({
+                top: 200,
+                left: 220,
+                width: 80,
+                height: 80,
+                fill: 'lightgrey ',
+                stroke: 'black'
+            });
+
+
+            var text = new fabric.Text('Rect', {
+                fontSize: 20,
+                top: 230,
+                left: 240,
+                fontFamily: 'sans-serif'
+            });
 
 		var groupRect = new fabric.Group([ rect, text ], {
-		  left: 10,
-		  top: 10,
-		  angle: 0
+            fontFamily: 'sans-serif'
+
 		});
 
 		canvas.add(groupRect);
 		});
 		
 		//Add circle
-		$("#b1").click(function(){
-		
-		var circle = new fabric.Circle({ 
-		radius: 50,
-		fill: '#FFF',
-		originX: 'center',
-		originY: 'center',
-		stroke: '#000'
-		});
-		
-		var text = new fabric.Text('Circle', {
-		fontSize: 30,
-		originX: 'center',
-		originY: 'center'
-		});
+		$("#addCircleBtn").click(function(){
+            var circle = new fabric.Circle({
+                radius: 40,
+                fill: '#FFF',
+                stroke: '#000',
+                top: 200,
+                left: 220
+            });
+
+            var text = new fabric.Text('Circle', {
+                top: 230,
+                left: 235,
+                fontSize: 20
+
+            });
 
 		var groupCircle = new fabric.Group([ circle, text ], {
-		left: 10,
-		top: 10,
-		angle: 0
+            fontFamily: 'sans-serif'
+
 		});
 		canvas.add(groupCircle);
 		});
 		
-		
-		
+
 		//Add arrow
-		$("#b2").click(function(){
+		$("#exportBtn").click(function(){
+            var downloadWindow = window.open("Image", "Image from FabricJS");
+            downloadWindow.document.write('<canvas id="canvas2" width="500px" height="500px"></canvas>');
+            var svg = document.getElementById("canvas2").innerHTML;
+            canvg(downloadWindow.document.getElementById("canvas2"), svg);
+            var dataURL = downloadWindow.document.getElementById("canvas2").toDataURL();
 		//Line
-		function makeLine(coords) {
-			return new fabric.Line(coords, {
-			fill: 'black',
-			stroke: 'black',
-			strokeWidth: 3,
-			selectable: true
-			});
-		}
 
-		var line = makeLine([ 200, 180, 400, 180]);
-	  
-		//Triangle
-		var triangle = new fabric.Triangle({
-			width: 20, height: 30, angle: 90, fill: 'black', left: 430, top: 170
-		});
-	  
-		//Text
-		var text = new fabric.Text('Label', {
-			fontSize: 30,
-			left: 250,
-			top: 150
-		});
-	  
-		var groupArrow = new fabric.Group([ line, triangle, text ], {
-			left: 10,
-			top: 10,
-			angle: 0
 		});
 
-		canvas.add(groupArrow);
+
+
 		
-		});
-		
-		//Add dotted arrow
-		$("#b3").click(function(){
-		//Add Line	
-		function makeLineTwo(coords) {
-		return new fabric.Line(coords, {
-		  stroke: 'black',
-		  strokeWidth: 3,
-		  strokeDashArray: [5,5],
-		  selectable: true	  
-			});
-		}
-	  
-		var line = makeLineTwo([ 160, 345, 362, 345]);
-		  
-		//2.Triangle
-		var triangle = new fabric.Triangle({
-		width: 20, height: 30, angle: 270, fill: 'black', left: 130, top: 358
-		});
 
-		//2.Text
-		var text = new fabric.Text('Label', {
-		fontSize: 30,
-		left: 200,
-		top: 310
-		});
-
-		var groupDottedLine = new fabric.Group([ line, triangle, text], {
-		left: 10,
-		top: 10,
-		angle: 0
-		});
-
-		canvas.add(groupDottedLine);
-		
-		});
 		
 })()
