@@ -22,9 +22,9 @@ gulp.task('index', function () {
     gulp.src('src/index.html')
         .pipe(inject(gulp.src(mainBowerFiles(), {read: false}), {name: 'bower', relative: true}))
         .pipe(gulp.dest('./src'))
-        .pipe(inject(gulp.src('./src/app/**/*.js', {read: false}), {relative: true}))
+        .pipe(inject(gulp.src('./src/app/**/jsplumb-demo.js', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'))
-        .pipe(inject(gulp.src('./src/app/**/*.css', {read: false}), {relative: true}))
+        .pipe(inject(gulp.src('./src/app/**/global.css', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'));
 
     gulp.src('src/performance.html')
@@ -32,7 +32,7 @@ gulp.task('index', function () {
         .pipe(gulp.dest('./src'))
         .pipe(inject(gulp.src('./src/app/**/*performance*.js', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'))
-        .pipe(inject(gulp.src('./src/app/**/*performance*.css', {read: false}), {relative: true}))
+        .pipe(inject(gulp.src('./src/app/**/performance.css', {read: false}), {relative: true}))
         .pipe(gulp.dest('./src'));
 });
 
