@@ -283,7 +283,6 @@
         canvg(downloadWindow.document.getElementById("canvas"), svg);
         var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
         downloadWindow.location = dataURL;
-
     }
 
     /**

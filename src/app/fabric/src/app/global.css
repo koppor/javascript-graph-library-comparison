@@ -1,12 +1,23 @@
-#canvas {
-    width: 500px;
-    height: 500px;
+.canvas-container {
     border: 1px solid #000;
+    width: 500px !important;
+    height: 500px !important;
     padding-left: 0;
     padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     display: block;
 }
 
+/*.wrapper {*/
+    /*width: 500px;*/
+    /*height: 500px;*/
+/*}*/
+/*.upper-canvas {*/
+    /*width: 500px !important;*/
+    /*height: 500px !important;*/
+/*}*/
 
+/*.lower-canvas {*/
+    /*width: 500px !important;*/
+    /*height: 500px !important;*/
+/*}*/

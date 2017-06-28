@@ -2,6 +2,8 @@
     "use strict";
 
     var canvas = new fabric.Canvas('canvas2');
+    canvas.setHeight(500);
+    canvas.setWidth(800);
     //1.Rectangle
     var rect = new fabric.Rect({
         top: 10,
@@ -143,13 +145,12 @@
 
         var rect = new fabric.Rect({
             top: 200,
-            left: 220,
+            left: 5,
             width: 80,
             height: 80,
             fill: 'lightgrey ',
             stroke: 'black'
         });
-
 
         var text = new fabric.Text('Rect', {
             fontSize: 20,
@@ -197,6 +198,5 @@
         var downloadWindow = window.open("Image", "Image from FabricJS");
         downloadWindow.location = canvas.toDataURL();
     });
-
 
 })();
