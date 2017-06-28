@@ -1,0 +1,28 @@
+#jointjs {
+    /*Needed for positoning in js plumb*/
+    position: relative;
+    height: 10000px;
+    width: 10000px;
+    border: 1px solid #000;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.inputForm {
+    margin: 0 auto;
+    width: 10%;
+}
+
+.common {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    background-color: lightgray;
+    border: 1px solid #000;
+}
