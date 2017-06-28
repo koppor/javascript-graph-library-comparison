@@ -88,7 +88,8 @@
             position: {x: (500 / 2) -50, y: (500 / 2)-50},
             size: {width: 80, height: 80},
             attrs: {
-                text: {text: 'Rect', fill: 'black', 'font-size': 20}
+                text: {text: 'Rect', fill: 'black', 'font-size': 20},
+                rect: { stroke: 'black',fill: 'lightgrey'}
             }
         });
         graph.addCells([rect]);
