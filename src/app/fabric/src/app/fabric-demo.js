@@ -3,7 +3,7 @@
 
     var canvas = new fabric.Canvas('canvas2');
     canvas.setHeight(500);
-    canvas.setWidth(800);
+    canvas.setWidth(500);
     //1.Rectangle
     var rect = new fabric.Rect({
         top: 10,
