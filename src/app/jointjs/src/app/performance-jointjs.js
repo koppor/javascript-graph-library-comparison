@@ -53,6 +53,7 @@
 
             pos2 = 10;
             pos = pos + 150;
+            console.log("Percent: " + ((i / x) * 100 ) + "%")
         }
 
 
@@ -87,6 +88,7 @@
     function main() {
         $("#generateBtn").click(generateGrid);
     }
+
     main();
 
 }());
