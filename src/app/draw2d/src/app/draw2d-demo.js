@@ -1,5 +1,3 @@
-
-
 $(window).load(function () {
 
 
