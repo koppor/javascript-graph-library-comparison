@@ -75,173 +75,136 @@
 </div>
 
 <!-- bower:js -->
-    <SCRIPT src="lib/shifty.js"></SCRIPT>
-    <SCRIPT src="lib/raphael.js"></SCRIPT>
-    <SCRIPT src="lib/jquery-1.12.0.min.js"></SCRIPT>
-    <SCRIPT src="lib/jquery.autoresize.js"></SCRIPT>
-    <SCRIPT src="lib/jquery-touch_punch.js"></SCRIPT>
-    <SCRIPT src="lib/jquery.contextmenu.js"></SCRIPT>
-    <SCRIPT src="lib/rgbcolor.js"></SCRIPT>
-	<SCRIPT src="lib/StackBlur.js"></SCRIPT>
-    <SCRIPT src="lib/canvg.js"></SCRIPT>
-    <SCRIPT src="lib/Class.js"></SCRIPT>
-    <SCRIPT src="lib/json2.js"></SCRIPT>
-    <SCRIPT src="lib/pathfinding-browser.min.js"></SCRIPT>
-	
-	<script src="bower_components/draw2d/dist/draw2d.js"></script>
-	<SCRIPT src="src/util/Polyfill.js"> </SCRIPT>
-    <SCRIPT src="src/util/Base64.js"> </SCRIPT>
-    <SCRIPT src="src/util/Debug.js"> </SCRIPT>
-    <SCRIPT src="src/util/Color.js"> </SCRIPT>
-    <SCRIPT src="src/util/ArrayList.js"> </SCRIPT>
-    <SCRIPT src="src/util/SVGUtil.js"> </SCRIPT>
-    <SCRIPT src="src/util/JSONUtil.js"> </SCRIPT>
-    <SCRIPT src="src/util/UUID.js"> </SCRIPT>
-    <SCRIPT src="src/util/spline/Spline.js"> </SCRIPT>
-    <SCRIPT src="src/util/spline/CubicSpline.js"> </SCRIPT>
-    <SCRIPT src="src/util/spline/CatmullRomSpline.js"> </SCRIPT>
-    <SCRIPT src="src/util/spline/BezierSpline.js"> </SCRIPT>
-    <SCRIPT src="src/geo/PositionConstants.js"> </SCRIPT>
-    <SCRIPT src="src/geo/Point.js"> </SCRIPT>
-    <SCRIPT src="src/geo/Rectangle.js"> </SCRIPT>
-    <SCRIPT src="src/geo/Util.js"> </SCRIPT>
-    <SCRIPT src="src/geo/Ray.js"> </SCRIPT>
-    <SCRIPT src="src/geo/Line.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandType.js"> </SCRIPT>
-    <SCRIPT src="src/command/Command.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandCollection.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandStack.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandStackEvent.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandStackEventListener.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandMove.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandAttr.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandMoveLine.js"> </SCRIPT>
-    <SCRIPT src="src/command/CommandMoveConnection.js"> </SCRIPT>
-
-    <SCRIPT src="src/layout/connection/ConnectionRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/DirectRouter.js"> </SCRIPT>
-    <SCRIPT src="-src/layout/connection/RubberbandRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/VertexRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/ManhattanConnectionRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/ManhattanBridgedConnectionRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/InteractiveManhattanConnectionRouter.js"> </SCRIPT>
-    <SCRIPT src="src/layout/connection/CircuitConnectionRouter.js"> </SCRIPT>
-
-    <SCRIPT src="-src/layout/mesh/MeshLayouter.js"> </SCRIPT>
-    <SCRIPT src="-src/layout/mesh/ExplodeLayouter.js"> </SCRIPT>
-    <SCRIPT src="-src/layout/mesh/ProposedMeshChange.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/Locator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/PortLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/DraggableLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/SmartDraggableLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/XYAbsPortLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/XYRelPortLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/InputPortLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/OutputPortLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/ConnectionLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/ManhattanMidpointLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/PolylineMidpointLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/ParallelMidpointLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/TopLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/BottomLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/LeftLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/RightLocator.js"> </SCRIPT>
-    <SCRIPT src="src/layout/locator/CenterLocator.js"> </SCRIPT>
-    <SCRIPT src="src/policy/EditPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/CanvasPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/ZoomPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/WheelZoomPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/KeyboardPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/DefaultKeyboardPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/ExtendedKeyboardPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/SelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/SingleSelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/GhostMoveSelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/PanningSelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/BoundingboxSelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/ReadOnlySelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/DecorationPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/FadeoutDecorationPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/CoronaDecorationPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/canvas/SnapToEditPolicy.js"> </SCRIPT>
+<script src="bower_components/raphael/raphael.min.js"></script>
 
 
-    <SCRIPT src="src/policy/canvas/DropInterceptorPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/connection/ConnectionCreatePolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/connection/ComposedConnectionCreatePolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/connection/ClickConnectionCreatePolicy.js"> </SCRIPT>
-  
-    <SCRIPT src="src/policy/connection/DragConnectionCreatePolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/figure/FigureEditPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/figure/DragDropEditPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/figure/RegionEditPolicy.js"> </SCRIPT>
+<script src="bower_components/jquery/jquery.min.js"></script>
+
+<script src="bower_components/jquery/Class.js"></script>
 
 
-    <SCRIPT src="src/policy/figure/SelectionPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/figure/SelectionFeedbackPolicy.js"> </SCRIPT>
-  
-    <SCRIPT src="src/policy/figure/RectangleSelectionFeedbackPolicy.js"> </SCRIPT>
+
+<SCRIPT src="lib/Class.js"></SCRIPT>
+
+
+
+<script src="bower_components/draw2d/dist/draw2d.js"></script>
+
+
+
+<SCRIPT src="src/util/spline/Spline.js"> </SCRIPT>
+<SCRIPT src="src/util/spline/CubicSpline.js"> </SCRIPT>
+<SCRIPT src="src/util/spline/CatmullRomSpline.js"> </SCRIPT>
+<SCRIPT src="src/util/spline/BezierSpline.js"> </SCRIPT>
+<SCRIPT src="src/geo/PositionConstants.js"> </SCRIPT>
+<SCRIPT src="src/geo/Point.js"> </SCRIPT>
+<SCRIPT src="src/geo/Rectangle.js"> </SCRIPT>
+<SCRIPT src="src/geo/Util.js"> </SCRIPT>
+<SCRIPT src="src/geo/Ray.js"> </SCRIPT>
+<SCRIPT src="src/geo/Line.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandType.js"> </SCRIPT>
+<SCRIPT src="src/command/Command.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandCollection.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandStack.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandStackEvent.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandStackEventListener.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandMove.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandAttr.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandMoveLine.js"> </SCRIPT>
+<SCRIPT src="src/command/CommandMoveConnection.js"> </SCRIPT>
 
 
 
 
 
-    <SCRIPT src="src/policy/line/LineSelectionFeedbackPolicy.js"> </SCRIPT>
-
-    <SCRIPT src="src/policy/line/OrthogonalSelectionFeedbackPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/policy/port/PortFeedbackPolicy.js"> </SCRIPT>
-
-    <SCRIPT src="src/policy/port/IntrusivePortsFeedbackPolicy.js"> </SCRIPT>
-    <SCRIPT src="src/Configuration.js"> </SCRIPT>
-
-    <SCRIPT src="src/Canvas.js"> </SCRIPT>
-    <SCRIPT src="src/Selection.js"> </SCRIPT>
-    <SCRIPT src="src/Figure.js"> </SCRIPT>
-    <SCRIPT src="src/shape/node/Node.js"> </SCRIPT>
-    <SCRIPT src="src/VectorFigure.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/Rectangle.js"> </SCRIPT>
-    <SCRIPT src="src/SetFigure.js"> </SCRIPT>
-
-
-
-
-    <SCRIPT src="src/shape/basic/Oval.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/Circle.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/Label.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/Text.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/Line.js"> </SCRIPT>
-    <SCRIPT src="src/shape/basic/PolyLine.js"> </SCRIPT>
+<SCRIPT src="src/policy/EditPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/CanvasPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/ZoomPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/WheelZoomPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/KeyboardPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/DefaultKeyboardPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/ExtendedKeyboardPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/SelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/SingleSelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/GhostMoveSelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/PanningSelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/BoundingboxSelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/ReadOnlySelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/DecorationPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/FadeoutDecorationPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/CoronaDecorationPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/canvas/SnapToEditPolicy.js"> </SCRIPT>
 
 
+<SCRIPT src="src/policy/canvas/DropInterceptorPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/connection/ConnectionCreatePolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/connection/ComposedConnectionCreatePolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/connection/ClickConnectionCreatePolicy.js"> </SCRIPT>
 
-    <SCRIPT src="src/shape/composite/Composite.js"> </SCRIPT>
-    <SCRIPT src="src/shape/composite/StrongComposite.js"> </SCRIPT>
+<SCRIPT src="src/policy/connection/DragConnectionCreatePolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/figure/FigureEditPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/figure/DragDropEditPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/figure/RegionEditPolicy.js"> </SCRIPT>
 
 
+<SCRIPT src="src/policy/figure/SelectionPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/figure/SelectionFeedbackPolicy.js"> </SCRIPT>
 
-    <SCRIPT src="src/Connection.js"> </SCRIPT>
-
-    <SCRIPT src="src/ResizeHandle.js"> </SCRIPT>
+<SCRIPT src="src/policy/figure/RectangleSelectionFeedbackPolicy.js"> </SCRIPT>
 
 
 
-    <SCRIPT src="src/Port.js"> </SCRIPT>
-    <SCRIPT src="src/InputPort.js"> </SCRIPT>
-    <SCRIPT src="src/OutputPort.js"> </SCRIPT>
 
-    <SCRIPT src="src/layout/anchor/ConnectionAnchor.js"> </SCRIPT>
-    <SCRIPT src="src/layout/anchor/ChopboxConnectionAnchor.js"> </SCRIPT>
+
+<SCRIPT src="src/policy/line/LineSelectionFeedbackPolicy.js"> </SCRIPT>
+
+<SCRIPT src="src/policy/line/OrthogonalSelectionFeedbackPolicy.js"> </SCRIPT>
+<SCRIPT src="src/policy/port/PortFeedbackPolicy.js"> </SCRIPT>
+
+<SCRIPT src="src/policy/port/IntrusivePortsFeedbackPolicy.js"> </SCRIPT>
+<SCRIPT src="src/Configuration.js"> </SCRIPT>
+
+<SCRIPT src="src/Canvas.js"> </SCRIPT>
+<SCRIPT src="src/Selection.js"> </SCRIPT>
+<SCRIPT src="src/Figure.js"> </SCRIPT>
+<SCRIPT src="src/shape/node/Node.js"> </SCRIPT>
+<SCRIPT src="src/VectorFigure.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/Rectangle.js"> </SCRIPT>
+<SCRIPT src="src/SetFigure.js"> </SCRIPT>
+
+
+
+
+<SCRIPT src="src/shape/basic/Oval.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/Circle.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/Label.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/Text.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/Line.js"> </SCRIPT>
+<SCRIPT src="src/shape/basic/PolyLine.js"> </SCRIPT>
+
+
+
+<SCRIPT src="src/shape/composite/Composite.js"> </SCRIPT>
+<SCRIPT src="src/shape/composite/StrongComposite.js"> </SCRIPT>
+
+
+
+<SCRIPT src="src/Connection.js"> </SCRIPT>
+
+<SCRIPT src="src/ResizeHandle.js"> </SCRIPT>
+
+
+
+<SCRIPT src="src/Port.js"> </SCRIPT>
+<SCRIPT src="src/InputPort.js"> </SCRIPT>
+<SCRIPT src="src/OutputPort.js"> </SCRIPT>
+
+<SCRIPT src="src/layout/anchor/ConnectionAnchor.js"> </SCRIPT>
+<SCRIPT src="src/layout/anchor/ChopboxConnectionAnchor.js"> </SCRIPT>
 <!-- endinject -->
 <!-- inject:js -->
 
-<script src="app/draw2d-demo.js">
-
-// override the draw2d factory method for connection creation 
-//
-
-
-
-</script>
+<script src="app/draw2d-demo.js"></script>
 <!-- endinject -->
 </body>
 
