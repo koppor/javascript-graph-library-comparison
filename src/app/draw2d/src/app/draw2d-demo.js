@@ -1,13 +1,9 @@
 
-(function () {
-    "use strict";
+
+$(window).load(function () {
 
 
-    function main() {
-        $(window).load(function () {
-
-
-            var canvas = new draw2d.Canvas("gfx_holder");
+            var canvas = new draw2d.Canvas("canvas");
 
             canvas.add(new draw2d.shape.basic.Oval(), 100, 100);
             canvas.add(new draw2d.shape.basic.Rectangle(), 120, 150);
@@ -19,8 +15,3 @@
             canvas.add(new draw2d.shape.node.End(), 350, 250);
 
         });
-
-    }
-
-    main();
-})
