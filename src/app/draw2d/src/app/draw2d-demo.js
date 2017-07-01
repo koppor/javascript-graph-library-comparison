@@ -58,6 +58,7 @@
 
     var canvas = new draw2d.Canvas("canvas");
 
+
     var rect1 = new draw2d.shape.basic.Rectangle({
         x: 380,
         y: 10,
@@ -76,8 +77,6 @@
     canvas.add(rect1);
     rect2.createPort("output", new draw2d.layout.locator.RightLocator(rect2));
     canvas.add(rect2);
-    canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 5, y: 400}));
-    canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 380, y: 400}));
 
 
     var c = new draw2d.Connection({
@@ -85,14 +84,21 @@
         target: rect1.getInputPort(0),
         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
     });
+
+
+// you can set the vertices of the connection via API. But normally this is
+// happen by the user or by reading the JSON file via a draw2d.io.Reader.
+// .... anyway - it is possible via API too.
+//
     c.setVertices([{
-        x: 80,
+        x: 350,
         y: 75
     }, {
         x: 170,
         y: 175
     }]);
-
+    canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 5, y: 400}));
+    canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 380, y: 400}));
 
 
     //Add rectangle
@@ -106,6 +112,6 @@
         canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 200, y: 200}));
 
     });
-
+    canvas.add(c);
 
 }());
