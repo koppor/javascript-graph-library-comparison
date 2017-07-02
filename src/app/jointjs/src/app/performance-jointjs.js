@@ -1,94 +1,90 @@
-/**
- * Created by Franzi on 19.06.2017.
- */
 (function () {
     "use strict";
 
-    var canvas2 = $('#jointjs');
-    var graph = new joint.dia.Graph();
-
+    var canvas = $('#jointjs');
+    var graph = new joint.dia.Graph;
 
     var paper = new joint.dia.Paper({
-        el: canvas2,
-        width: canvas2.width(),
-        height: canvas2.height(),
+        el: canvas,
+        width: canvas.width(),
+        height: canvas.height(),
         model: graph
     });
 
-    function generateGrid() {
-
-        var y = parseInt($("#yInput").val(), 10);
-        var x = parseInt($("#xInput").val(), 10);
-        var pos = 50;
-        var pos2 = 10;
-        var rect;
-        var l;
-        var rectId = 0;
-        var recID2 = 0;
-
-        for (var i = 0; i < y; i++) {
-            for (var j = 0; j < x; j++) {
-
-                rect = new joint.shapes.basic.Rect({
-                    id: 'rect' + rectId,
-                    position: {x: pos2, y: pos},
-                    size: {width: 100, height: 80},
-                    attrs: {
-                        '.label': {text: 'Model'}
-                    }
-                });
-                graph.addCell([rect]);
-
-                if (j >= 1 && j <= (y - 1)) {
-                    l = new joint.dia.Link({
-                        source: {id: 'rect' + (rectId - 1)},
-                        target: {id: 'rect' + rectId}
-
-                    });
-                    graph.addCell(l);
-                }
-                rectId++;
-                pos2 = pos2 + 150;
-            }
-
-            pos2 = 10;
-            pos = pos + 150;
-            console.log("Percent: " + ((i / x) * 100 ) + "%")
+        function InformationPanel() {
+            this.nodeCount = $("#nodeCount");
+            this.timeTaken = $("#timeTaken");
         }
 
+        function addRectangle(x, y, id) {
 
-        for (var z = 0; z <= y; z++) {
-            for (var h = 0; h < x; h++) {
-                if (z > 1) {
-
-                    var rec1 = ((rectId % x));
-                    var rec2 = (((rectId % x ) + x));
-
-                    if (recID2 >= 5 && z > 2) {
-                        rec1 = rec1 + recID2;
-                        rec2 = rec2 + recID2;
-                    }
-                    l = new joint.dia.Link({
-                        source: {id: 'rect' + ( rec1)},
-                        target: {id: 'rect' + (rec2)}
-
-                    });
-
-                    console.log(rec1 + '    ' + rec2);
-                    graph.addCell(l);
+            var rect= new joint.shapes.basic.Rect({
+                position: {x: x, y: y},
+                size: {width: 80, height: 80},
+                id: id,
+                attrs: {
+                    rect: {fill: 'lightgrey'}
                 }
-                rectId++;
-            }
-            if (z > 1) {
-                recID2 = recID2 + x;
-            }
+            });
+            graph.addCells([rect]);
         }
-    }
 
-    function main() {
-        $("#generateBtn").click(generateGrid);
-    }
+        function connect(source1, target1) {
 
-    main();
+            console.log(source1, target1);
 
-}());
+            var l = new joint.dia.Link({
+            source: { id: source1 },
+            target: { id: target1},
+            attrs: {
+                '.connection': { stroke: 'red' }, strokeWidth: 1 }
+        });
+            graph.addCells([l]);
+        }
+
+        function generateGrid() {
+            (console.clear || function () {
+                console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            })();
+            var y = parseInt($("#yInput").val(), 10);
+            var x = parseInt($("#xInput").val(), 10);
+            var information = new InformationPanel();
+            var height = 0;
+
+            //Remove all elements from container
+            graph.clear();
+            alert("Depending on your input, this might take some time! Check the console -> Press F12");
+            var start = performance.now();
+            for (var i = 0; i < y; i++) {
+                height = i * 100;
+                for (var j = 0; j < x; j++) {
+                    var id = "rect-" + i + "-" + j;
+                    console.log(id);
+                    addRectangle(j * 100, height, id);
+                    if (j > 0) {
+                        var neighbour = "rect-" + i + "-" + (j - 1);
+                        connect( neighbour, id);
+                        console.log(neighbour, id);
+                    }
+
+                    if (i > 0) {
+                        var topNeighbour = "rect-" + (i - 1) + "-" + j;
+                        connect(topNeighbour,id);
+                    }
+                }
+                console.log("Rendered: " + ((i / y) * 100).toFixed() + "%");
+            }
+
+            var end = performance.now();
+            console.log("Rendered: 100%");
+            information.nodeCount.text("Nodes: " + (x * y));
+            information.timeTaken.text("Time Taken: Finished in " + (end - start).toFixed() + " ms");
+        }
+
+        function main() {
+            $("#generateBtn").click(generateGrid);
+        }
+
+        main();
+
+})();

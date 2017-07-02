@@ -4,28 +4,42 @@
 (function () {
     "use strict";
     var canvas = $('#canvas');
-    var graph = new joint.dia.Graph();
+    var graph = new joint.dia.Graph;
+    var gridSize = 1;
     var paper = new joint.dia.Paper({
         el: canvas,
         width: canvas.width(),
         height: canvas.height(),
         model: graph,
+        gridSize: 1
 
     });
 
-    //
-    // paper.on('cell:pointerdblclick', function (cellView, evt, x, y) {
-    //     var portsArray = cellView.model.get('outPorts') || [];
-    //     cellView.model.set('outPorts', portsArray.concat([name]), cellView.opt);
-    // });
+    paper.on('cell:pointermove', function (cellView, evt, x, y) {
 
+        var bbox = cellView.getBBox();
+        var constrained = false;
+
+        var constrainedX = x;
+
+        if (bbox.x <= 0) { constrainedX = x + gridSize; constrained = true; }
+        if (bbox.x + bbox.width >= canvas.width()) { constrainedX = x - gridSize; constrained = true; }
+
+        var constrainedY = y;
+
+        if (bbox.y <= 0) {  constrainedY = y + gridSize; constrained = true }
+        if (bbox.y + bbox.height >= canvas.height()) { constrainedY = y - gridSize; constrained = true; }
+
+        //if you fire the event all the time you get a stack overflow
+        if (constrained) { cellView.pointermove(evt, constrainedX, constrainedY); }
+    });
 
 
 
     function initRectangles() {
 
         var rectLeft = new joint.shapes.basic.Rect({
-            position: {x: 20, y: 10},
+            position: {x: 10, y: 10},
             size: {width: 80, height: 80},
             attrs: {
                 fill: 'lightgrey',
@@ -35,7 +49,7 @@
         });
 
         var rectRight = new joint.shapes.basic.Rect({
-            position: {x: 400, y: 10},
+            position: {x: 410, y: 10},
             size: {width: 80, height: 80},
             attrs: {
                 text: {text: 'Rect','ref-y': 0.5, 'y-alignment': 'middle', 'font-size': 20},
@@ -49,7 +63,7 @@
             attrs: {
                 '.connection': { stroke: 'black' } },
                 labels: [
-                {  attrs: { text: { text: 'Label', 'font-size': 20 } } ,
+                {  attrs: { text: { text: 'Label', 'font-size': 20} } ,
                     position: 0.5}
             ]
         });
@@ -58,19 +72,16 @@
     }
 
     function initCircles() {
-
         var circleLeft = new joint.shapes.basic.Circle({
-            position: {x: 20, y: 400},
+            position: {x: 10, y: 410},
             size: {width: 80, height: 80},
             attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
-
         var circleRight = new joint.shapes.basic.Circle({
-            position: {x: 400, y: 400},
+            position: {x: 410, y: 410},
             size: {width: 80, height: 80},
             attrs: {circle: {fill: 'white'}, text: {text: 'Circle', fill: 'black', 'font-size': 20}}
         });
-
         var l = new joint.dia.Link({
             source: { id: circleLeft.id },
             target: { id: circleRight.id },
@@ -78,7 +89,6 @@
                 '.label': {text: 'Label'},
                 '.connection': { 'stroke-dasharray': 3, stroke: 'black' } }
         });
-
         graph.addCells([circleLeft, circleRight,l]);
 
     }

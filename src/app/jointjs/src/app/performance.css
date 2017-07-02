@@ -1,5 +1,4 @@
 #jointjs {
-    /*Needed for positoning in js plumb*/
     position: relative;
     height: 10000px;
     width: 10000px;
@@ -26,3 +25,5 @@
     background-color: lightgray;
     border: 1px solid #000;
 }
+.link-tools .tool-remove { display: none }
+.link-tools .tool-options { display: none }
