@@ -3,23 +3,33 @@
 
     jsPlumb.ready(function () {
 
+        //Do jsplumb init stuff here
         jsPlumb.setContainer("container");
         jsPlumb.importDefaults({
             ConnectionsDetachable: false
         });
 
+        /**
+         * Adss a new draggable rectangle intstance
+         */
         function addRectangle() {
             var $newRect = $("<div class='common rectCommon newPosition'>Rect</div>");
             $("#container").append($newRect);
             jsPlumb.draggable($newRect, {containment: true});
         }
 
+        /**
+         * Adds a new draggable circle instance
+         */
         function addCircle() {
             var $newCircle = $("<div class='common circleCommon newPosition'>Circle</div>");
             $("#container").append($newCircle);
             jsPlumb.draggable($newCircle, {containment: true});
         }
 
+        /**
+         * Exports html and svg to an image by using the canvas#toDataURL method
+         */
         function exportAsImage() {
             var el = $('#container').get(0);
             html2canvas(el, {
@@ -38,6 +48,9 @@
             });
         }
 
+        /**
+         * Inits the rectangles
+         */
         function initRectangles() {
             var rectLeftId = "rectLeft";
             var rectRightId = "rectRight";
@@ -63,6 +76,9 @@
             }, commonConnectStyle);
         }
 
+        /**
+         * Inits circles
+         */
         function initCircles() {
             var circleLeftId = "circleLeft";
             var circleRightId = "circleRight";
@@ -84,6 +100,9 @@
             }, commonConnectStyle);
         }
 
+        /**
+         * Main Method
+         */
         function main() {
             initRectangles();
             initCircles();

@@ -1,6 +1,15 @@
 (function () {
+    //Do paperjs init stuff here
     paper.install(window);
 
+    /**
+     * Simple method that updates the line between two elements if they move
+     * @param source The source element
+     * @param target The target element
+     * @param dashArray The dash array for dash style
+     * @param text Optional label for the line
+     * @constructor
+     */
     function LineRenderer(source, target, dashArray, text) {
         var vm = this;
         this.source = source;
@@ -124,7 +133,7 @@
      */
     function initRectangles() {
         var rectLeft = new Path.Rectangle({
-            x: 20,
+            x: 10,
             y: 10,
             width: 80,
             height: 80,
@@ -133,7 +142,7 @@
         });
 
         var rectRight = new Path.Rectangle({
-            x: 400,
+            x: 410,
             y: 10,
             center: view.center,
             width: 80,
@@ -163,8 +172,8 @@
      */
     function initCircles() {
         var circleLeft = new Path.Circle({
-            x: 60,
-            y: 440,
+            x: 50,
+            y: 450,
             radius: 40,
             fillColor: "#FFF",
             strokeColor: "#000"
@@ -173,8 +182,8 @@
 
         var circleRight = new Path.Circle({
             //[440, 440], 40
-            x: 440,
-            y: 440,
+            x: 450,
+            y: 450,
             radius: 40,
             fillColor: "#FFF",
             strokeColor: "#000"
@@ -196,6 +205,16 @@
     }
 
     /**
+     * Exports the paperjs canvas as image by using the canvas#toDataURL method
+     */
+    function exportAsImage() {
+        var canvas = document.getElementById("paperjsCanvas");
+        var dataUrl = canvas.toDataURL("image/png");
+        var downloadWindow = window.open("Image", "Image from PaperJS");
+        downloadWindow.location = dataUrl;
+    }
+
+    /**
      * Main Method
      */
     function main() {
@@ -207,22 +226,13 @@
         // REGISTERING METHODS
         //----------------------------------------------
         // Add a new circle
-        $("#addCircleBtn").click(function () {
-            addCircle();
-        });
+        $("#addCircleBtn").click(addCircle);
 
         //Add a new rectangle
-        $("#addRectBtn").click(function () {
-            addRectangle();
-        });
+        $("#addRectBtn").click(addRectangle);
 
         //Export canvas as png image in a new window, so the user can download it
-        $("#exportBtn").click(function () {
-            var canvas = document.getElementById("paperjsCanvas");
-            var dataUrl = canvas.toDataURL("image/png");
-            var downloadWindow = window.open("Image", "Image from PaperJS");
-            downloadWindow.location = dataUrl;
-        });
+        $("#exportBtn").click(exportAsImage);
     }
 
     main();

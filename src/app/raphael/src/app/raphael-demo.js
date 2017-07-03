@@ -2,7 +2,9 @@
     "use strict";
 
     //Libraries
+    //The rapahel canvas
     var paper = Raphael("canvas");
+    //Watches for changes in position
     var watch = WatchJS.watch;
 
     /**
@@ -31,18 +33,10 @@
 
         watch(source.attrs, srcAttr, function () {
             object.attr("path", renderPath());
-            object.attr({
-                "arrow-end": "block-wide-long",
-                "arrow-start": "block-wide-long"
-            });
         });
 
         watch(destination.attrs, destAttr, function () {
             object.attr("path", renderPath());
-            object.attr({
-                "arrow-end": "block-wide-long",
-                "arrow-start": "block-wide-long"
-            });
         });
 
         object.node.setAttribute("class", "line");
@@ -150,6 +144,10 @@
         this.attr("stroke-dasharray", strokeStyle);
     };
 
+    /**
+     * Sets the class name attribute
+     * @param className The classname
+     */
     Raphael.el.setClassName = function (className) {
         this.node.setAttribute("class", className);
     };
@@ -171,16 +169,16 @@
     }
 
     /**
-     * <canvas id="canvas" width="800px" height="600px"></canvas>nts the rectangles
+     * Inits the rectangles
      */
     function initRectangles() {
-        var rectLeft = paper.rect(20, 10, 80, 80);
+        var rectLeft = paper.rect(10, 10, 80, 80);
         rectLeft.setStrokeColor("#000");
         rectLeft.makeDraggable(0, 0, 420, 420);
         rectLeft.setColor("#d3d3d3");
         rectLeft.setText("Rect");
 
-        var rectRight = paper.rect(400, 10, 80, 80);
+        var rectRight = paper.rect(410, 10, 80, 80);
         rectRight.makeDraggable(0, 0, 420, 420);
         rectRight.setColor("#d3d3d3");
         rectRight.setText("Rect");
@@ -211,13 +209,13 @@
      * Inits the circles
      */
     function initCircles() {
-        var circleLeft = paper.circle(60, 440, 40);
+        var circleLeft = paper.circle(50, 450, 40);
         circleLeft.setColor("#FFF");
         circleLeft.setStrokeColor("#000");
         circleLeft.makeDraggable(40, 40, 460, 460);
         circleLeft.setText("Circle");
 
-        var circleRight = paper.circle(440, 440, 40);
+        var circleRight = paper.circle(450, 450, 40);
         circleRight.setColor("#FFF");
         circleRight.setStrokeColor("#000");
         circleRight.makeDraggable(40, 40, 460, 460);
@@ -228,6 +226,10 @@
         arrow.attr("stroke-dasharray", "- ");
     }
 
+    /**
+     * Exports the SVG as png image by converting it to a canvas element using canvg and then using
+     * the HTML 5 canvas canvas#toDataURL
+     */
     function exportAsImage() {
         var downloadWindow = window.open("Image", "Image from Raphael");
         downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
