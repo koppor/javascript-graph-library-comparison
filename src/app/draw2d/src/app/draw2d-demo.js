@@ -5,7 +5,7 @@
 
     var canvas = new draw2d.Canvas("canvas");
     var c;
-    var d;
+    var d = new draw2d.Connection();
 
     function initRectangles() {
         
@@ -84,12 +84,16 @@
         leftCircle.createPort("output", new draw2d.layout.locator.RightLocator(leftCircle));
         canvas.add(leftCircle);
 
-        d = new draw2d.Connection({
-            source: leftCircle.getOutputPort(0),
-            target: rightCircle.getInputPort(0),
-            router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
-        });
+        d.setSource(leftCircle.getOutputPort(0));
+        d.setTarget(rightCircle.getInputPort(0));
 
+      /*  d = new draw2d.Connection({
+
+            //source: leftCircle.getOutputPort(0),
+            //target: rightCircle.getInputPort(0),
+            //router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
+        });
+*/
 
     }
 
@@ -105,7 +109,6 @@
 
         
     function createNewRect() {
-
         canvas.add(new draw2d.shape.node.Between({width: 80, height: 80, x: 200, y: 200,}));
         canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
 
@@ -127,7 +130,7 @@
         $('#exportBtn').click(exportAsImage);
 
         canvas.add(c);
-        //canvas.add(d);
+        canvas.add(d);
     }
     main();
 }());
