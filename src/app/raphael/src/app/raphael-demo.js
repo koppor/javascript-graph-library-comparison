@@ -150,52 +150,6 @@
         this.attr("stroke-dasharray", strokeStyle);
     };
 
-    /**
-     * Adds a popover to the element
-     */
-    Raphael.el.addPopover = function () {
-        var element = this;
-        $(element.node).click(function () {
-            var btnDashedId = "btn-dashed-" + this.id;
-            var btnSolidId = "btn-solid-" + this.id;
-            $(this).popover({
-                title: null,
-                content: function () {
-                    return "<div><button class='btn btn-block' id='" + btnDashedId + "'>Dashed</button>" +
-                        "<button class='btn btn-block' id='" + btnSolidId + "'>Solid</button></div>";
-                },
-                container: 'body',
-                html: true
-            }).on('shown.bs.popover', function (event) {
-                var $popup = $('#' + $(event.target).attr('aria-describedby'));
-                var createNeighbour = function (strokeStyle) {
-                    var otherElement = null;
-                    var bbox = element.getBBox();
-                    if (element.type === "rect") {
-                        otherElement = addRectangle(bbox.x2 + 100, bbox.y);
-                    } else if (element.type === "circle") {
-                        otherElement = addCircle(bbox.x2 + 100, bbox.y);
-                    }
-
-                    var arrow = paper.arrow(element, otherElement);
-                    if (strokeStyle) {
-                        arrow.setStrokeStyle(strokeStyle);
-                    }
-                };
-
-
-                $popup.find("#" + btnDashedId).click(function () {
-                    createNeighbour("-");
-                });
-
-                $popup.find("#" + btnSolidId).click(function () {
-                    createNeighbour();
-                });
-            });
-
-        });
-    };
-
     Raphael.el.setClassName = function (className) {
         this.node.setAttribute("class", className);
     };
@@ -205,14 +159,13 @@
      * Adds a Rectangle
      */
     function addRectangle(x, y) {
-        var color = '#' + Math.random().toString(16).substr(-6);
+        var color = 'lightgrey';
 
         var rect = paper.rect(x || 10, y || 10, 80, 80);
         rect.setColor(color);
 
-        rect.makeDraggable(0, 10, 380, 380);
+        rect.makeDraggable(0, 0, 420, 420);
         rect.setText("Rect");
-        rect.addPopover();
 
         return rect;
     }
@@ -223,12 +176,12 @@
     function initRectangles() {
         var rectLeft = paper.rect(20, 10, 80, 80);
         rectLeft.setStrokeColor("#000");
-        rectLeft.makeDraggable(0, 10, 380, 380);
+        rectLeft.makeDraggable(0, 0, 420, 420);
         rectLeft.setColor("#d3d3d3");
         rectLeft.setText("Rect");
 
         var rectRight = paper.rect(400, 10, 80, 80);
-        rectRight.makeDraggable(0, 10, 380, 380);
+        rectRight.makeDraggable(0, 0, 420, 420);
         rectRight.setColor("#d3d3d3");
         rectRight.setText("Rect");
         rectRight.setStrokeStyle("- ");
@@ -243,14 +196,13 @@
      * Adds a circle
      */
     function addCircle(x, y) {
-        var color = '#' + Math.random().toString(16).substr(-6);
+        var color = 'white';
 
         var circle = paper.circle(x || 50, y || 50, 40);
         circle.setColor(color);
-        circle.makeDraggable(50, 50, 420, 420);
+        circle.makeDraggable(40, 40, 460, 460);
         circle.setText("Circle");
         circle.node.setAttribute("id", circle.id);
-        circle.addPopover();
 
         return circle;
     }
@@ -262,13 +214,13 @@
         var circleLeft = paper.circle(60, 440, 40);
         circleLeft.setColor("#FFF");
         circleLeft.setStrokeColor("#000");
-        circleLeft.makeDraggable(40, 50, 440, 440);
+        circleLeft.makeDraggable(40, 40, 460, 460);
         circleLeft.setText("Circle");
 
         var circleRight = paper.circle(440, 440, 40);
         circleRight.setColor("#FFF");
         circleRight.setStrokeColor("#000");
-        circleRight.makeDraggable(50, 50, 440, 440);
+        circleRight.makeDraggable(40, 40, 460, 460);
         circleRight.setText("Circle");
 
         var arrow = paper.arrow(circleLeft, circleRight);
