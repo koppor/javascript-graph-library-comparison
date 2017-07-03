@@ -50,7 +50,8 @@
             source: {id: source},
             target: {id: target},
             attrs: {
-                '.connection': {stroke: 'red'}, strokeWidth: 1
+                '.connection': {stroke: 'red', strokeWidth: 1}
+
             }
         });
         graph.addCells([l]);
