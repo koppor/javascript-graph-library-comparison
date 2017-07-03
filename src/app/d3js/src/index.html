@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-        <link rel="stylesheet" href="app/global.css">
+    <link rel="stylesheet" href="app/global.css">
     <!-- endinject -->
 
 </head>
@@ -35,20 +35,42 @@
                     <a href="../../paperjs/src/index.html">PaperJs</a>
                 </li>
                 <li>
-                <a href="../../raphael/src/index.html">JSPlumb</a>
-                 </li>
+                    <a href="../../raphael/src/index.html">Raphael</a>
+                </li>
                 <li>
-                    <a href="../../jsplumb/src/index.html">JointJS</a>
+                    <a href="../../draw2d/src/index.html">Draw2d</a>
+                </li>
+                <li>
+                    <a href="#">JSPlumb</span></a>
+                </li>
+                <li>
+                    <a href="../../jointjs/src/index.html">JointJS</a>
                 </li>
 
                 <li>
-                    <a href="../../jointjs/src/index.html">Fabric</a>
+                    <a href="../../fabric/src/index.html">Fabric</a>
                 </li>
-                <li>
-                    <a href="../../fabric/src/index.html">JointJs</a>
-                </li>
+
                 <li class="active">
                     <a href="#">D3<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/d3js" target="_blank">Source-Code</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Actions<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a id="addRect"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
+                        <li><a id="addCircle"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="saveButton"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a id="performance" href="performance.html"> <span class="glyphicon glyphicon-fire"></span> Performance</a></li>
+                    </ul>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -56,13 +78,6 @@
 </nav>
 
 <div class="container-fluid" id="canvas">
-</div>
-<div class="container-fluid" style="width: 500px ;height: 500">
-    <button id="addRect" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Rectangle</button>
-    <button id="addCircle" class="btn btn-block"><span class="glyphicon glyphicon-plus"></span> Add Circle
-    </button>
-    <button id="saveButton" class="btn btn-block"> Safe D3 Vis to PNG</button>
-    <canvas></canvas>
 </div>
 
 
