@@ -4,8 +4,6 @@
 
 
     var canvas = new draw2d.Canvas("canvas");
-    var c,d = new draw2d.Connection();
-
 
 
     function initRectangles() {
@@ -15,32 +13,33 @@
         y: 10,
         width: 80,
         height: 80,
-        //bgColor: 'lightgrey'
+        fill: '#D3D3D3'
     });
 
-    rect1.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
+    rect1.add(new draw2d.shape.basic.Label({text:"Rect",stroke: 0
+    }),  new draw2d.layout.locator.CenterLocator());
     rect1.createPort("input", new draw2d.layout.locator.LeftLocator(rect1));
     rect1.setDashArray("- ");
     canvas.add(rect1);
     rect1.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
-
 
         var rect2 = new draw2d.shape.basic.Rectangle({
         x: 5,
         y: 10,
         width: 80,
         height: 80,
+            fill: '#D3D3D3'
         // bgColor: 'lightgrey'
     });
-    rect2.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
+    rect2.add(new draw2d.shape.basic.Label({text:"Rect",stroke: 0 }),  new draw2d.layout.locator.CenterLocator());
     rect2.createPort("output", new draw2d.layout.locator.RightLocator(rect2));
     canvas.add(rect2);
     rect2.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
 
-        var label = new draw2d.shape.basic.Label({text:"Label"});
+        var label = new draw2d.shape.basic.Label({text:"Label",stroke: 0 });
 
-     c = new draw2d.Connection({
+    var c = new draw2d.Connection({
         source: rect2.getOutputPort(0),
         target: rect1.getInputPort(0),
         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
@@ -48,6 +47,7 @@
        //c.setDashArray("--.");
        c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
         console.log("C: " + c);
+        canvas.add(c);
 
 // you can set the vertices of the connection via API. But normally this is
 // happen by the user or by reading the JSON file via a draw2d.io.Reader.
@@ -68,35 +68,36 @@
         var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
         //leftCircle.setColor("#000000");
         leftCircle.setBackgroundColor("#FFFFFF");
-        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
+        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle",stroke: 0 }), new draw2d.layout.locator.CenterLocator());
         leftCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
-        canvas.add( leftCircle, 5,400);
+        //canvas.add( leftCircle, 10,400);
 
 
         var rightCircle = new draw2d.shape.basic.Circle({radius: 40});
         //rightCircle.setColor("#000000");
         rightCircle.setBackgroundColor("#FFFFFF");
-        rightCircle.add(new draw2d.shape.basic.Label({text:"Circle"}).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
+        rightCircle.add(new draw2d.shape.basic.Label({text:"Circle",stroke: 0 , fill: '#FFFFFF'}).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
         rightCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
-        canvas.add( rightCircle, 380,400);
-
-
+     //   canvas.add( rightCircle, 380,400);
 
         rightCircle.createPort("input", new draw2d.layout.locator.LeftLocator(rightCircle));
-        canvas.add(rightCircle);
+        canvas.add(rightCircle,380,400);
         leftCircle.createPort("output", new draw2d.layout.locator.RightLocator(leftCircle));
-        canvas.add(leftCircle);
+        canvas.add(leftCircle,10,400);
 
         //d.setSource(leftCircle.getOutputPort(0));
         //d.setTarget(rightCircle.getInputPort(0));
 
-        d = new draw2d.Connection({
+
+       var d = new draw2d.Connection({
             //dashArray: "--",
+           stroke: '1',
             source: leftCircle.getOutputPort(0),
             target: rightCircle.getInputPort(0),
             router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
         });
         d.setDashArray("--");
+        canvas.add(d);
 
 
     }
@@ -121,7 +122,7 @@
             height: 80,
             //bgColor: 'lightgrey'
         });
-        rect.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
+        rect.add(new draw2d.shape.basic.Label({text:"Rect", stroke: 0}),  new draw2d.layout.locator.CenterLocator());
         rect.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
         canvas.add(rect)
         canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
@@ -134,7 +135,7 @@
         var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
         //leftCircle.setColor("#000000");
         leftCircle.setBackgroundColor("#FFFFFF");
-        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
+        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle", stroke:0}), new draw2d.layout.locator.CenterLocator());
         leftCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
         canvas.add( leftCircle, 200,200);
     }
@@ -154,9 +155,6 @@
 
         });
         $('#exportBtn').click(exportAsImage);
-
-        canvas.add(c);
-        canvas.add(d);
     }
     main();
 }());

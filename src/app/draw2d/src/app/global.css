@@ -4,11 +4,12 @@
     border: 1px solid #000;
 }
 
+
+
 /**
 Style for all elements
  */
 rect {
-    fill: lightgrey !important;
     stroke: black !important;
 }
 
@@ -19,6 +20,7 @@ circle {
 text {
     font-size: 20px !important;
 }
+
 
 /**
 Custom style for preview elements
