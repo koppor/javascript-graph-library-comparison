@@ -20,6 +20,7 @@
 
     rect1.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect1.createPort("input", new draw2d.layout.locator.LeftLocator(rect1));
+    rect1.setDashArray("- ");
     canvas.add(rect1);
     rect1.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
@@ -31,7 +32,6 @@
         height: 80,
         // bgColor: 'lightgrey'
     });
-    rect2.setStroke("- ");
     rect2.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect2.createPort("output", new draw2d.layout.locator.RightLocator(rect2));
     canvas.add(rect2);
@@ -45,8 +45,9 @@
         target: rect1.getInputPort(0),
         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
     });
+       //c.setDashArray("--.");
        c.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
-
+        console.log("C: " + c);
 
 // you can set the vertices of the connection via API. But normally this is
 // happen by the user or by reading the JSON file via a draw2d.io.Reader.
@@ -90,11 +91,12 @@
         //d.setTarget(rightCircle.getInputPort(0));
 
         d = new draw2d.Connection({
-
+            //dashArray: "--",
             source: leftCircle.getOutputPort(0),
             target: rightCircle.getInputPort(0),
             router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
         });
+        d.setDashArray("--");
 
 
     }
