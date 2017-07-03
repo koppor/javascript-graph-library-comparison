@@ -15,7 +15,7 @@
         y: 10,
         width: 80,
         height: 80,
-        bgColor: 'lightgrey'
+        //bgColor: 'lightgrey'
     });
     rect1.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect1.createPort("input", new draw2d.layout.locator.LeftLocator(rect1));
@@ -28,8 +28,9 @@
         y: 10,
         width: 80,
         height: 80,
-        bgColor: 'lightgrey'
+        // bgColor: 'lightgrey'
     });
+    //rect2.setStrokeStyle("-");
     rect2.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect2.createPort("output", new draw2d.layout.locator.RightLocator(rect2));
     canvas.add(rect2);
@@ -63,7 +64,7 @@
     function initCircle() {
 
         var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
-        leftCircle.setColor("#000000");
+        //leftCircle.setColor("#000000");
         leftCircle.setBackgroundColor("#FFFFFF");
         leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
         leftCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
@@ -71,7 +72,7 @@
 
 
         var rightCircle = new draw2d.shape.basic.Circle({radius: 40});
-        rightCircle.setColor("#000000");
+        //rightCircle.setColor("#000000");
         rightCircle.setBackgroundColor("#FFFFFF");
         rightCircle.add(new draw2d.shape.basic.Label({text:"Circle"}).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
         rightCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
@@ -84,16 +85,16 @@
         leftCircle.createPort("output", new draw2d.layout.locator.RightLocator(leftCircle));
         canvas.add(leftCircle);
 
-        d.setSource(leftCircle.getOutputPort(0));
-        d.setTarget(rightCircle.getInputPort(0));
+        //d.setSource(leftCircle.getOutputPort(0));
+        //d.setTarget(rightCircle.getInputPort(0));
 
-      /*  d = new draw2d.Connection({
+        d = new draw2d.Connection({
 
-            //source: leftCircle.getOutputPort(0),
-            //target: rightCircle.getInputPort(0),
-            //router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
+            source: leftCircle.getOutputPort(0),
+            target: rightCircle.getInputPort(0),
+            router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter()
         });
-*/
+
 
     }
 
@@ -113,6 +114,9 @@
         canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
 
     }
+    Raphael.el.setStrokeStyle = function (strokeStyle) {
+        this.attr("stroke-dasharray", strokeStyle);
+    };
 
     function main() {
         initRectangles();
