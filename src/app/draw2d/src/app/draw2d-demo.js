@@ -4,11 +4,11 @@
 
 
     var canvas = new draw2d.Canvas("canvas");
-    var c;
-    var d = new draw2d.Connection();
+    var c,d = new draw2d.Connection();
+
+
 
     function initRectangles() {
-        
 
     var rect1 = new draw2d.shape.basic.Rectangle({
         x: 380,
@@ -17,6 +17,7 @@
         height: 80,
         //bgColor: 'lightgrey'
     });
+
     rect1.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect1.createPort("input", new draw2d.layout.locator.LeftLocator(rect1));
     canvas.add(rect1);
@@ -30,7 +31,7 @@
         height: 80,
         // bgColor: 'lightgrey'
     });
-    //rect2.setStrokeStyle("-");
+    rect2.setStroke("- ");
     rect2.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
     rect2.createPort("output", new draw2d.layout.locator.RightLocator(rect2));
     canvas.add(rect2);
@@ -110,13 +111,32 @@
 
         
     function createNewRect() {
-        canvas.add(new draw2d.shape.node.Between({width: 80, height: 80, x: 200, y: 200,}));
-        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
 
+        var rect = new draw2d.shape.node.Between({
+            x: 200,
+            y: 200,
+            width: 80,
+            height: 80,
+            //bgColor: 'lightgrey'
+        });
+        rect.add(new draw2d.shape.basic.Label({text:"Rect"}),  new draw2d.layout.locator.CenterLocator());
+        rect.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
+        canvas.add(rect)
+        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
+       // var rect = canvas.add(new draw2d.shape.node.Between({width: 80, height: 80, x: 200, y: 200,}));
+
+        //canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
     }
-    Raphael.el.setStrokeStyle = function (strokeStyle) {
-        this.attr("stroke-dasharray", strokeStyle);
-    };
+    
+    function createNewCircle() {
+        var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
+        //leftCircle.setColor("#000000");
+        leftCircle.setBackgroundColor("#FFFFFF");
+        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
+        leftCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
+        canvas.add( leftCircle, 200,200);
+    }
+
 
     function main() {
         initRectangles();
@@ -127,8 +147,8 @@
 
         });
         $("#addCircleBtn").click(function () {
-
-            canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 200, y: 200}));
+            createNewCircle();
+            //canvas.add(new draw2d.shape.basic.Circle({radius: 40, x: 200, y: 200}));
 
         });
         $('#exportBtn').click(exportAsImage);
