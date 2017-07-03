@@ -93,6 +93,9 @@
             informations.timeTaken.text("Time Taken: Finished in " + (end - start).toFixed() + " ms");
         }
 
+        /**
+         * Main Methods
+         */
         function main() {
             $("#generateBtn").click(generateGrid);
         }

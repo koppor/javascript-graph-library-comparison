@@ -1,56 +1,56 @@
 /*(function () {
-    "use strict";
+ "use strict";
 
-    // Libraries
-    var canvas = new draw2d.Canvas("canvas");
+ // Libraries
+ var canvas = new draw2d.Canvas("canvas");
 
-    function initRectangles() {
+ function initRectangles() {
 
-        var rectLeft = new draw2d.shape.node.Start();
-        canvas.add( start, 80,80);
-       /* rectLeft = canvas.add(new draw2d.shape.node.Start()({
-            width: 80,
-            height: 80,
-            x: 5,
-            y: 10,
-            keepAspectRatio: true
-        }));
+ var rectLeft = new draw2d.shape.node.Start();
+ canvas.add( start, 80,80);
+ /* rectLeft = canvas.add(new draw2d.shape.node.Start()({
+ width: 80,
+ height: 80,
+ x: 5,
+ y: 10,
+ keepAspectRatio: true
+ }));
 
-        var rectRight;
-        rectRight = canvas.add(new draw2d.shape.node.Start()({
-            width: 80,
-            height: 80,
-            x: 380,
-            y: 10,
-            keepAspectRatio: true
-        }));
+ var rectRight;
+ rectRight = canvas.add(new draw2d.shape.node.Start()({
+ width: 80,
+ height: 80,
+ x: 380,
+ y: 10,
+ keepAspectRatio: true
+ }));
 
-    }
-    function initCircle() {
+ }
+ function initCircle() {
 
-        var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
-        leftCircle.setColor("#000000");
-        leftCircle.setBackgroundColor("#FFFFFF");
-        leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
-        canvas.add( leftCircle, 5,400);
-
-
-        var rightCircle = new draw2d.shape.basic.Circle({radius: 40});
-        rightCircle.setColor("#000000");
-        rightCircle.setBackgroundColor("#FFFFFF");
-        rightCircle.add(new draw2d.shape.basic.Label({text:"Circle"}).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
-        canvas.add( rightCircle, 380,400);
-    }
+ var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
+ leftCircle.setColor("#000000");
+ leftCircle.setBackgroundColor("#FFFFFF");
+ leftCircle.add(new draw2d.shape.basic.Label({text:"Circle"}), new draw2d.layout.locator.CenterLocator());
+ canvas.add( leftCircle, 5,400);
 
 
+ var rightCircle = new draw2d.shape.basic.Circle({radius: 40});
+ rightCircle.setColor("#000000");
+ rightCircle.setBackgroundColor("#FFFFFF");
+ rightCircle.add(new draw2d.shape.basic.Label({text:"Circle"}).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
+ canvas.add( rightCircle, 380,400);
+ }
 
-    function main() {
-        initRectangles();
-        initCircle();
-    }
 
-    main();
-}());
+
+ function main() {
+ initRectangles();
+ initCircle();
+ }
+
+ main();
+ }());
  */
 (function () {
     "use strict";
@@ -64,14 +64,14 @@
         y: 10,
         width: 80,
         height: 80,
-        bgColor: '#3366FF'
+        bgColor: 'lightgrey'
     });
     var rect2 = new draw2d.shape.basic.Rectangle({
         x: 5,
         y: 10,
         width: 80,
         height: 80,
-        bgColor: '#3366FF'
+        bgColor: 'lightgrey'
     });
     rect1.createPort("input", new draw2d.layout.locator.LeftLocator(rect1));
     canvas.add(rect1);
