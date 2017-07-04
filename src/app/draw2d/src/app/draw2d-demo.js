@@ -111,7 +111,6 @@
         downloadWindow.location = dataURL;
     }
 
-        
     function createNewRect() {
 
         var rect = new draw2d.shape.node.Between({
@@ -154,7 +153,6 @@
 
         });
         $('#exportBtn').click(exportAsImage);
-
         canvas.add(c);
         canvas.add(d);
     }
