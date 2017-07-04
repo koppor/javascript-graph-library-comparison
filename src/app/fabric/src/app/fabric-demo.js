@@ -242,11 +242,17 @@
     canvas.observe('object:moving', function (options) {
         var obj = options.target;
         var p = options.target;
+        var xPos = obj.left + obj.width;
+        var yPos = obj.top + obj.height;
+        obj.top = obj.top < 0 ? 0 : yPos < 500 ? obj.top : 420;
+        obj.left = obj.left < 0 ? 0 : xPos < 500 ? obj.left : 420;
+
         if (obj.name.match(/rect[Left,Right]/)) {
             rectLineRenderer.render();
         } else if (obj.name.match(/circle[Left,Right]/)) {
             circleLineRenderer.render();
         }
+
     });
 
     function main() {
