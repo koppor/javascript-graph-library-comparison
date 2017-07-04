@@ -38,6 +38,8 @@
                 rect.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
                 rect.setId(id);
                 canvas.add(rect);
+                canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
+
 
                 if (i > 0) {
                     var topNeighbour = "rect-" + (i - 1) + "-" + j;
