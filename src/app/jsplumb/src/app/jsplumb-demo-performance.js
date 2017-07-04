@@ -54,10 +54,6 @@
          * Main method which generates a X * X sized grid to test the performance
          */
         function generateGrid() {
-            //Clear the console before every start
-            (console.clear || function () {
-                console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-            })();
             var y = parseInt($("#yInput").val(), 10);
             var x = parseInt($("#xInput").val(), 10);
             var informations = new InformationPanel();

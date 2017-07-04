@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endinject -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="app/global.css">
+    <link rel="stylesheet" href="app/performance.css">
     <!-- endinject -->
-
 </head>
 
 <body>
@@ -31,45 +30,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="../../paperjs/src/index.html">PaperJs</a>
-                </li>
-                <li>
-                    <a href="../../raphael/src/index.html">Raphael</a>
-                </li>
                 <li class="active">
-                    <a href="#">Draw2d<span class="sr-only">(current)</span></a>
-                </li>
-                <li>
-                    <a href="../../jsplumb/src/index.html">JSPlumb</a>
-                </li>
-                <li>
-                    <a href="../../jointjs/src/index.html">JointJS</a>
-                </li>
-                <li>
-                    <a href="../../fabric/src/index.html">Fabric</a>
-                </li>
-                <li>
-                    <a href="../../d3js/src/index.html">D3</a>
+                    <a href="index.html"><span class="glyphicon glyphicon-chevron-left"></span> Back to Draw2D</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/draw2d" target="_blank">Source-Code</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Actions<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a id="addRectBtn"> <span class="glyphicon glyphicon-plus"> </span> Add Rectangle</a></li>
-                        <li><a id="addCircleBtn"> <span class="glyphicon glyphicon-plus"></span> Add Circle</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a id="exportBtn"> <span class="glyphicon glyphicon-export"></span> Export</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a id="performance" href="performance.html"> <span class="glyphicon glyphicon-fire"></span>
-                            Performance</a></li>
-                    </ul>
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/jointjs" target="_blank">Source-Code</a>
                 </li>
             </ul>
         </div>
@@ -77,9 +43,41 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<div id="canvas">
+
+<div id="container" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="xInput">X-Value:</label>
+                <input class="form-control" id="xInput" type="number" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="yInput">Y-Value:</label>
+                <input class="form-control" id="yInput" type="number" min="1" max="100">
+            </div>
+            <button id="generateBtn" class="btn btn-lg btn-block btn-primary">Generate Grid</button>
+
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Generates a X * Y Grid.</h3>
+                </div>
+                <div class="panel-body">
+                    <p class="alert alert-info">Min Value: 1</p>
+                    <p class="alert alert-info">Max Value: 100</p>
+                    <p id="nodeCount" class="alert alert-info">Nodes:</p>
+                    <p id="timeTaken" class="alert alert-info">Time Taken:</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<div id="draw2dCanvas">
+</div>
 <!-- bower:js -->
 <SCRIPT src="bower_components/draw2d/dist/shifty.js"></SCRIPT>
 <SCRIPT src="bower_components/draw2d/dist/raphael.js"></SCRIPT>
@@ -97,8 +95,7 @@
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <!-- endinject -->
 <!-- inject:js -->
-<script src="app/draw2d-demo.js"></script>
+<script src="app/draw2d-demo-performance.js"></script>
 <!-- endinject -->
 </body>
-
 </html>
