@@ -47,7 +47,7 @@
                         source: rect.getOutputPort(1),
                         target: rectTop.getInputPort(0),
                         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
-                        color: "#000"
+                        color: "#ff0000"
                     });
 
                     canvas.add(connection);
@@ -62,7 +62,7 @@
                         source: rectLeft.getOutputPort(0),
                         target: rect.getInputPort(1),
                         router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
-                        color: "#000"
+                        color: "#ff0000"
                     });
 
                     canvas.add(connection);
