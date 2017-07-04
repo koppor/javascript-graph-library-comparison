@@ -15,7 +15,7 @@
         });
 
         rectRight.add(new draw2d.shape.basic.Label({
-            text: "Rect", stroke: 0
+            text: "Rect", stroke: 0, fontSize: 20
         }), new draw2d.layout.locator.CenterLocator());
         rectRight.createPort("input", new draw2d.layout.locator.LeftLocator(rectRight));
         rectRight.setDashArray("- ");
@@ -30,19 +30,23 @@
             bgColor: '#D3D3D3'
             // bgColor: 'lightgrey'
         });
-        rectLeft.add(new draw2d.shape.basic.Label({text: "Rect", stroke: 0}), new draw2d.layout.locator.CenterLocator());
+        rectLeft.add(new draw2d.shape.basic.Label({
+            text: "Rect",
+            stroke: 0,
+            fontSize: 20
+        }), new draw2d.layout.locator.CenterLocator());
         rectLeft.createPort("output", new draw2d.layout.locator.RightLocator(rectLeft));
         canvas.add(rectLeft);
         rectLeft.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
 
-        var label = new draw2d.shape.basic.Label({text: "Label", stroke: 0});
+        var label = new draw2d.shape.basic.Label({text: "Label", stroke: 0, fontSize: 20});
 
         var connection = new draw2d.Connection({
             source: rectLeft.getOutputPort(0),
             target: rectRight.getInputPort(0),
             router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
-            color:"#000"
+            color: "#000"
         });
         connection.add(label, new draw2d.layout.locator.ManhattanMidpointLocator());
         canvas.add(connection);
@@ -55,7 +59,8 @@
         circleLeft.setBackgroundColor("#FFFFFF");
         circleLeft.add(new draw2d.shape.basic.Label({
             text: "Circle",
-            stroke: 0
+            stroke: 0,
+            fontSize: 20
         }), new draw2d.layout.locator.CenterLocator());
         circleLeft.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
@@ -65,11 +70,12 @@
         circleRight.add(new draw2d.shape.basic.Label({
             text: "Circle",
             stroke: 0,
-            fill: '#FFFFFF'
+            fill: '#FFFFFF',
+            fontSize: 20
         }).setColor("#FFFFFF"), new draw2d.layout.locator.CenterLocator());
         circleRight.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
         circleRight.createPort("input", new draw2d.layout.locator.LeftLocator(circleRight));
-        canvas.add(circleRight, 410, 410 );
+        canvas.add(circleRight, 410, 410);
         circleLeft.createPort("output", new draw2d.layout.locator.RightLocator(circleLeft));
         canvas.add(circleLeft, 10, 410);
 
@@ -78,7 +84,7 @@
             source: circleLeft.getOutputPort(0),
             target: circleRight.getInputPort(0),
             router: new draw2d.layout.connection.InteractiveManhattanConnectionRouter(),
-            color:"#000"
+            color: "#000"
         });
         connection.setDashArray("--");
         canvas.add(connection);
