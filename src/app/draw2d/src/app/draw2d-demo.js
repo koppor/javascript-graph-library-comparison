@@ -4,9 +4,13 @@
 (function () {
     "use strict";
 
-
+    //Libraries
+    //The canvas
     var canvas = new draw2d.Canvas("canvas");
 
+    /**
+     * Inits the Rectangle
+     */
     function initRectangles() {
 
         var rectRight = new draw2d.shape.basic.Rectangle({
@@ -57,6 +61,9 @@
         canvas.add(connection);
     }
 
+    /**
+     * Inits the Circle
+     */
     function initCircle() {
 
         var circleLeft = new draw2d.shape.basic.Circle({radius: 40});
@@ -95,7 +102,10 @@
         canvas.add(connection);
     }
 
-
+    /**
+     * Exports the SVG as png image by converting it to a canvas element using canvg and then using
+     * the HTML 5 canvas canvas#toDataURL
+     */
     function exportAsImage() {
         var downloadWindow = window.open();
         var writer = new draw2d.io.png.Writer();
@@ -107,7 +117,9 @@
         });
     }
 
-
+    /**
+     * Adds new Rectangle
+     */
     function createNewRect() {
 
         var rect = new draw2d.shape.node.Between({
@@ -124,6 +136,9 @@
         canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
     }
 
+    /**
+     * Adds new Circle
+     */
     function createNewCircle() {
         var leftCircle = new draw2d.shape.basic.Circle({radius: 40});
         leftCircle.setBackgroundColor("#FFFFFF");
@@ -135,7 +150,9 @@
         canvas.add(leftCircle, 210, 210);
     }
 
-
+    /**
+     * Main entry method
+     */
     function main() {
         initRectangles();
         initCircle();
