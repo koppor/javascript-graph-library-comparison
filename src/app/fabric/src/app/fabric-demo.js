@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    var canvas = new fabric.Canvas('canvas2', {
-        selection: true
+    var canvas = new fabric.Canvas('canvas', {
+        selection: false
     });
 
     //1.Rectangle
@@ -234,7 +234,6 @@
 
     //Add arrow
     function exportAsImage() {
-        var canvas = document.getElementById("canvas2");
         var downloadWindow = window.open("Image", "Image from FabricJS");
         downloadWindow.location = canvas.toDataURL();
     }
@@ -252,6 +251,9 @@
         } else if (obj.name.match(/circle[Left,Right]/)) {
             circleLineRenderer.render();
         }
+
+        obj.setCoords();
+        canvas.renderAll();
 
     });
 
