@@ -55,7 +55,6 @@
     function initCircle() {
 
         var circleLeft = new draw2d.shape.basic.Circle({radius: 40});
-        //circleLeft.setColor("#000000");
         circleLeft.setBackgroundColor("#FFFFFF");
         circleLeft.add(new draw2d.shape.basic.Label({
             text: "Circle",
@@ -65,7 +64,6 @@
         circleLeft.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
         var circleRight = new draw2d.shape.basic.Circle({radius: 40});
-        //circleRight.setColor("#000000");
         circleRight.setBackgroundColor("#FFFFFF");
         circleRight.add(new draw2d.shape.basic.Label({
             text: "Circle",
