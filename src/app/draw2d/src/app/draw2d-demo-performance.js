@@ -16,7 +16,7 @@
 
         //Clear all elements
         canvas.clear();
-
+        alert("Depending on your input, this might take some time! Check the console -> Press F12");
         var start = performance.now();
         for (var i = 0; i < y; i++) {
             height = i * 100;

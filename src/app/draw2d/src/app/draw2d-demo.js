@@ -125,7 +125,7 @@
             stroke: 0
         }), new draw2d.layout.locator.CenterLocator());
         leftCircle.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
-        canvas.add(leftCircle, 200, 200);
+        canvas.add(leftCircle, 210, 210);
     }
 
 
