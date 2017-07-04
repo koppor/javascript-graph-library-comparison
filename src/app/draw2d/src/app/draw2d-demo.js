@@ -23,6 +23,7 @@
         rectRight.createPort("input", new draw2d.layout.locator.LeftLocator(rectRight));
         rectRight.setDashArray("- ");
         canvas.add(rectRight);
+        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
         rectRight.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
         var rectLeft = new draw2d.shape.basic.Rectangle({
@@ -40,6 +41,7 @@
         }), new draw2d.layout.locator.CenterLocator());
         rectLeft.createPort("output", new draw2d.layout.locator.RightLocator(rectLeft));
         canvas.add(rectLeft);
+        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
         rectLeft.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
 
 
@@ -77,8 +79,10 @@
         circleRight.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
         circleRight.createPort("input", new draw2d.layout.locator.LeftLocator(circleRight));
         canvas.add(circleRight, 410, 410);
+        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
         circleLeft.createPort("output", new draw2d.layout.locator.RightLocator(circleLeft));
         canvas.add(circleLeft, 10, 410);
+        canvas.installEditPolicy(new draw2d.policy.canvas.CoronaDecorationPolicy());
 
         var connection = new draw2d.Connection({
             stroke: '1',
