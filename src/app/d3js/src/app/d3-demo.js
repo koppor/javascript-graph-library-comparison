@@ -5,16 +5,16 @@
 //JSON Shapes
 var jsonRectangles = [
     {
-        "x_ax": 20,
-        "y_ax": 20,
+        "x_ax": 10,
+        "y_ax": 10,
         "width": 80,
         "height": 80,
         "class": "rectLeft",
         "lable": "Rect"
     },
     {
-        "x_ax": 170,
-        "y_ax": 20,
+        "x_ax": 200,
+        "y_ax": 10,
         "width": 80,
         "height": 80,
         "class": "rectRight",

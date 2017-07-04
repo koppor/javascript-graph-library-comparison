@@ -35,7 +35,7 @@
 
                 rect.createPort("output", new draw2d.layout.locator.RightLocator(rect));
                 rect.createPort("output", new draw2d.layout.locator.TopLocator(rect));
-
+                rect.installEditPolicy(new draw2d.policy.figure.GlowSelectionFeedbackPolicy());
                 rect.setId(id);
                 canvas.add(rect);
 
