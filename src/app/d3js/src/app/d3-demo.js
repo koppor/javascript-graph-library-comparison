@@ -160,6 +160,10 @@
             .attr("transform", "translate(" + 0 + "," + 0 + ")")
             .attr("x", 210)
             .attr("y", 210)
+            .attr("width","80px")
+            .attr("height","80px")
+            .style("fill","lightgrey")
+            .style("stroke","black")
             .call(dragGroup)
     });
 
@@ -170,6 +174,8 @@
             .attr("cx", 250)
             .attr("cy", 250)
             .attr("r", 40)
+            .style("fill","white")
+            .style("stroke","black")
             .call(dragGroup)
     });
 
