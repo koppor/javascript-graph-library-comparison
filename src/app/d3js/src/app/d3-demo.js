@@ -5,68 +5,30 @@
 //JSON Shapes
 var jsonRectangles = [
     {
-        "x_ax": 10,
-        "y_ax": 10,
-        "width": 80,
-        "height": 80,
-        "class": "rectLeft",
-        "lable": "Rect"
+        "x_ax": 10, "y_ax": 10, "width": 80, "height": 80, "class": "rectLeft", "lable": "Rect"
     },
     {
-        "x_ax": 200,
-        "y_ax": 10,
-        "width": 80,
-        "height": 80,
-        "class": "rectRight",
-        "lable": "Rect",
+        "x_ax": 200, "y_ax": 10, "width": 80, "height": 80, "class": "rectRight", "lable": "Rect",
     }];
 
 var jsonCircles = [
     {
-        "x_axis": 30,
-        "y_axis": 200,
-        "radius": 40,
-        "class": "circLeft",
-        "lable": "Circle"
+        "x_axis": 25, "y_axis": 220, "radius": 40, "class": "circLeft", "lable": "Circle"
     },
     {
-        "x_axis": 200,
-        "y_axis": 200,
-        "radius": 40,
-        "class": "circRight",
-        "lable": "Circle"
+        "x_axis": 220, "y_axis": 220, "radius": 40, "class": "circRight", "lable": "Circle"
     }];
 
-var width = 500, height = 500, radius= 80;
+var width = 500, height = 500, radius = 6;
 
 //SVG Container, # benötigt, da drawing area über div-id angesprochen wird
 var svgContainer = d3.select("#canvas").append("svg")
     .attr("width", width)
     .attr("height", height)
     .style("position", "absolute")
-    // .style("left", -0.888889)
     .style("overflow", "hidden")
     .attr("xmlns", "http://www.w3.org/2000/svg")
     .attr("xmlns:xlink", "http://www.w3.org/1999/xlink");
-
-var rectGroup = svgContainer.append("g");
-var circGroup = svgContainer.append("g");
-
-//Create Arrows
-// var defs = svgContainer.append("defs");
-//
-// var defDef = defs.append("marker")
-//     .attr("id", "arrow")
-//     .attr("viewBox", "0 0 12 12")
-//     .attr("refX", 6)
-//     .attr("refY", 6)
-//     .attr("markerWidth", 12)
-//     .attr("markerHeight", 12)
-//     .attr("orient", "auto")
-//     .append("path")
-//     .attr("d", "M2,2 L10,6 L2,10 L6,6 L2,2")
-//     .style("fill", "black")
-//     .attr("class", "arrow");
 
 //Drag Shapes
 var dragGroup = d3.drag()
@@ -76,54 +38,52 @@ var dragGroup = d3.drag()
     })
     .on("drag", dragmove);
 
-//Draw Rectangles
-var rectangles = rectGroup.selectAll("rect")
+//Rectangle Groups
+var rectGroups = svgContainer.selectAll(".rectGroups")
     .data(jsonRectangles)
     .enter()
-    .append("rect")
-    .call(dragGroup);
-
-//Rectangles Attributes
-var rectangleAttributes = rectangles
+    .append("g")
     .attr("class", function (d) {
         return d.class;
     })
-    .attr("transform", function (d) {
-        return "translate(" + d.x_ax + "," + d.y_ax + ")";
-    })
+    .call(dragGroup);
+
+rectGroups.append('rect')
     .attr("x", function (d) {
         return d.x_ax;
     })
     .attr("y", function (d) {
         return d.y_ax;
     })
-
-rectGroup.selectAll("text")
-    .data(jsonRectangles)
-    .enter()
-    .append("text")
-    .attr("class", function(d) {return d.class})
-    .text(function (d) { return d.lable})
     .attr("transform", function (d) {
-        return "translate(" + (d.x_ax + d.width)/2 + "," + (d.y_ax+ d.height)/2 + ")";
+        return "translate(" + d.x_ax + "," + d.y_ax + ")";
+    });
+
+rectGroups.append('text')
+    .text(function (d) {
+        return d.lable
     })
-    .attr("x", function (d) {return (d.x_ax)})
-    .attr("y", function (d) {return (d.y_ax)})
-    .call(dragGroup);
+    .attr("transform", function (d) {
+        return "translate(" + (d.x_ax + d.width / 2 - 20) + "," + (d.y_ax + d.height / 2) + ")";
+    })
+    .attr("x", function (d) {
+        return (d.x_ax)
+    })
+    .attr("y", function (d) {
+        return (d.y_ax)
+    });
 
-
-//Draw Circles
-var circles = circGroup.selectAll("circle")
+//Add Circles
+var circGroups = svgContainer.selectAll(".circGroups")
     .data(jsonCircles)
     .enter()
-    .append("circle")
-    .call(dragGroup);
-
-//Cicles Attributes
-var circleAttributes = circles
+    .append("g")
     .attr("class", function (d) {
         return d.class;
     })
+    .call(dragGroup);
+
+circGroups.append('circle')
     .attr("transform", function (d) {
         return "translate(" + d.x_axis + "," + d.y_axis + ")";
     })
@@ -137,64 +97,102 @@ var circleAttributes = circles
         return d.radius;
     });
 
-circGroup.selectAll("text2")
-    .data(jsonCircles)
-    .enter()
-    .append("text")
-    .attr("class", function(d) {return d.class})
-    .text(function (d) { return d.lable})
-    .attr("transform", function (d) {
-        return "translate(" + (d.x_axis - d.radius) + "," + (d.y_axis) + ")";
+var circLables = circGroups.append('text')
+    .text(function (d) {
+        return d.lable
     })
-    .attr("x", function (d) {return (d.x_axis)})
-    .attr("y", function (d) {return (d.y_axis)})
+    .attr("transform", function (d) {
+        return "translate(" + (d.x_axis - d.radius + 15) + "," + (d.y_axis + 5) + ")";
+    })
+    .attr("x", function (d) {
+        return (d.x_axis)
+    })
+    .attr("y", function (d) {
+        return (d.y_axis)
+    });
+
+
+var lables = svgContainer.append("g")
+    .attr("class", "line1")
     .call(dragGroup);
 
+//Line between rects
+var line = lables.append("line")
+    .attr("x1", 100)
+    .attr("y1", 60)
+    .attr("x2", 400)
+    .attr("y2", 60);
 
-//line between rects
-var line = svgContainer.append("line")
-    .style("stroke-dasharray", ("3, 3"))
-    .attr("x1", 120)
-    .attr("y1", 80)
-    .attr("x2", 340)
-    .attr("y2", 80)
-    .attr("marker-end", "url(#arrow");
+lables
+    .attr("transform", "translate(" + 0 + "," + 0 + ")")
+    .append("text")
+    .attr("x", 220)
+    .attr("y", 65)
+    .text("Lable")
+    ;
+//Line between rects
+// var line = svgContainer.append("line")
+//     .attr("x1", 100)
+//     .attr("y1", 60)
+//     .attr("x2", 400)
+//     .attr("y2", 60);
 
 //line between circles
 var line2 = svgContainer.append("line")
-    .attr("x1", 100)
-    .attr("y1", 400)
-    .attr("x2", 360)
-    .attr("y2", 400)
-    // .attr("class", "arrowHead");
-    .attr("marker-end", "url(#arrow");
+    .style("stroke-dasharray", ("3, 3"))
+    .attr("x1", 90)
+    .attr("y1", 440)
+    .attr("x2", 400)
+    .attr("y2", 440);
 
 //Adding Rectangle:
-d3.select("#addRect").on("click", function () {
+d3.select("#addRectBtn").on("click", function () {
     svgContainer.append("rect")
         .attr("transform", "translate(" + 0 + "," + 0 + ")")
-        .attr("x", 300)
-        .attr("y", 200)
+        .attr("x", 210)
+        .attr("y", 210)
         .call(dragGroup)
 });
 
 //Add Circle:
-d3.select("#addCircle").on("click", function () {
+d3.select("#addCircleBtn").on("click", function () {
     svgContainer.append("circle")
         .attr("transform", "translate(" + 0 + "," + 0 + ")")
-        .attr("cx", 50)
-        .attr("cy", 150)
+        .attr("cx", 250)
+        .attr("cy", 250)
         .attr("r", 40)
         .call(dragGroup)
 });
 
 function dragmove(d) {
-    var x = Math.max(radius, Math.min( width - radius,d3.event.x));
-    var y = Math.max(radius, Math.min( height - radius,d3.event.y));
-    if (document.getElementById("#addCircle") === true){
-    d3.select(this).attr("transform", "translate(" + (x - 50) + "," + (y-150) + ")");
+
+    var x = Math.min(Math.max(40, d3.event.x, 80), 500);
+    var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+
+    if(d3.select(this).attr("class") === "line1") {
+        d3.select(this).attr("transform", function(){
+            return "translate(" + x-400 + "," + y-400 + ")"
+        })
+    }
+
+    if (document.getElementById("#addCircleBtn") === true) {
+        d3.select(this).attr("transform", "translate(" + (x - 250) + "," + (y - 250) + ")");
     } else {
-    d3.select(this).attr("transform", "translate(" + (x - 300) + "," + (y-200) + ")");
+        d3.select(this).attr("transform", "translate(" + (x - 250) + "," + (y - 250) + ")");
+    }
+
+    if (d3.select(this).attr("class") === "rectLeft") {
+        var x = Math.min(Math.max(40, d3.event.x, 80), 500);
+        var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+    } else if (d3.select(this).attr("class") === "rectRight") {
+        var x = Math.min(Math.max(d3.event.x, 0), 420);
+        var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+    } else if (d3.select(this).attr("class") === "circLeft") {
+        var x = Math.min(Math.max(40, d3.event.x, 80), 500);
+        var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+    } else if (d3.select(this).attr("class") === "circRight") {
+        var x = Math.min(Math.max(d3.event.x, 0), 420);
+        var y = Math.min(Math.max(40, d3.event.y, 40), 460);
     }
 
     if (d3.select(this).attr("class") === "rectLeft") {
@@ -202,51 +200,30 @@ function dragmove(d) {
         line.attr("x1", x);
         line.attr("y1", y);
     } else if (d3.select(this).attr("class") === "rectRight") {
-        d3.select(this).attr("transform", "translate(" + (x - 170) + "," + (y - 60) + ")");
+        d3.select(this).attr("transform", "translate(" + (x - 400) + "," + (y - 60) + ")");
         line.attr("x2", x);
         line.attr("y2", y);
     }
-
     if (d3.select(this).attr("class") === "circLeft") {
-        d3.select(this).attr("transform", "translate(" + (x - 70) + "," + (y - 200) + ")");
+        d3.select(this).attr("transform", "translate(" + (x - 90) + "," + (y - 440) + ")");
         line2.attr("x1", x);
         line2.attr("y1", y);
     } else if (d3.select(this).attr("class") === "circRight") {
-        d3.select(this).attr("transform", "translate(" + (x - 160) + "," + (y - 200) + ")");
+        d3.select(this).attr("transform", "translate(" + (x - 400) + "," + (y - 440) + ")");
         line2.attr("x2", x);
         line2.attr("y2", y);
     }
+
+
 }
 
+//Print function
+d3.select("#exportBtn").on("click", function () {
+    var downloadWindow = window.open("Image", "Image from D3");
+    downloadWindow.document.write('<canvas id="canvas" width="500px" height="500px"></canvas>');
+    var svg = document.getElementById("canvas").innerHTML;
+    canvg(downloadWindow.document.getElementById("canvas"), svg);
+    var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
+    downloadWindow.location = dataURL;
 
-// draw Line
-// var line = d3.line()
-//     .curve(d3.curveBasis);
-//
-// var svgContainer = d3.select("svg")
-//     .call(d3.drag()
-//         .container(function() { return this; })
-//         .subject(function() { var p = [d3.event.x, d3.event.y]; return [p, p]; })
-//         .on("start", dragstarted));
-//
-// function dragstarted() {
-//     var d = d3.event.subject,
-//         active = svgContainer.append("path").datum(d),
-//         x0 = d3.event.x,
-//         y0 = d3.event.y;
-//
-//     d3.event.on("drag", function() {
-//         var x1 = d3.event.x,
-//             y1 = d3.event.y,
-//             dx = x1 - x0,
-//             dy = y1 - y0;
-//
-//         if (dx * dx + dy * dy > 100) d.push([x0 = x1, y0 = y1]);
-//         else d[d.length - 1] = [x1, y1];
-//         active.attr("d", line);
-//     });
-// }
-
-
-
-
+});
