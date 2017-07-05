@@ -61,6 +61,9 @@
         .attr("transform", function (d) {
             return "translate(" + d.x_ax + "," + d.y_ax + ")";
         })
+        .attr("id", function (d) {
+            return d.class;
+        })
         .attr("width", "80")
         .attr("height", "80")
         .style("fill", "#D3D3D3")
@@ -126,8 +129,7 @@
 
 
     var lables = svgContainer.append("g")
-        .attr("class", "line1")
-        .call(dragGroup);
+        .attr("class", "line1");
 
 //Line between rects
     var line = lables.append("line")
@@ -143,6 +145,7 @@
         .attr("x", 220)
         .attr("y", 65)
         .text("Label")
+        .attr("id","rectLabel")
         .style("font-size", "20px");
 
 //line between circles
@@ -179,14 +182,26 @@
             .call(dragGroup)
     });
 
+    function updateLabel(x1,y1,x2,y2) {
+        var x = (parseInt(x1,10)+parseInt(x2,10))/2;
+        var y = (parseInt(y1,10)+parseInt(y2,10))/2;
+        // d3.select("#rectLabel").attr("x", x);
+        // d3.select("#rectLabel").attr("y", y);
+        d3.select("#rectLabel").attr("transform", function () {
+            return "translate(" + x  + "," + y  + ")"
+        });
+        debugger;
+
+    }
+
     function dragmove(d) {
 
         var x = Math.min(Math.max(40, d3.event.x, 80), 500);
         var y = Math.min(Math.max(40, d3.event.y, 40), 460);
 
-        if (d3.select(this).attr("class") === "line1") {
+        if (d3.select(this).attr("id") === "#rectLabel") {
             d3.select(this).attr("transform", function () {
-                return "translate(" + x - 400 + "," + y - 400 + ")"
+                return "translate(" + x - 100 + "," + y - 100 + ")"
             })
         }
 
@@ -199,9 +214,22 @@
         if (d3.select(this).attr("class") === "rectLeft") {
             var x = Math.min(Math.max(40, d3.event.x, 80), 500);
             var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+                updateLabel(d3.select("#rectLeft")
+                .attr("x"),d3.select("#rectLeft")
+                .attr("y"),d3.select("#rectRight")
+                .attr("x"),d3.select("#rectRight")
+                .attr("y")
+            );
         } else if (d3.select(this).attr("class") === "rectRight") {
             var x = Math.min(Math.max(d3.event.x, 0), 420);
             var y = Math.min(Math.max(40, d3.event.y, 40), 460);
+            updateLabel(d3.select("#rectLeft")
+                .attr("x"),d3.select("#rectLeft")
+                .attr("y"),d3.select("#rectRight")
+                .attr("x"),d3.select("#rectRight")
+                .attr("y")
+            );
+
         } else if (d3.select(this).attr("class") === "circLeft") {
             var x = Math.min(Math.max(40, d3.event.x, 80), 500);
             var y = Math.min(Math.max(40, d3.event.y, 40), 460);
