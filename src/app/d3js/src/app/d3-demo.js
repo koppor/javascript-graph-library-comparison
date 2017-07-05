@@ -160,10 +160,10 @@
             .attr("transform", "translate(" + 0 + "," + 0 + ")")
             .attr("x", 210)
             .attr("y", 210)
-            .attr("width","80px")
-            .attr("height","80px")
-            .style("fill","lightgrey")
-            .style("stroke","black")
+            .attr("width", "80px")
+            .attr("height", "80px")
+            .style("fill", "lightgrey")
+            .style("stroke", "black")
             .call(dragGroup)
     });
 
@@ -174,8 +174,8 @@
             .attr("cx", 250)
             .attr("cy", 250)
             .attr("r", 40)
-            .style("fill","white")
-            .style("stroke","black")
+            .style("fill", "white")
+            .style("stroke", "black")
             .call(dragGroup)
     });
 
@@ -228,8 +228,6 @@
             line2.attr("x2", x);
             line2.attr("y2", y);
         }
-
-
     }
 
 //Print function
@@ -240,7 +238,6 @@
         canvg(downloadWindow.document.getElementById("canvas"), svg.trim());
         var dataURL = downloadWindow.document.getElementById("canvas").toDataURL();
         downloadWindow.location = dataURL;
-        console.log(svg);
     });
 
 })();
