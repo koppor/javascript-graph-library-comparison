@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/axfrank/GraphLibComp.svg?branch=master)](https://travis-ci.org/axfrank/GraphLibComp)
+<hr>
 # GraphLibComp
 This project implements a basic website using seven different graphic frameworks for comparison.
 
@@ -8,12 +10,13 @@ Follow this [Documentation](https://docs.npmjs.com/getting-started/installing-no
 
 After installation
 ```bash
+npm install
 sudo npm install -g bower
 sudo npm install -g gulp
 ```
 
 ## Installing
-Install the dependencies
+Install the dependencies in the different framework
 ```bash
 bower install
 ```
@@ -48,7 +51,3 @@ The following frameworks are used in this project (not sorted in any particular 
 
 # License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-# Contributing
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-

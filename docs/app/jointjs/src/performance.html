@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GraphLibComp</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app/performance.css">
+    <!-- endinject -->
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">GraphLibComp</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="index.html"><span class="glyphicon glyphicon-chevron-left"></span> Back to JointJS</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/axfrank/GraphLibComp/tree/master/src/app/jointjs" target="_blank">Source-Code</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<div id="container" class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label for="xInput">X-Value:</label>
+                <input class="form-control" id="xInput" type="number" min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="yInput">Y-Value:</label>
+                <input class="form-control" id="yInput" type="number" min="1" max="100">
+            </div>
+            <button id="generateBtn" class="btn btn-lg btn-block btn-primary">Generate Grid</button>
+
+        </div>
+
+        <div class="col-lg-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Generates a X * Y Grid.</h3>
+                </div>
+                <div class="panel-body">
+                    <p class="alert alert-info">Min Value: 1</p>
+                    <p class="alert alert-info">Max Value: 100</p>
+                    <p id="nodeCount" class="alert alert-info">Nodes:</p>
+                    <p id="timeTaken" class="alert alert-info">Time Taken:</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="jointjs"></div>
+</div>
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/lodash/lodash.min.js"></script>
+<script src="bower_components/backbone/backbone-min.js"></script>
+<script src="bower_components/jointjs/dist/joint.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/canvg/dist/canvg.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+
+
+
+<!-- endinject -->
+<!-- inject:js -->
+<script src="app/performance-jointjs.js"></script>
+<!-- endinject -->
+</body>
+</html>

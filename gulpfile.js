@@ -18,7 +18,7 @@ gulp.task('browser-sync', function () {
 /**
  * Gulp injection
  */
-gulp.task('index', function () {
+gulp.task('inject', function () {
     gulp.src('./src/index.html')
         .pipe(inject(gulp.src(mainBowerFiles(), { read: false }), { name: 'bower', relative: true }))
         .pipe(gulp.dest('./src'))
@@ -26,5 +26,13 @@ gulp.task('index', function () {
         .pipe(gulp.dest('./src'));
 });
 
+gulp.task('copy', function () {
+    gulp.src('./src/**/*').pipe(gulp.dest('./docs'));
+});
 
-gulp.task('default', ['index', 'browser-sync']);
+// The default task just injects the files
+gulp.task('default', ['inject']);
+// Injects and builds the task (copies into docs directory)
+gulp.task('build', ['inject', 'copy']);
+// Inject and start browser-sync task
+gulp.task('start', ['inject', 'browser-sync']);
