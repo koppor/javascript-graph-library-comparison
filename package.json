@@ -1,0 +1,34 @@
+{
+  "name": "graphlibcomp",
+  "version": "1.0.0",
+  "description": "Project to compare several graphic libraries",
+  "main": "gulpfile.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp-inject": "^4.3.0",
+    "gulp-main-bower-files": "^1.6.2"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axfrank/GraphLibComp.git"
+  },
+  "keywords": [
+    "graphics",
+    "graphic",
+    "compare",
+    "javascript"
+  ],
+  "author": "Alex Frank <alex_frank@email.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/axfrank/GraphLibComp/issues"
+  },
+  "homepage": "https://github.com/axfrank/GraphLibComp#readme"
+}

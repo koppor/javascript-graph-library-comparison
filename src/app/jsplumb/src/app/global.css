@@ -1,0 +1,65 @@
+#container {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #000;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /*Needed for positoning in js plumb*/
+    position: relative;
+}
+
+.connectionLabel {
+    font-size: 20px;
+    color: black;
+}
+
+.common {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+}
+
+.rectCommon {
+    background-color: lightgray;
+}
+
+.rectLeft {
+    border: 1px solid #000;
+    left: 10px;
+    top: 10px;
+}
+
+.rectRight {
+    border: 1px dashed #000;
+    right: 10px;
+    top: 10px;
+}
+
+.newPosition {
+    right: 210px;
+    top: 210px;
+    border: 1px solid #000;
+}
+
+.circleCommon {
+    background-color: white;
+    border: 1px solid #000;
+    border-radius: 100%;
+}
+
+.circleLeft {
+    bottom: 10px;
+    left: 10px;
+}
+
+.circleRight {
+    bottom: 10px;
+    right: 10px;
+}
+
