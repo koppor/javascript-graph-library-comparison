@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/axfrank/GraphLibComp.svg?branch=master)](https://travis-ci.org/axfrank/GraphLibComp)
+
 <hr>
+
 # GraphLibComp
 This project implements a basic website using seven different graphic frameworks for comparison.
 
@@ -26,28 +28,29 @@ gulp
 ```
 # Design
 To show the capabilities of every graphic framework, we will implement a basic website with the following requirements:
-- Two different shapes (with customizable text and color)
-- Arrows (solid and dashed, customizable text and color)
+- Two different shapes 
+- Arrows (solid and dashed)
 
-The following images show the mockup
-![Mockup](docs/img/mockup.png)
+The following images show the application     
+![Example](guidelines/img/example.jpeg)
 
 # Frameworks
-The following frameworks are used in this project (not sorted in any particular order)
-
-[JointJS](https://www.jointjs.com/)
-
-[Raphaël](http://dmitrybaranovskiy.github.io/raphael/)
-
-[Draw2D](http://www.draw2d.org/draw2d/home/index.html)
+The following frameworks are used in this project.
 
 [D3](https://d3js.org/)
 
+[Draw2D](http://www.draw2d.org/draw2d/home/index.html)
+
 [FabricJS](http://fabricjs.com/)
+
+[JSPlumb](https://jsplumbtoolkit.com/)
+
+[JointJS](https://www.jointjs.com/)
 
 [PaperJS](http://paperjs.org/)
 
-[JSPlumb](https://jsplumbtoolkit.com/)
+[Raphaël](http://dmitrybaranovskiy.github.io/raphael/)
+
 
 # License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
