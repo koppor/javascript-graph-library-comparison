@@ -37,17 +37,17 @@ The following images show the application
 # Frameworks
 The following frameworks are used in this project.
 
-[D3](https://d3js.org/)
+[D3.js](https://d3js.org/)
 
 [Draw2D](http://www.draw2d.org/draw2d/home/index.html)
 
-[FabricJS](http://fabricjs.com/)
+[Fabric.js](http://fabricjs.com/)
 
-[JSPlumb](https://jsplumbtoolkit.com/)
+[jsPlumb](https://jsplumbtoolkit.com/)
 
 [JointJS](https://www.jointjs.com/)
 
-[PaperJS](http://paperjs.org/)
+[Paper.js](http://paperjs.org/)
 
 [Raphaël](http://dmitrybaranovskiy.github.io/raphael/)
 
